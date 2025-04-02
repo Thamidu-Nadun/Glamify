@@ -8,6 +8,7 @@ Welcome to **Online Salon (Glamify)**! :tada:
 
 ## Project Structure
 
+<pre>
 📂 docs
   └── main.md
 📂 assets
@@ -25,6 +26,7 @@ Welcome to **Online Salon (Glamify)**! :tada:
   └── ...
 📂 server
 📄 .gitignore
+</pre>
 
 ## Features
 
