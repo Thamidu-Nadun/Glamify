@@ -89,6 +89,5 @@ We welcome contributions from everyone! If you'd like to contribute to the proje
 If you have any questions or suggestions, feel free to reach out to us at [nadunrz101@gmail.com](mailto:nadunrz101@gmail.com).
 
 Happy glamming! :nail_care: :lipstick: :sparkles:
-```
 
-You can use this markdown code directly for your project.
+---
