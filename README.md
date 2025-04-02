@@ -60,7 +60,7 @@ Welcome to **Online Salon (Glamify)**! :tada:
 ## Screenshots
 
 ![Homepage](assets/images/screenshots/hero.svg)
-![Appointment](assets/images/screenshots/appoinment-home.svg.svg)
+![Appointment](assets/images/screenshots/appoinment-home.svg)
 
 ## Technologies Used
 
