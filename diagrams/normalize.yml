@@ -1,0 +1,100 @@
+# Define the tables
+
+# Table: Customer
+Customer:
+  - cus_id: integer
+  - first_name: string
+  - last_name: string
+  - email: string
+  - phone: string*
+
+# Table: Salon
+Salon:
+  - id: integer
+  - name: string
+  - email: string
+  - address: string
+  - phone: string*
+  - description: string
+  - open_hour: time
+
+# Table: Service
+Service:
+  - id: integer
+  - name: string
+  - description: string
+  - duration: integer
+  - price: float
+
+# Table: Appointment
+Appointment:
+  - id: integer
+  - duration: integer
+  - customer_id: integer
+  - salon_id: integer
+  - service_id: integer
+  - date: date
+  - time: time
+  - status: boolean
+
+# Table: Employee
+Employee:
+  - emp_id: integer
+  - first_name: string
+  - last_name: string
+  - email: string
+  - phone: string*
+  - position: string
+  - expertise_years: integer
+  - salary: float
+
+# Table: Feedback
+Feedback:
+  - id: integer
+  - appointment_id: integer
+  - employee_id: integer
+  - rating: integer
+  - comment: string
+  - dateOfFeedback: date
+
+# Define the relationships
+
+# One-to-Many Relationship: Customer has many Appointments
+Customer:
+  - appointments: [Appointment]
+
+# One-to-One Relationship: Appointment belongs to Customer
+Appointment:
+  - customer: Customer
+
+# One-to-Many Relationship: Salon has many Appointments
+Salon:
+  - appointments: [Appointment]
+
+# One-to-One Relationship: Appointment belongs to Salon
+Appointment:
+  - salon: Salon
+
+# One-to-Many Relationship: Service has many Appointments
+Service:
+  - appointments: [Appointment]
+
+# One-to-One Relationship: Appointment belongs to Service
+Appointment:
+  - service: Service
+
+# One-to-Many Relationship: Employee has many Appointments
+Employee:
+  - appointments: [Appointment]
+
+# One-to-One Relationship: Appointment belongs to Employee
+Appointment:
+  - employee: Employee
+
+# One-to-Many Relationship: Appointment has many Feedbacks
+Appointment:
+  - feedbacks: [Feedback]
+
+# One-to-One Relationship: Feedback belongs to Appointment
+Feedback:
+  - appointment: Appointment
