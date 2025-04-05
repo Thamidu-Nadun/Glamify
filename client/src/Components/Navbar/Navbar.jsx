@@ -1,5 +1,3 @@
-"use client"
-
 import { useState } from "react"
 import { FaBars, FaTimes } from "react-icons/fa"
 
@@ -8,7 +6,6 @@ function Navbar() {
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
-    // Prevent scrolling when menu is open
     document.body.style.overflow = isMenuOpen ? "auto" : "hidden"
   }
 
