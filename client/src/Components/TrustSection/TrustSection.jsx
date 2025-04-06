@@ -1,5 +1,5 @@
 import React from 'react'
-import { FaA, FaMeta, FaW } from "react-icons/fa6";
+import { FaMeta } from "react-icons/fa6";
 import { SiAdobe } from "react-icons/si";
 import { FaMicrosoft, FaGoogle, FaAws } from "react-icons/fa";
 import { TbBrandDisney } from "react-icons/tb";
