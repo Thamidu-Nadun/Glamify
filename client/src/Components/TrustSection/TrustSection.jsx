@@ -6,7 +6,7 @@ import { TbBrandDisney } from "react-icons/tb";
 
 function TrustSection() {
   return (
-      <div className='py-10 bg-white h-15 absolute bottom-0 flex pl-10 items-center w-screen font-mono'>
+      <div className='overflow-x-hidden py-10 bg-white h-15 absolute bottom-0 flex pl-10 items-center w-screen font-mono'>
           <h2 className='text-lg'>Trusted By</h2>
         <div className="item-list ml-40 flex gap-10">
             <Item name="Adobe" icon={SiAdobe} />
