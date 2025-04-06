@@ -90,7 +90,7 @@ export default Navbar
 const LoginButton = ({ fullWidth = false }) => {
   return (
     <button
-      className={`border-2 border-amber-400 py-2 px-5 rounded-3xl hover:bg-amber-400 hover:border-transparent transition-colors duration-200 ${fullWidth ? "w-full" : "mx-2"} text-amber-400 hover:text-amber-50 font-bold`}
+      className={`border-2 border-black py-2 px-5 rounded-3xl hover:bg-amber-400 hover:border-black/80 transition-colors duration-200 ${fullWidth ? "w-full" : "mx-2"} text-black hover:text-amber-50 font-bold`}
     >
       Login
     </button>
