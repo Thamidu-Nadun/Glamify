@@ -1,4 +1,4 @@
-name: Format Client Side Code With Prettier
+name: Format Client-Side Code With Prettier
 
 on:
   push:
