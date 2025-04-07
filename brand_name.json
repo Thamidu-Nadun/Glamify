@@ -1,24 +1,21 @@
 {
-    "names": [
-        "Glamify",
-        "LuxeLocks"
-    ],
-    "descriptions": [
-        "A beauty salon that specializes in glamorous makeovers and transformations.",
-        "A high-end hair salon that offers luxurious hair treatments and styling services."
-    ],
-    "tags": [
-        "beauty",
-        "salon",
-        "glamorous",
-        "makeover",
-        "luxury",
-        "hair",
-        "treatments",
-        "styling"
-    ],
-    "suggestions": [
-        "Glamify: This is a combination of 'Glam' (short for glamorous) and the suffix '-ify,' which implies making something or transforming something into a glamorous or chic state. So, 'Glamify' suggests that your beauty salon will help customers transform or enhance their look, making them feel glamorous and confident.",
-        "LuxeLocks: 'Luxe' is short for 'luxury,' and 'Locks' refers to hair. So, LuxeLocks would suggest a high-end, luxurious experience specifically focused on hair treatments. It's all about premium, top-quality hair care and styling, conveying elegance and sophistication."
-    ]
+  "names": ["Glamify", "LuxeLocks"],
+  "descriptions": [
+    "A beauty salon that specializes in glamorous makeovers and transformations.",
+    "A high-end hair salon that offers luxurious hair treatments and styling services."
+  ],
+  "tags": [
+    "beauty",
+    "salon",
+    "glamorous",
+    "makeover",
+    "luxury",
+    "hair",
+    "treatments",
+    "styling"
+  ],
+  "suggestions": [
+    "Glamify: This is a combination of 'Glam' (short for glamorous) and the suffix '-ify,' which implies making something or transforming something into a glamorous or chic state. So, 'Glamify' suggests that your beauty salon will help customers transform or enhance their look, making them feel glamorous and confident.",
+    "LuxeLocks: 'Luxe' is short for 'luxury,' and 'Locks' refers to hair. So, LuxeLocks would suggest a high-end, luxurious experience specifically focused on hair treatments. It's all about premium, top-quality hair care and styling, conveying elegance and sophistication."
+  ]
 }
