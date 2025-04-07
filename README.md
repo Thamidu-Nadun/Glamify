@@ -59,15 +59,16 @@ Welcome to **Online Salon (Glamify)**! :tada:
 
 ## Screenshots
 
-![Homepage](assets/images/screenshots/hero.svg)
+![Homepage](assets/images/screenshots/hero-v2.png)
 ![Appointment](assets/images/screenshots/appoinment-home.svg)
 
 ## Technologies Used
 
-![ReactJs](https://img.shields.io/badge/react-%231572B6.svg?style=for-the-badge&logo=react) 
-![Maven](https://img.shields.io/badge/maven-%23ED8B00.svg?style=for-the-badge&logo=apache&logoColor=white) 
-![MySQL](https://img.shields.io/badge/mysql-4479A1.svg?style=for-the-badge&logo=mysql&logoColor=white) 
+![ReactJs](https://img.shields.io/badge/react-%231572B6.svg?style=for-the-badge&logo=react)
+![Maven](https://img.shields.io/badge/maven-%23ED8B00.svg?style=for-the-badge&logo=apache&logoColor=white)
+![MySQL](https://img.shields.io/badge/mysql-4479A1.svg?style=for-the-badge&logo=mysql&logoColor=white)
 ![Tailwind CSS](https://img.shields.io/badge/tailwindcss-%23121011.svg?style=for-the-badge&logo=tailwindcss)
+![Spring Boot](https://img.shields.io/badge/springboot-%23121212.svg?style=for-the-badge&logo=springboot)
 
 ## Documentation
 
@@ -78,9 +79,24 @@ Feel free to view the documentation [here](./docs/main.md)
 We welcome contributions from everyone! If you'd like to contribute to the project, please follow these steps:
 
 1. Fork the repository
-2. Create a new branch: `git checkout -b feature/your-feature`
-3. Make your changes and commit them: `git commit -m 'Add your feature'`
-4. Push to the branch: `git push origin feature/your-feature`
+2. Create a new branch:
+
+```bash
+git checkout -b feature/your-feature
+```
+
+3. Make your changes and commit them:
+
+```bash
+git commit -m 'Add your feature'
+```
+
+4. Push to the branch:
+
+```bash
+git push origin feature/your-feature
+```
+
 5. Submit a pull request
 
 ## Contact
