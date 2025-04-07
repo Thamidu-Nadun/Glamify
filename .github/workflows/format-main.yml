@@ -1,15 +1,13 @@
-name: Format Client Side Code With Prettier
+name: Format Code With Prettier
 
 on:
   push:
-    branches: [client]
+    branches: [main] # Only run the workflow on pushes to the main branch
+  workflow_dispatch: # Allow manual trigger via GitHub UI
 
 jobs:
   prettier:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./client
 
     steps:
       - name: Checkout code
@@ -21,12 +19,11 @@ jobs:
           node-version: '18'
 
       - name: Install dependencies
-        run: npm ci 
-        # npm clean install (removes node_modules and installs fresh dependencies and
-        # also installs the exact versions in package-lock.json, super cool!)
+        run: npm ci
 
-      - name: Run Prettier
-        run: npm run format # I've created a format script in package.json
+      - name: Run Prettier on all files
+        run: |
+          npm run format  # Ensure the format script includes all files
 
       - name: Commit formatted code
         run: |
@@ -34,4 +31,4 @@ jobs:
           git config --global user.email "action@github.com"
           git add .
           git commit -m "chore: auto-format with Prettier" || echo "No changes to commit"
-          git push
+          git push https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main
