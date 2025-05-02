@@ -10,8 +10,8 @@ function App() {
       <Navbar />
       <Hero />
       {/* About Section */}
-      <About />
       <Appointment />
+      {/* <About /> */}
     </div>
   );
 }
