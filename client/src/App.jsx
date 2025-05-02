@@ -3,6 +3,8 @@ import Navbar from './Components/Navbar/Navbar';
 import Hero from './Components/Hero/Hero';
 import About from './Components/About/About';
 import Appointment from './Components/Appointment/Appointment';
+import Footer from './Components/Footer/Footer';
+import Divider from './Components/Divider/Divider';
 
 function App() {
   return (
@@ -11,7 +13,10 @@ function App() {
       <Hero />
       {/* About Section */}
       <Appointment />
-      {/* <About /> */}
+      <Divider />
+      <About />
+      <Divider />
+      <Footer />
     </div>
   );
 }
