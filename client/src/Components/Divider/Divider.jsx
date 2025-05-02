@@ -1,9 +1,9 @@
-import React from 'react'
+import React from 'react';
 
 function Divider() {
   return (
-    <div className='w-full h-2 bg-linear-to-r from-[#eea239] to-[#04636e] my-4'></div>
-  )
+    <div className="my-4 h-2 w-full bg-linear-to-r from-[#eea239] to-[#04636e]"></div>
+  );
 }
 
-export default Divider
+export default Divider;
