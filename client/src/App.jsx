@@ -1,21 +1,13 @@
 import React from 'react';
-import Navbar from './Components/Navbar/Navbar';
-import Hero from './Components/Hero/Hero';
-import About from './Components/About/About';
-import Appointment from './Components/Appointment/Appointment';
-import Footer from './Components/Footer/Footer';
-import Divider from './Components/Divider/Divider';
+import Home from './pages/Home/Home';
+import Navbar from './layout/Navbar/Navbar';
+import Footer from './layout/Footer/Footer';
 
 function App() {
   return (
     <div>
       <Navbar />
-      <Hero />
-      {/* About Section */}
-      <Appointment />
-      <Divider />
-      <About />
-      <Divider />
+      <Home />
       <Footer />
     </div>
   );

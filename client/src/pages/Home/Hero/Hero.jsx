@@ -1,6 +1,6 @@
 import React from 'react';
-import TagButton from '../TagButton/TagButton';
-import image from '../../../assets/women-2.png';
+import TagButton from '../../../Components/TagButton/TagButton';
+import image from '../../../../assets/women-2.png';
 import TrustSection from '../TrustSection/TrustSection';
 
 function Hero() {

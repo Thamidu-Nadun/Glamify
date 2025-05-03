@@ -1,6 +1,6 @@
 import React from 'react';
-import TagButton from '../TagButton/TagButton';
-import Button from '../Button/Button';
+import TagButton from '../../../Components/TagButton/TagButton';
+import Button from '../../../Components/Button/Button';
 
 const services = [
   { id: 1, name: 'Hair Cut' },
