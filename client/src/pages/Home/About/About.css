@@ -1,15 +1,27 @@
-.img-box {
-  position: relative;
-  height: 40vh;
+.seller {
+  position: absolute;
+  top: 5vh;
+  left: 9vw;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 10vw;
-  .seller {
-    position: absolute;
-    top: 0;
-    left: -80%;
+  height: 30%;
+  border-radius: 25px;
+  img {
+    width: 80%;
+    height: 70%;
+    border-radius: 25px;
   }
-  .percentage {
-    position: absolute;
-    bottom: 5%;
-    right: -50%;
+  span {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: black;
   }
+}
+.sm-box {
+  position: absolute;
+  bottom: 2vh;
+  right: 10vw;
 }
