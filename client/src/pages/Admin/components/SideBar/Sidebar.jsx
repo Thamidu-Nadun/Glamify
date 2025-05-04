@@ -1,11 +1,11 @@
 import React from 'react';
 
-function Sidebar () {
+function Sidebar() {
   return (
     <div className="sidebar">
-      <div class="text-sm w-56 p-4 bg-white border border-gray-300/30 text-gray-500 rounded-md font-medium">
+      <div class="w-56 rounded-md border border-gray-300/30 bg-white p-4 text-sm font-medium text-gray-500">
         <ul class="flex flex-col gap-2">
-          <li class="flex items-center gap-2 bg-blue-600 text-white cursor-pointer px-3 py-2 rounded">
+          <li class="flex cursor-pointer items-center gap-2 rounded bg-blue-600 px-3 py-2 text-white">
             <svg
               width="21"
               height="21"
@@ -23,7 +23,7 @@ function Sidebar () {
             </svg>
             <a href="#">Rename</a>
           </li>
-          <li class="flex items-center gap-3 cursor-pointer px-3 py-2 rounded hover:bg-gray-300/40 transition">
+          <li class="flex cursor-pointer items-center gap-3 rounded px-3 py-2 transition hover:bg-gray-300/40">
             <svg
               width="18"
               height="18"
@@ -42,8 +42,8 @@ function Sidebar () {
             </svg>
             <a href="#">Add Member</a>
           </li>
-          <div class="w-full h-px bg-gray-300/50 my-2" />
-          <li class="flex items-center gap-3 cursor-pointer px-3 py-2 rounded hover:bg-gray-300/40 transition">
+          <div class="my-2 h-px w-full bg-gray-300/50" />
+          <li class="flex cursor-pointer items-center gap-3 rounded px-3 py-2 transition hover:bg-gray-300/40">
             <svg
               width="16"
               height="16"
@@ -68,7 +68,7 @@ function Sidebar () {
             </svg>
             <a href="#">Settings</a>
           </li>
-          <li class="flex items-center gap-3 cursor-pointer px-3 py-2 rounded hover:bg-red-300/40 hover:text-red-500 transition">
+          <li class="flex cursor-pointer items-center gap-3 rounded px-3 py-2 transition hover:bg-red-300/40 hover:text-red-500">
             <svg
               width="12"
               height="14"
@@ -84,8 +84,8 @@ function Sidebar () {
             </svg>
             <a href="#">Delete</a>
           </li>
-          <div class="w-full h-px bg-gray-300/50 my-2" />
-          <li class="flex items-center gap-3 cursor-pointer px-3 py-2 rounded hover:bg-gray-300/40 transition">
+          <div class="my-2 h-px w-full bg-gray-300/50" />
+          <li class="flex cursor-pointer items-center gap-3 rounded px-3 py-2 transition hover:bg-gray-300/40">
             <svg
               width="18"
               height="16"
