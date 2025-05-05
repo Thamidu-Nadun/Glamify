@@ -3,6 +3,7 @@ import Home from './pages/Home/Home';
 // import Navbar from './layout/Navbar/Navbar';
 import Footer from './layout/Footer/Footer';
 import Admin from './pages/Admin/Admin';
+import NotFound from './pages/NotFound/NotFound';
 
 function App() {
   return (
@@ -10,7 +11,8 @@ function App() {
       {/* <Navbar />
       <Home />
       <Footer /> */}
-      <Admin />
+      {/* <Admin /> */}
+      <NotFound />
     </div>
   );
 }
