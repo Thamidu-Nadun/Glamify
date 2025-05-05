@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.glamify</groupId>
-	<artifactId>server</artifactId>
+	<artifactId>app</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>server</name>
+	<name>app</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>

@@ -1,10 +1,10 @@
-package com.glamify.server;
+package com.glamify.app;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ServerApplicationTests {
+class AppApplicationTests {
 
 	@Test
 	void contextLoads() {
