@@ -16,5 +16,16 @@
   "devDependencies": {
     "prettier": "^3.5.3",
     "prettier-plugin-tailwindcss": "^0.6.11"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HirulaAbesignha/Glamify.git"
+  },
+  "bugs": {
+    "url": "https://github.com/HirulaAbesignha/Glamify/issues"
+  },
+  "homepage": "https://github.com/HirulaAbesignha/Glamify#readme",
+  "dependencies": {
+    "express": "^5.1.0"
   }
 }
