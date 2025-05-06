@@ -6,6 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="61c4b74c-52d0-4c9b-968b-89a87d68cab5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/glamify/app/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/glamify/app/controller/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/glamify/app/dto/AdminDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/glamify/app/entity/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/glamify/app/entity/Admin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/glamify/app/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/glamify/app/entity/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,31 +32,31 @@
     <option name="directoryName" value="YSetjIQv" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="C:\wamp64\bin\php\php8.1.13\php.exe" />
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 0
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
   <component name="ProjectId" id="2wipFEZq0xbVyH8GnKKuLRlMDjM" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "dart.analysis.tool.window.visible": "false",
-    "git-widget-placeholder": "server",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/Other/University/Projects/Online_Salon_(Glamify)/App/server",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "org.rust.first.attach.projects": "true",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;server&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Other/University/Projects/Online_Salon_(Glamify)/App/server&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;org.rust.first.attach.projects&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="AppApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="app" />
@@ -83,6 +86,7 @@
       <option name="presentableId" value="Default" />
       <updated>1746534143077</updated>
       <workItem from="1746534144282" duration="522000" />
+      <workItem from="1746537759280" duration="393000" />
     </task>
     <servers />
   </component>
