@@ -1,0 +1,18 @@
+Glamify/
+├── pom.xml
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   │   └── com/
+│   │   │       └── glamify/
+│   │   │           ├── controller/
+│   │   │           │   └── CustomerController.java
+│   │   │           ├── model/
+│   │   │           │   └── Customer.java
+│   │   │           ├── service/
+│   │   │           │   └── CustomerService.java
+│   │   │           └── utils/
+│   │   │               └── JsonDBUtil.java
+│   │   └── resources/
+│   │       └── customers.json
+            └── application.properties
