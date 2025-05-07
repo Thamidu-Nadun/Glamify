@@ -84,4 +84,19 @@ public class AdminService {
         }
     }
 
+    // Delete Admin
+    public AdminDTO deleteAdmin(int id) {
+        try {
+            Admin deleted_admin = adminRepo.deleteAdmin(id);
+
+            if (deleted_admin != null) {
+                return modelMapper.map(deleted_admin, AdminDTO.class);
+            } else {
+                return null;
+            }
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
 }

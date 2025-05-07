@@ -72,4 +72,18 @@ public class AdminRepo {
         return null;
     }
 
+    // Delete Admin
+    public Admin deleteAdmin(int id) {
+        for (int i = 0; i < adminList.size(); i++) {
+            Admin admin = adminList.get(i);
+
+            if (admin.getId() == id) {
+                adminList.remove(i);
+                adminRW.WriteAdmin(adminList);
+                return admin;
+            }
+        }
+        return null;
+    }
+
 }

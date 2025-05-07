@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,7 +19,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
@@ -138,4 +138,23 @@ public class AdminController {
         }
     }
 
+    @DeleteMapping("/deleteAdmin/{id}")
+    public ResponseEntity<AdminResDTO> deleteAdminById(@PathVariable int id) {
+        // Response Object
+        AdminResDTO adminResDTO = new AdminResDTO();
+        try {
+            AdminDTO deleted_admin_res = adminService.deleteAdmin(id);
+            adminResDTO.setCode(ResponseCode.NO_CONTENT.getCode());
+            adminResDTO.setMessage(ResponseCode.NO_CONTENT.getMessage());
+            adminResDTO.setContent(deleted_admin_res);
+
+            return new ResponseEntity<>(adminResDTO, HttpStatus.OK);
+        } catch (Exception e) {
+            adminResDTO.setCode(ResponseCode.INTERNAL_SERVER_ERROR.getCode());
+            adminResDTO.setMessage(ResponseCode.INTERNAL_SERVER_ERROR.getMessage());
+            adminResDTO.setContent(e);
+
+            return new ResponseEntity<>(adminResDTO, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }
