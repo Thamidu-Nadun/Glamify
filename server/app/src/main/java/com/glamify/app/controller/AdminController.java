@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 @RequestMapping("/api/admin")
@@ -39,7 +38,7 @@ public class AdminController {
         adminResDTO.setMessage(ResponseCode.ACCEPTED.getMessage());
         adminResDTO.setContent(admins);
 
-        return new ResponseEntity<AdminResDTO>(adminResDTO, HttpStatus.CREATED);
+        return new ResponseEntity<AdminResDTO>(adminResDTO, HttpStatus.OK);
 
     }
 
