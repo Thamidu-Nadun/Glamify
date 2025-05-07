@@ -22,16 +22,6 @@ public class AppApplication {
 	}
 
 	@Bean
-	public AdminRepo adminRepo() {
-		return new AdminRepo();
-	}
-
-	@Bean
-	public AdminService adminService() {
-		return new AdminService();
-	}
-
-	@Bean
 	public AdminRW adminRW() {
 		return new AdminRW();
 	}
