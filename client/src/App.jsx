@@ -1,16 +1,21 @@
 import React from 'react';
 import Home from './pages/Home/Home';
+import Admin from './pages/Admin2/Admin';
 import NotFound from './pages/NotFound/NotFound';
-import Admin from './pages/Admin/Admin';
+import AdminTest from './pages/Admin/AdminTest';
 import { Route, Routes } from 'react-router-dom';
-import Admin2 from './pages/Admin2/Admin2';
+import AppointmentPage from './pages/Admin2/pages/AppointmentPage/AppointmentPage';
+import ClientPage from './pages/Admin2/pages/ClientPage/ClientPage';
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/admin" element={<Admin />} />
-      <Route path="/admin2" element={<Admin2 />} />
+      <Route path="/admin/dashboard" element={<Admin />} />
+      <Route path="/admin/appointments" element={<AppointmentPage />} />
+      <Route path="/admin/clients" element={<ClientPage />} />
+      <Route path="/adminTest" element={<AdminTest />} />
       <Route path="/404" element={<NotFound />} />
     </Routes>
   );
