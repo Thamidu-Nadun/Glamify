@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import SideBar from '../../Components/SideBar/SideBar';
+import BreadCrumb from '../../../../Components/BreadCrumb/BreadCrumb';
 
 function AppointmentPage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -12,6 +13,7 @@ function AppointmentPage() {
         setIsSidebarOpen={setIsSidebarOpen}
         toggleSidebar={toggleSidebar}
       />
+        <BreadCrumb Path_one='Admin' Path_two="Appointments" />
       <div>Appointments Page</div>
     </div>
   );

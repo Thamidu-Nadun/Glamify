@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import SideBar from '../../Components/SideBar/SideBar';
+import BreadCrumb from '../../../../Components/BreadCrumb/BreadCrumb';
 
 function ClientPage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -12,6 +13,8 @@ function ClientPage() {
         setIsSidebarOpen={setIsSidebarOpen}
         toggleSidebar={toggleSidebar}
       />
+      <BreadCrumb Path_one='Admin' Path_two="Clients" />
+
       <div>Clients Page</div>
     </div>
   );
