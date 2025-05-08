@@ -9,12 +9,12 @@ import Footer from '../../layout/Footer/Footer';
 function Home() {
   return (
     <>
-      <Navbar/>
+      <Navbar />
       <Hero />
       <Appointment />
       <About />
       <AboutS />
-      <Footer/>
+      <Footer />
     </>
   );
 }

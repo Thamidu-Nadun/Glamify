@@ -1,22 +1,20 @@
 import React from 'react';
 
-function RecentSaleCard () {
+function RecentSaleCard() {
   const recentSales = [
-    {id: 1, service: 'Hair Styling', amount: 85, date: '2025-05-04'},
-    {id: 2, service: 'Manicure & Pedicure', amount: 120, date: '2025-05-04'},
-    {id: 3, service: 'Facial Treatment', amount: 95, date: '2025-05-03'},
-    {id: 4, service: 'Hair Coloring', amount: 150, date: '2025-05-03'},
+    { id: 1, service: 'Hair Styling', amount: 85, date: '2025-05-04' },
+    { id: 2, service: 'Manicure & Pedicure', amount: 120, date: '2025-05-04' },
+    { id: 3, service: 'Facial Treatment', amount: 95, date: '2025-05-03' },
+    { id: 4, service: 'Hair Coloring', amount: 150, date: '2025-05-03' },
   ];
   return (
-    <div className="rounded-lg bg-white shadow-lg border border-pink-400">
+    <div className="rounded-lg border border-pink-400 bg-white shadow-lg">
       <div className="border-b border-gray-200 p-6">
-        <h2 className="text-lg font-semibold text-gray-800">
-          Recent Sales
-        </h2>
+        <h2 className="text-lg font-semibold text-gray-800">Recent Sales</h2>
       </div>
       <div className="p-6">
         <ul className="divide-y divide-gray-200">
-          {recentSales.map (sale => (
+          {recentSales.map((sale) => (
             <li key={sale.id} className="flex justify-between py-3">
               <div>
                 <p className="text-sm font-medium text-gray-900">
