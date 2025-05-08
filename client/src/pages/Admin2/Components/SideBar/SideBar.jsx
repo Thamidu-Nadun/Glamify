@@ -9,8 +9,8 @@ import {
   ShoppingBag,
   Users,
 } from 'lucide-react';
-import React, {useEffect, useState} from 'react';
-import {useNavigate} from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 // MenuItem Component
 const MenuItem = ({
@@ -22,21 +22,21 @@ const MenuItem = ({
   onClick,
   route,
 }) => {
-  const navigate = useNavigate ();
+  const navigate = useNavigate();
 
-  const handleClick = e => {
+  const handleClick = (e) => {
     if (onClick) {
-      onClick (e);
+      onClick(e);
     }
     if (route) {
-      navigate (route);
+      navigate(route);
     }
   };
 
   return (
     <li
       onClick={handleClick}
-      className={`${ActiveMenu === id ? 'bg-purple-700' : 'hover:bg-purple-700/50'} flex ${isSidebarOpen ? 'justify-start' : 'justify-center'} w-full p-4 rounded-xl my-2 cursor-pointer`}
+      className={`${ActiveMenu === id ? 'bg-purple-700' : 'hover:bg-purple-700/50'} flex ${isSidebarOpen ? 'justify-start' : 'justify-center'} my-2 w-full cursor-pointer rounded-xl p-4`}
     >
       <Icon size={20} className={`${isSidebarOpen ? 'mr-2' : 'mr-0'}`} />
       {isSidebarOpen && <span>{title || 'Dashboard'}</span>}
@@ -45,16 +45,16 @@ const MenuItem = ({
 };
 
 // SideBar Component
-function SideBar({isSidebarOpen, setIsSidebarOpen, toggleSidebar}) {
-  const [isMobile, setIsMobile] = useState (false);
-  const [ActiveMenu, setActiveMenu] = useState ('dashboard');
+function SideBar({ isSidebarOpen, setIsSidebarOpen, toggleSidebar }) {
+  const [isMobile, setIsMobile] = useState(false);
+  const [ActiveMenu, setActiveMenu] = useState('dashboard');
 
   const menu_list = [
     {
       id: 'dashboard',
       label: 'Dashboard',
       icon: Home,
-      route: '/admin/dashboard'
+      route: '/admin/dashboard',
     },
     {
       id: 'appointments',
@@ -66,13 +66,13 @@ function SideBar({isSidebarOpen, setIsSidebarOpen, toggleSidebar}) {
       id: 'clients',
       label: 'Clients',
       icon: Users,
-      route: '/admin/clients'
+      route: '/admin/clients',
     },
     {
       id: 'services',
       label: 'Services',
       icon: Package,
-      route: '/admin/services'
+      route: '/admin/services',
     },
     {
       id: 'inventory',
@@ -84,41 +84,38 @@ function SideBar({isSidebarOpen, setIsSidebarOpen, toggleSidebar}) {
       id: 'finance',
       label: 'Finance',
       icon: DollarSign,
-      route: '/admin/finance'
+      route: '/admin/finance',
     },
     {
       id: 'settings',
       label: 'Settings',
       icon: Settings,
-      route: '/admin/settings'
+      route: '/admin/settings',
     },
   ];
 
-  useEffect (
-    () => {
-      const handleResize = () => {
-        const mobile = window.innerWidth < 768;
-        setIsMobile (mobile);
-        setIsSidebarOpen (!mobile);
-      };
+  useEffect(() => {
+    const handleResize = () => {
+      const mobile = window.innerWidth < 768;
+      setIsMobile(mobile);
+      setIsSidebarOpen(!mobile);
+    };
 
-      handleResize ();
-      window.addEventListener ('resize', handleResize);
+    handleResize();
+    window.addEventListener('resize', handleResize);
 
-      return () => {
-        window.removeEventListener ('resize', handleResize);
-      };
-    },
-    [setIsSidebarOpen]
-  );
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [setIsSidebarOpen]);
 
   return (
     <aside
-      className={`${isSidebarOpen ? 'w-64' : 'w-20'} bg-gradient-to-b from-purple-800 to-pink-500 text-white fixed h-screen transition-all duration-300`}
+      className={`${isSidebarOpen ? 'w-64' : 'w-20'} fixed h-screen bg-gradient-to-b from-purple-800 to-pink-500 text-white transition-all duration-300`}
     >
       {/* Top Section */}
       <div
-        className={`bg-purple-800 flex items-center ${isSidebarOpen ? 'justify-between' : 'justify-center'} p-5`}
+        className={`flex items-center bg-purple-800 ${isSidebarOpen ? 'justify-between' : 'justify-center'} p-5`}
       >
         {isSidebarOpen && <span className="text-xl font-bold">Glamify</span>}
         <button onClick={toggleSidebar}>
@@ -127,12 +124,12 @@ function SideBar({isSidebarOpen, setIsSidebarOpen, toggleSidebar}) {
       </div>
 
       {/* Menu Items */}
-      <div className="py-4 overflow-y-scroll">
-        <ul className="flex flex-col justify-center py-2 px-2">
-          {menu_list.map ((menu, index) => (
+      <div className="overflow-y-scroll py-4">
+        <ul className="flex flex-col justify-center px-2 py-2">
+          {menu_list.map((menu, index) => (
             <MenuItem
               key={index}
-              onClick={() => setActiveMenu (menu.id)}
+              onClick={() => setActiveMenu(menu.id)}
               route={menu.route}
               Icon={menu.icon}
               isSidebarOpen={isSidebarOpen}
