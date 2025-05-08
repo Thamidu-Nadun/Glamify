@@ -1,17 +1,17 @@
 import React from 'react';
 
-function From () {
+function From() {
   return (
-    <div className='border-2 border-pink-500 p-4 rounded-2xl'>
-      <form className="md:w-96 w-80 flex flex-col items-center justify-center">
-        <h2 className="text-4xl text-gray-900 font-medium">Sign in</h2>
-        <p className="text-sm text-gray-500/90 mt-3">
+    <div className="rounded-2xl border-2 border-pink-500 p-4">
+      <form className="flex w-80 flex-col items-center justify-center md:w-96">
+        <h2 className="text-4xl font-medium text-gray-900">Sign in</h2>
+        <p className="mt-3 text-sm text-gray-500/90">
           Welcome back! Please sign in to continue
         </p>
 
         <button
           type="button"
-          className="w-full mt-8 bg-gray-500/10 flex items-center justify-center h-12 rounded-full"
+          className="mt-8 flex h-12 w-full items-center justify-center rounded-full bg-gray-500/10"
         >
           <img
             src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/login/googleLogo.svg"
@@ -19,15 +19,15 @@ function From () {
           />
         </button>
 
-        <div className="flex items-center gap-4 w-full my-5">
-          <div className="w-full h-px bg-gray-300/90" />
-          <p className="w-full text-nowrap text-sm text-gray-500/90">
+        <div className="my-5 flex w-full items-center gap-4">
+          <div className="h-px w-full bg-gray-300/90" />
+          <p className="w-full text-sm text-nowrap text-gray-500/90">
             or sign in with email
           </p>
-          <div className="w-full h-px bg-gray-300/90" />
+          <div className="h-px w-full bg-gray-300/90" />
         </div>
 
-        <div className="flex items-center w-full bg-transparent border border-gray-300/60 h-12 rounded-full overflow-hidden pl-6 gap-2">
+        <div className="flex h-12 w-full items-center gap-2 overflow-hidden rounded-full border border-gray-300/60 bg-transparent pl-6">
           <svg
             width="16"
             height="11"
@@ -45,12 +45,12 @@ function From () {
           <input
             type="email"
             placeholder="Email id"
-            className="bg-transparent text-gray-500/80 placeholder-gray-500/80 outline-none text-sm w-full h-full"
+            className="h-full w-full bg-transparent text-sm text-gray-500/80 placeholder-gray-500/80 outline-none"
             required
           />
         </div>
 
-        <div className="flex items-center mt-6 w-full bg-transparent border border-gray-300/60 h-12 rounded-full overflow-hidden pl-6 gap-2">
+        <div className="mt-6 flex h-12 w-full items-center gap-2 overflow-hidden rounded-full border border-gray-300/60 bg-transparent pl-6">
           <svg
             width="13"
             height="17"
@@ -66,29 +66,34 @@ function From () {
           <input
             type="password"
             placeholder="Password"
-            className="bg-transparent text-gray-500/80 placeholder-gray-500/80 outline-none text-sm w-full h-full"
+            className="h-full w-full bg-transparent text-sm text-gray-500/80 placeholder-gray-500/80 outline-none"
             required
           />
         </div>
 
-        <div className="w-full flex items-center justify-between mt-8 text-gray-500/80">
+        <div className="mt-8 flex w-full items-center justify-between text-gray-500/80">
           <div className="flex items-center gap-2">
             <input className="h-5" type="checkbox" id="checkbox" />
-            <label className="text-sm" for="checkbox">Remember me</label>
+            <label className="text-sm" for="checkbox">
+              Remember me
+            </label>
           </div>
-          <a className="text-sm underline" href="#">Forgot password?</a>
+          <a className="text-sm underline" href="#">
+            Forgot password?
+          </a>
         </div>
 
         <button
           type="submit"
-          className="mt-8 w-full h-11 rounded-full text-white bg-indigo-500 hover:opacity-90 transition-opacity"
+          className="mt-8 h-11 w-full rounded-full bg-indigo-500 text-white transition-opacity hover:opacity-90"
         >
           Login
         </button>
-        <p className="text-gray-500/90 text-sm mt-4">
-          Don’t have an account?
-          {' '}
-          <a className="text-indigo-400 hover:underline" href="#">Sign up</a>
+        <p className="mt-4 text-sm text-gray-500/90">
+          Don’t have an account?{' '}
+          <a className="text-indigo-400 hover:underline" href="#">
+            Sign up
+          </a>
         </p>
       </form>
     </div>

@@ -20,16 +20,16 @@ function Navbar() {
         {/* Desktop Navigation */}
         <div className="nav-links hidden md:block">
           <ul className="flex">
-            <LinkItem name="Home" path='/'/>
-            <LinkItem name="About" path='/about' />
-            <LinkItem name="Services" path='/service' />
-            <LinkItem name="Contact" path='/contact' />
+            <LinkItem name="Home" path="/" />
+            <LinkItem name="About" path="/about" />
+            <LinkItem name="Services" path="/service" />
+            <LinkItem name="Contact" path="/contact" />
           </ul>
         </div>
 
         <div className="auth-buttons hidden md:flex">
-          <LoginButton path='/login' />
-          <SignUpButton path='sign-in' />
+          <LoginButton path="/login" />
+          <SignUpButton path="sign-in" />
         </div>
 
         {/* Mobile Menu Button */}
@@ -72,16 +72,16 @@ function Navbar() {
 
           <nav className="flex flex-1 flex-col">
             <ul className="flex flex-col space-y-3 text-center">
-              <MobileLink name="Home" path='/' />
-              <MobileLink name="About" path='/about' />
-              <MobileLink name="Services" path='/service' />
-              <MobileLink name="Contact" path='contact' />
+              <MobileLink name="Home" path="/" />
+              <MobileLink name="About" path="/about" />
+              <MobileLink name="Services" path="/service" />
+              <MobileLink name="Contact" path="contact" />
             </ul>
           </nav>
 
           <div className="mt-auto flex flex-col space-y-3">
-            <LoginButton fullWidth path='/login'/>
-            <SignUpButton fullWidth path='/sign-in'/>
+            <LoginButton fullWidth path="/login" />
+            <SignUpButton fullWidth path="/sign-in" />
           </div>
         </div>
       </div>
@@ -91,9 +91,10 @@ function Navbar() {
 
 export default Navbar;
 
-const LoginButton = ({ fullWidth = false, path = "/" }) => {
+const LoginButton = ({ fullWidth = false, path = '/' }) => {
   return (
-    <Link to={path}
+    <Link
+      to={path}
       className={`rounded-3xl border-2 border-black px-5 py-2 transition-colors duration-200 hover:border-black/80 hover:bg-amber-400 ${fullWidth ? 'w-full' : 'mx-2'} font-bold text-black hover:text-amber-50`}
     >
       Login
@@ -101,9 +102,10 @@ const LoginButton = ({ fullWidth = false, path = "/" }) => {
   );
 };
 
-const SignUpButton = ({ fullWidth = false, path = "/"  }) => {
+const SignUpButton = ({ fullWidth = false, path = '/' }) => {
   return (
-    <Link to={path}
+    <Link
+      to={path}
       className={`rounded-3xl border-2 bg-black px-5 py-2 transition-colors duration-200 hover:bg-amber-100 ${fullWidth ? 'w-full' : 'mx-2'} font-bold text-white hover:text-black`}
     >
       Sign Up
@@ -111,7 +113,7 @@ const SignUpButton = ({ fullWidth = false, path = "/"  }) => {
   );
 };
 
-const LinkItem = ({ name = 'Link', path = "/" }) => {
+const LinkItem = ({ name = 'Link', path = '/' }) => {
   return (
     <li className="bg-opacity-0 m-1 rounded-2xl border-2 border-transparent bg-gray-200/30 bg-clip-padding px-4 py-2 shadow-sm backdrop-blur-sm backdrop-filter transition-colors hover:border-2 hover:border-gray-200 hover:bg-gray-200/50">
       <Link to={path}>{name}</Link>
@@ -119,7 +121,7 @@ const LinkItem = ({ name = 'Link', path = "/" }) => {
   );
 };
 
-const MobileLink = ({ name = 'Link', path = "/" }) => {
+const MobileLink = ({ name = 'Link', path = '/' }) => {
   return (
     <li className="bg-opacity-0 rounded-2xl bg-gray-200/30 bg-clip-padding px-4 py-3 backdrop-blur-sm backdrop-filter transition-colors hover:bg-gray-200/50">
       <Link to={path}>{name}</Link>

@@ -1,8 +1,8 @@
 import React from 'react';
 
-function BreadCrumb ({ Path_one, Path_two }) {
+function BreadCrumb({ Path_one, Path_two }) {
   return (
-    <div class="flex flex-wrap justify-start items-center space-x-2 text-sm text-pink-500 font-medium mt-2 mb-10">
+    <div class="mt-2 mb-10 flex flex-wrap items-center justify-start space-x-2 text-sm font-medium text-pink-500">
       <button type="button" aria-label="Home">
         <svg
           width="32"
@@ -31,7 +31,7 @@ function BreadCrumb ({ Path_one, Path_two }) {
           fill="#CBD5E1"
         />
       </svg>
-      <a href="#">{Path_one ? Path_one : 'App' }</a>
+      <a href="#">{Path_one ? Path_one : 'App'}</a>
       <svg
         width="20"
         height="20"
@@ -44,7 +44,9 @@ function BreadCrumb ({ Path_one, Path_two }) {
           fill="#CBD5E1"
         />
       </svg>
-      <a href="#" class="text-indigo-500">{Path_two ? Path_two : 'Section' }</a>
+      <a href="#" class="text-indigo-500">
+        {Path_two ? Path_two : 'Section'}
+      </a>
     </div>
   );
 }

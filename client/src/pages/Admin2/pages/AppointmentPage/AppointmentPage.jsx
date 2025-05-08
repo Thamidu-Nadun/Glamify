@@ -13,7 +13,7 @@ function AppointmentPage() {
         setIsSidebarOpen={setIsSidebarOpen}
         toggleSidebar={toggleSidebar}
       />
-        <BreadCrumb Path_one='Admin' Path_two="Appointments" />
+      <BreadCrumb Path_one="Admin" Path_two="Appointments" />
       <div>Appointments Page</div>
     </div>
   );

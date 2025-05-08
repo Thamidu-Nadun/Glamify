@@ -13,7 +13,7 @@ function ClientPage() {
         setIsSidebarOpen={setIsSidebarOpen}
         toggleSidebar={toggleSidebar}
       />
-      <BreadCrumb Path_one='Admin' Path_two="Clients" />
+      <BreadCrumb Path_one="Admin" Path_two="Clients" />
 
       <div>Clients Page</div>
     </div>
