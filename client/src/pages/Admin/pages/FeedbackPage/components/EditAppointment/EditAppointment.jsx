@@ -32,8 +32,10 @@ function EditAppointment({}) {
 
   return (
     <div className="mx-auto max-w-xl p-4">
-      <h2 className="mb-6 text-2xl font-semibold text-indigo-700">Edit Appointment</h2>
-      
+      <h2 className="mb-6 text-2xl font-semibold text-indigo-700">
+        Edit Appointment
+      </h2>
+
       <form className="space-y-4">
         {/* ID Field (Disabled) */}
         <div className="flex items-center rounded-md border border-gray-200 bg-indigo-50 px-3 py-2">

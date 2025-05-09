@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import SideBar from '../../Components/SideBar/SideBar';
 import Header from '../../Components/Header/Header';
 import BreadCrumb from '../../../../Components/BreadCrumb/BreadCrumb';
@@ -33,7 +33,7 @@ function ServicePage() {
         </main>
       </div>
     </div>
-  )
+  );
 }
 
-export default ServicePage
+export default ServicePage;

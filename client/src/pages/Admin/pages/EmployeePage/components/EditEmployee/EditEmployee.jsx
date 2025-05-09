@@ -1,5 +1,13 @@
 import {
-  User, Phone, Mail, Briefcase, DollarSign, Star, Wrench, Trash2, Plus,
+  User,
+  Phone,
+  Mail,
+  Briefcase,
+  DollarSign,
+  Star,
+  Wrench,
+  Trash2,
+  Plus,
 } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
@@ -97,7 +105,9 @@ function EditEmployee() {
 
   return (
     <div className="mx-auto max-w-xl p-6">
-      <h2 className="mb-6 text-2xl font-semibold text-indigo-700">Edit Employee</h2>
+      <h2 className="mb-6 text-2xl font-semibold text-indigo-700">
+        Edit Employee
+      </h2>
 
       <form className="space-y-4">
         {/* ID */}
@@ -147,7 +157,9 @@ function EditEmployee() {
                 value={phone}
                 placeholder="Phone"
                 className="w-full bg-transparent outline-none"
-                onChange={(e) => handleArrayChange('phone', index, e.target.value)}
+                onChange={(e) =>
+                  handleArrayChange('phone', index, e.target.value)
+                }
               />
               {employee.phone.length > 1 && (
                 <button
@@ -221,7 +233,9 @@ function EditEmployee() {
                 value={service}
                 placeholder="Service"
                 className="w-full bg-transparent outline-none"
-                onChange={(e) => handleArrayChange('services', index, e.target.value)}
+                onChange={(e) =>
+                  handleArrayChange('services', index, e.target.value)
+                }
               />
               {employee.services.length > 1 && (
                 <button
@@ -286,7 +300,7 @@ function Field({ label, icon, children }) {
       <label className="text-sm text-gray-600">{label}</label>
       <div className="flex flex-col space-y-2">
         {icon ? (
-          <div className="flex items-center rounded-md border border-gray-200 bg-white px-3 py-2 space-x-2">
+          <div className="flex items-center space-x-2 rounded-md border border-gray-200 bg-white px-3 py-2">
             {icon}
             {children}
           </div>
