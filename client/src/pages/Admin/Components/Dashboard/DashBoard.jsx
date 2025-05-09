@@ -1,19 +1,16 @@
 import React from 'react';
-import { Calendar } from 'lucide-react';
+import {Calendar} from 'lucide-react';
 import Card from '../Card/Card';
 import AppointmentCard from './Components/AppointmentCard/AppointmentCard';
 import ServiceCard from './Components/ServiceCard/ServiceCard';
 import RecentSaleCard from './Components/RecentSaleCard/RecentSaleCard';
+import WelcomeGreet from './Components/WelcomeGreet/WelcomeGreet';
 
-function DashBoard() {
+function DashBoard () {
   return (
     <div className="ml-2">
-      <div className="mb-6">
-        <h1 className="text-2xl font-bold text-gray-800">Dashboard</h1>
-        <p className="text-gray-600">
-          Welcome back, Jane! Here's what's happening today.
-        </p>
-      </div>
+      <WelcomeGreet page="Dashboard" user="Jane" />
+
       {/* Top Cards */}
       <div className="mb-6 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
         <Card

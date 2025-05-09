@@ -7,6 +7,7 @@ import Admin from './pages/Admin/Admin';
 import AppointmentPage from './pages/Admin/pages/AppointmentPage/AppointmentPage';
 import ClientPage from './pages/Admin/pages/ClientPage/ClientPage';
 import AdminTest from './pages/AdminTest/AdminTest';
+import EditAppointmentPage from './pages/Admin/pages/AppointmentPage/EditAppointmentPage';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Route path="/admin" element={<Admin />} />
       <Route path="/admin/dashboard" element={<Admin />} />
       <Route path="/admin/appointments" element={<AppointmentPage />} />
+      <Route path="/admin/appointments/edit" element={<EditAppointmentPage />} />
       <Route path="/admin/clients" element={<ClientPage />} />
       <Route path="/adminTest" element={<AdminTest />} />
       <Route path="/404" element={<NotFound />} />

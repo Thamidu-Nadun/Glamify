@@ -1,6 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-function BreadCrumb({ Path_one, Path_two }) {
+function BreadCrumb({ url_1, url_2, Path_one, Path_two }) {
   return (
     <div class="mt-2 mb-10 flex flex-wrap items-center justify-start space-x-2 text-sm font-medium text-pink-500">
       <button type="button" aria-label="Home">
@@ -31,7 +32,7 @@ function BreadCrumb({ Path_one, Path_two }) {
           fill="#CBD5E1"
         />
       </svg>
-      <a href="#">{Path_one ? Path_one : 'App'}</a>
+      <Link to={url_1}>{Path_one ? Path_one : 'App'}</Link>
       <svg
         width="20"
         height="20"
@@ -44,9 +45,9 @@ function BreadCrumb({ Path_one, Path_two }) {
           fill="#CBD5E1"
         />
       </svg>
-      <a href="#" class="text-indigo-500">
+      <Link to={url_2} class="text-indigo-500">
         {Path_two ? Path_two : 'Section'}
-      </a>
+      </Link>
     </div>
   );
 }

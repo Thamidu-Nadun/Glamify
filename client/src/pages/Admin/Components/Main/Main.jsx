@@ -8,7 +8,7 @@ function Main({ isSidebarOpen }) {
     <div className={`flex-1 ${isSidebarOpen ? 'ml-64' : 'ml-20'}`}>
       <Header />
       <main className="p-6">
-        <BreadCrumb Path_one="Admin" Path_two="Dashboard" />
+        <BreadCrumb url_1="/admin" url_2="/admin/dashboard" Path_one="Admin" Path_two="Dashboard" />
         <DashBoard />
       </main>
     </div>
