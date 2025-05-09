@@ -1,13 +1,13 @@
-import { React, useState } from 'react'
-import EditAppointment from './components/EditAppointment/EditAppointment'
+import { React, useState } from 'react';
+import EditAppointment from './components/EditAppointment/EditAppointment';
 import SideBar from '../../Components/SideBar/SideBar';
 import BreadCrumb from '../../../../Components/BreadCrumb/BreadCrumb';
 import Header from '../../Components/Header/Header';
 
 function EditAppointmentPage() {
-  const [isSidebarOpen, setIsSidebarOpen] = useState (true);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
-  const toggleSidebar = () => setIsSidebarOpen (!isSidebarOpen);
+  const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
   return (
     <div className="flex h-screen bg-gray-100 selection:bg-pink-200 selection:text-pink-900">
       <SideBar
@@ -23,7 +23,7 @@ function EditAppointmentPage() {
         </main>
       </div>
     </div>
-  )
+  );
 }
 
-export default EditAppointmentPage
+export default EditAppointmentPage;

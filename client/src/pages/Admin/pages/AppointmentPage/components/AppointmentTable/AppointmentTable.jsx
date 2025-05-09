@@ -2,7 +2,7 @@ import React from 'react';
 import EditButton from '../EditButton/EditButton';
 import DeleteButton from '../DeleteButton/DeleteButton';
 
-function AppointmentTable () {
+function AppointmentTable() {
   const appointments = [
     {
       id: 1,
@@ -30,42 +30,38 @@ function AppointmentTable () {
     },
   ];
   return (
-    <div className="bg-gray-300 overflow-x-scroll">
-      <table className="w-full table-auto shadow-lg min-w-max">
+    <div className="overflow-x-scroll bg-gray-300">
+      <table className="w-full min-w-max table-auto shadow-lg">
         <thead className="bg-purple-400 text-white">
           <tr>
-            <th className="px-2 py-1 border-r-1">Appointment ID</th>
-            <th className="px-2 py-1 border-r-1">Client Name</th>
-            <th className="px-2 py-1 border-r-1">Date</th>
-            <th className="px-2 py-1 
-                        border-r-1">
-              Time
-            </th>
-            <th className="px-2 py-1 border-r-1">Status</th>
-            <th className="px-2 py-1 border-r-1">Payment</th>
-            <th className="px-2 py-1 border-r-1">Edit / Delete</th>
+            <th className="border-r-1 px-2 py-1">Appointment ID</th>
+            <th className="border-r-1 px-2 py-1">Client Name</th>
+            <th className="border-r-1 px-2 py-1">Date</th>
+            <th className="border-r-1 px-2 py-1">Time</th>
+            <th className="border-r-1 px-2 py-1">Status</th>
+            <th className="border-r-1 px-2 py-1">Payment</th>
+            <th className="border-r-1 px-2 py-1">Edit / Delete</th>
           </tr>
         </thead>
         <tbody className="divide-y-2 divide-pink-300">
-          {appointments.map (appointment => {
+          {appointments.map((appointment) => {
             return (
-              <tr className="odd:bg-purple-100 even:bg-violet-100 hover:bg-fuchsia-100 text-bold border border-transparent font-mono hover:border hover:border-purple-500 transition-all duration-300">
-                <td className="text-center py-2 w-10">{appointment.id}</td>
-                <td className="text-wrap w-40 p-2 text-center">
+              <tr className="text-bold border border-transparent font-mono transition-all duration-300 odd:bg-purple-100 even:bg-violet-100 hover:border hover:border-purple-500 hover:bg-fuchsia-100">
+                <td className="w-10 py-2 text-center">{appointment.id}</td>
+                <td className="w-40 p-2 text-center text-wrap">
                   {appointment.client}
                 </td>
-                <td className="text-center p-2">{appointment.date}</td>
-                <td className="text-center p-2">{appointment.time}</td>
-                <td className="text-center p-2">{appointment.status}</td>
-                <td className="text-center p-2">{appointment.payment}</td>
-                <td className="p-2 flex flex-col items-center gap-y-2 font-bold">
+                <td className="p-2 text-center">{appointment.date}</td>
+                <td className="p-2 text-center">{appointment.time}</td>
+                <td className="p-2 text-center">{appointment.status}</td>
+                <td className="p-2 text-center">{appointment.payment}</td>
+                <td className="flex flex-col items-center gap-y-2 p-2 font-bold">
                   <EditButton appointment={appointment} />
                   <DeleteButton />
                 </td>
               </tr>
             );
           })}
-
         </tbody>
       </table>
     </div>

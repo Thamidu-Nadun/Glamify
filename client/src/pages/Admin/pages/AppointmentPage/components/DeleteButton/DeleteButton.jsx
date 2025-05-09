@@ -1,11 +1,11 @@
 import React from 'react';
 import { Trash } from 'lucide-react';
 
-
-function DeleteButton () {
+function DeleteButton() {
   return (
-    <div className="flex justify-around w-full hover:bg-red-400 border border-red-400 hover:text-white text-red-400 p-1">
-      <Trash /><span>Delete</span>
+    <div className="flex w-full justify-around border border-red-400 p-1 text-red-400 hover:bg-red-400 hover:text-white">
+      <Trash />
+      <span>Delete</span>
     </div>
   );
 }

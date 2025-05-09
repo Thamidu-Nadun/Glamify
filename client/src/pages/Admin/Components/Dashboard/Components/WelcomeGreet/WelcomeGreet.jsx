@@ -1,6 +1,6 @@
 import React from 'react';
 
-function WelcomeGreet({page, user}) {
+function WelcomeGreet({ page, user }) {
   return (
     <div className="mb-6">
       <h1 className="text-2xl font-bold text-gray-800">
