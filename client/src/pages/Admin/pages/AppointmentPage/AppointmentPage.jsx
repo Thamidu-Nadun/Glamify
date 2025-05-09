@@ -1,14 +1,14 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import SideBar from '../../Components/SideBar/SideBar';
 import BreadCrumb from '../../../../Components/BreadCrumb/BreadCrumb';
 import AppointmentTable from './components/AppointmentTable/AppointmentTable';
 import Header from '../../Components/Header/Header';
 import WelcomeGreet from '../../Components/WelcomeGreet/WelcomeGreet';
 
-function AppointmentPage () {
-  const [isSidebarOpen, setIsSidebarOpen] = useState (true);
+function AppointmentPage() {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
-  const toggleSidebar = () => setIsSidebarOpen (!isSidebarOpen);
+  const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
   return (
     <div className="flex h-screen bg-gray-100 selection:bg-pink-200 selection:text-pink-900">
       <SideBar

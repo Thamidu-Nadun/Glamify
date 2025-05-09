@@ -18,7 +18,10 @@ function App() {
       <Route path="/admin" element={<Admin />} />
       <Route path="/admin/dashboard" element={<Admin />} />
       <Route path="/admin/appointments" element={<AppointmentPage />} />
-      <Route path="/admin/appointments/edit" element={<EditAppointmentPage />} />
+      <Route
+        path="/admin/appointments/edit"
+        element={<EditAppointmentPage />}
+      />
       <Route path="/admin/clients" element={<ClientPage />} />
       <Route path="/adminTest" element={<AdminTest />} />
       <Route path="/404" element={<NotFound />} />

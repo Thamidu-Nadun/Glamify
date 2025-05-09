@@ -1,8 +1,8 @@
-import {Calendar, Timer, User, SquareCheckBig} from 'lucide-react';
-import React, {useEffect, useState} from 'react';
+import { Calendar, Timer, User, SquareCheckBig } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
-function EditAppointment ({}) {
+function EditAppointment({}) {
   const location = useLocation();
   const appointmentData = location.state?.appointment;
 
@@ -27,14 +27,14 @@ function EditAppointment ({}) {
   };
 
   const saveData = () => {
-    console.log ('Data saved:', appointment);
+    console.log('Data saved:', appointment);
   };
 
   return (
-    <div className="max-w-xl mx-auto p-4">
+    <div className="mx-auto max-w-xl p-4">
       <form className="space-y-4">
         {/* ID Field (Disabled) */}
-        <div className="flex items-center border bg-indigo-50 border-gray-200 rounded-md px-3 py-2">
+        <div className="flex items-center rounded-md border border-gray-200 bg-indigo-50 px-3 py-2">
           <input
             type="text"
             className="w-full bg-transparent text-indigo-500/70 outline-none"
@@ -44,8 +44,8 @@ function EditAppointment ({}) {
         </div>
 
         {/* Client Name */}
-        <div className="flex items-center border bg-indigo-50 border-gray-200 rounded-md px-3 py-2">
-          <User className="text-gray-500 mr-2" />
+        <div className="flex items-center rounded-md border border-gray-200 bg-indigo-50 px-3 py-2">
+          <User className="mr-2 text-gray-500" />
           <input
             type="text"
             name="client"
@@ -57,8 +57,8 @@ function EditAppointment ({}) {
         </div>
 
         {/* Date */}
-        <div className="flex items-center border bg-indigo-50 border-gray-200 rounded-md px-3 py-2">
-          <Calendar className="text-gray-500 mr-2" />
+        <div className="flex items-center rounded-md border border-gray-200 bg-indigo-50 px-3 py-2">
+          <Calendar className="mr-2 text-gray-500" />
           <input
             type="date"
             name="date"
@@ -69,8 +69,8 @@ function EditAppointment ({}) {
         </div>
 
         {/* Time */}
-        <div className="flex items-center border bg-indigo-50 border-gray-200 rounded-md px-3 py-2">
-          <Timer className="text-gray-500 mr-2" />
+        <div className="flex items-center rounded-md border border-gray-200 bg-indigo-50 px-3 py-2">
+          <Timer className="mr-2 text-gray-500" />
           <input
             type="time"
             name="time"
@@ -81,8 +81,8 @@ function EditAppointment ({}) {
         </div>
 
         {/* Status */}
-        <div className="flex items-center border bg-indigo-50 border-gray-200 rounded-md px-3 py-2">
-          <SquareCheckBig className="text-gray-500 mr-2" />
+        <div className="flex items-center rounded-md border border-gray-200 bg-indigo-50 px-3 py-2">
+          <SquareCheckBig className="mr-2 text-gray-500" />
           <select
             name="status"
             className="w-full bg-transparent outline-none"
@@ -94,8 +94,8 @@ function EditAppointment ({}) {
           </select>
         </div>
         {/* Payment */}
-        <div className="flex items-center border bg-indigo-50 border-gray-200 rounded-md px-3 py-2">
-          <SquareCheckBig className="text-gray-500 mr-2" />
+        <div className="flex items-center rounded-md border border-gray-200 bg-indigo-50 px-3 py-2">
+          <SquareCheckBig className="mr-2 text-gray-500" />
           <select
             name="status"
             className="w-full bg-transparent outline-none"
@@ -107,22 +107,21 @@ function EditAppointment ({}) {
           </select>
         </div>
 
-        <div className="flex justify-end gap-3 mt-6">
+        <div className="mt-6 flex justify-end gap-3">
           <button
             type="button"
-            onClick={() => saveData ()}
-            className="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 active:bg-indigo-800 transition duration-150"
+            onClick={() => saveData()}
+            className="rounded-md bg-indigo-600 px-4 py-2 text-white transition duration-150 hover:bg-indigo-700 active:bg-indigo-800"
           >
             Save
           </button>
           <button
             type="reset"
-            className="bg-gray-200 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-300 active:bg-gray-400 transition duration-150"
+            className="rounded-md bg-gray-200 px-4 py-2 text-gray-700 transition duration-150 hover:bg-gray-300 active:bg-gray-400"
           >
             Clear
           </button>
         </div>
-
       </form>
     </div>
   );

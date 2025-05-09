@@ -1,12 +1,12 @@
 import React from 'react';
-import {Calendar} from 'lucide-react';
+import { Calendar } from 'lucide-react';
 import Card from '../Card/Card';
 import AppointmentCard from './Components/AppointmentCard/AppointmentCard';
 import ServiceCard from './Components/ServiceCard/ServiceCard';
 import RecentSaleCard from './Components/RecentSaleCard/RecentSaleCard';
 import WelcomeGreet from '../WelcomeGreet/WelcomeGreet';
 
-function DashBoard () {
+function DashBoard() {
   return (
     <div className="ml-2">
       <WelcomeGreet page="Dashboard" user="Jane" />

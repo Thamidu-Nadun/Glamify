@@ -7,7 +7,7 @@ function EditButton({ appointment }) {
     <Link
       to="edit"
       state={{ appointment }}
-      className="flex justify-around w-full hover:bg-green-400 p-1 text-green-500 border hover:text-white border-green-500"
+      className="flex w-full justify-around border border-green-500 p-1 text-green-500 hover:bg-green-400 hover:text-white"
     >
       <SquarePen />
       <span>Edit</span>
