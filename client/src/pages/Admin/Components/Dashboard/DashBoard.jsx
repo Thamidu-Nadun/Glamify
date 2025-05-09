@@ -4,7 +4,7 @@ import Card from '../Card/Card';
 import AppointmentCard from './Components/AppointmentCard/AppointmentCard';
 import ServiceCard from './Components/ServiceCard/ServiceCard';
 import RecentSaleCard from './Components/RecentSaleCard/RecentSaleCard';
-import WelcomeGreet from './Components/WelcomeGreet/WelcomeGreet';
+import WelcomeGreet from '../WelcomeGreet/WelcomeGreet';
 
 function DashBoard () {
   return (

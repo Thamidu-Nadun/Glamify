@@ -3,7 +3,7 @@ import SideBar from '../../Components/SideBar/SideBar';
 import BreadCrumb from '../../../../Components/BreadCrumb/BreadCrumb';
 import AppointmentTable from './components/AppointmentTable/AppointmentTable';
 import Header from '../../Components/Header/Header';
-import WelcomeGreet from '../../Components/Dashboard/Components/WelcomeGreet/WelcomeGreet';
+import WelcomeGreet from '../../Components/WelcomeGreet/WelcomeGreet';
 
 function AppointmentPage () {
   const [isSidebarOpen, setIsSidebarOpen] = useState (true);
