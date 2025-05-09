@@ -1,8 +1,8 @@
 import React from 'react';
 
-function FormImage () {
+function FormImage() {
   return (
-    <div className="w-full hidden md:inline-block">
+    <div className="hidden w-full md:inline-block">
       <img
         className="h-full rounded-e-3xl shadow-2xl"
         src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/login/leftSideImage.png"
