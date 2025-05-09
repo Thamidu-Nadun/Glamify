@@ -1,12 +1,12 @@
 import React from 'react';
-import Home from './pages/Home/Home';
-import Admin from './pages/Admin2/Admin';
-import NotFound from './pages/NotFound/NotFound';
-import AdminTest from './pages/Admin/AdminTest';
 import { Route, Routes } from 'react-router-dom';
-import AppointmentPage from './pages/Admin2/pages/AppointmentPage/AppointmentPage';
-import ClientPage from './pages/Admin2/pages/ClientPage/ClientPage';
+import Home from './pages/Home/Home';
+import NotFound from './pages/NotFound/NotFound';
 import UserLogin from './pages/UserLogin/UserLogin';
+import Admin from './pages/Admin/Admin';
+import AppointmentPage from './pages/Admin/pages/AppointmentPage/AppointmentPage';
+import ClientPage from './pages/Admin/pages/ClientPage/ClientPage';
+import AdminTest from './pages/AdminTest/AdminTest';
 
 function App() {
   return (
