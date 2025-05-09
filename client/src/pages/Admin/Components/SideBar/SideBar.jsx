@@ -1,12 +1,12 @@
 // SideBar.jsx
 import {
   Calendar,
-  DollarSign,
+  MessageCircleHeart,
   Home,
   Menu,
   Package,
   Settings,
-  ShoppingBag,
+  VenetianMask,
   Users,
 } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
@@ -75,16 +75,16 @@ function SideBar({ isSidebarOpen, setIsSidebarOpen, toggleSidebar }) {
       route: '/admin/services',
     },
     {
-      id: 'inventory',
-      label: 'Inventory',
-      icon: ShoppingBag,
-      route: '/admin/inventory',
+      id: 'employees',
+      label: 'Employees',
+      icon: VenetianMask,
+      route: '/admin/employees',
     },
     {
-      id: 'finance',
-      label: 'Finance',
-      icon: DollarSign,
-      route: '/admin/finance',
+      id: 'feedbacks',
+      label: 'Feedbacks',
+      icon: MessageCircleHeart,
+      route: '/admin/feedbacks',
     },
     {
       id: 'settings',

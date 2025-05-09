@@ -1,11 +1,10 @@
-import React, { useState } from 'react'
-import ClientTable from './components/ClientTable/ClientTable';
+import { React, useState } from 'react';
+import EditAppointment from './components/EditAppointment/EditAppointment';
 import SideBar from '../../Components/SideBar/SideBar';
-import Header from '../../Components/Header/Header';
 import BreadCrumb from '../../../../Components/BreadCrumb/BreadCrumb';
-import WelcomeGreet from '../../Components/WelcomeGreet/WelcomeGreet';
+import Header from '../../Components/Header/Header';
 
-function ClientPage() {
+function EditAppointmentPage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
@@ -19,21 +18,12 @@ function ClientPage() {
       <div className={`flex-1 ${isSidebarOpen ? 'ml-64' : 'ml-20'}`}>
         <Header />
         <main className="p-6">
-          <BreadCrumb
-            url_1="/admin"
-            url_2="/admin/clients"
-            Path_one="Admin"
-            Path_two="clients"
-          />
-
-          <div className="ml-2">
-            <WelcomeGreet page="Clients" user="Jane" />
-            <ClientTable />
-          </div>
+          <BreadCrumb Path_one="Admin" Path_two="Dashboard" />
+          <EditAppointment />
         </main>
       </div>
     </div>
-  )
+  );
 }
 
-export default ClientPage
+export default EditAppointmentPage;

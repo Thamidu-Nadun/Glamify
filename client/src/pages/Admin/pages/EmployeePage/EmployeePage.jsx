@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import ClientTable from './components/ClientTable/ClientTable';
 import SideBar from '../../Components/SideBar/SideBar';
 import Header from '../../Components/Header/Header';
 import BreadCrumb from '../../../../Components/BreadCrumb/BreadCrumb';
 import WelcomeGreet from '../../Components/WelcomeGreet/WelcomeGreet';
+import EmployeeTable from './components/EmployeeTable/EmployeeTable';
 
-function ClientPage() {
+function EmployeePage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
@@ -21,14 +21,14 @@ function ClientPage() {
         <main className="p-6">
           <BreadCrumb
             url_1="/admin"
-            url_2="/admin/clients"
+            url_2="/admin/employees"
             Path_one="Admin"
-            Path_two="clients"
+            Path_two="Employees"
           />
 
           <div className="ml-2">
-            <WelcomeGreet page="Clients" user="Jane" />
-            <ClientTable />
+            <WelcomeGreet page="Employees" user="Jane" />
+            <EmployeeTable />
           </div>
         </main>
       </div>
@@ -36,4 +36,4 @@ function ClientPage() {
   )
 }
 
-export default ClientPage
+export default EmployeePage
