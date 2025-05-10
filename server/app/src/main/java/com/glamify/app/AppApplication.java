@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Bean;
 import com.glamify.app.repo.AdminRepo;
 import com.glamify.app.repo.ServiceRepo;
 import com.glamify.app.utils.handlers.admin.AdminRW;
+import com.glamify.app.utils.handlers.admin.CustomerRW;
 import com.glamify.app.utils.handlers.admin.ServiceRW;
 
 @SpringBootApplication
@@ -37,6 +38,11 @@ public class AppApplication {
 	@Bean
 	public ServiceRW serviceRW() {
 		return new ServiceRW();
+	}
+
+	@Bean
+	public CustomerRW customerRW() {
+		return new CustomerRW();
 	}
 
 }

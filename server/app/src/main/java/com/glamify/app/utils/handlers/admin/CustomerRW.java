@@ -8,43 +8,43 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.List;
 
-import com.glamify.app.entity.ServiceEntity;
+import com.glamify.app.entity.Customer;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-public class ServiceRW {
-    private String path = "server/db/service.json";
+public class CustomerRW {
+    private String path = "server/db/customer.json";
 
-    public void WriteAdmin(List<ServiceEntity> services) {
+    public void WriteCustomer(List<Customer> customers) {
         Gson gson = new Gson();
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(path));
 
-            Type serviceLisType = new TypeToken<List<ServiceEntity>>() {
+            Type CustomerLisType = new TypeToken<List<Customer>>() {
             }.getType();
-            String service_json = gson.toJson(services, serviceLisType);
+            String customer_json = gson.toJson(customers, CustomerLisType);
 
             // Write whole list to file
-            writer.write(service_json);
+            writer.write(customer_json);
             writer.close();
         } catch (IOException e) {
             System.out.println(e);
         }
     }
 
-    public List<ServiceEntity> ReadService() {
+    public List<Customer> ReadCustomer() {
         Gson gson = new Gson();
         try {
             BufferedReader reader = new BufferedReader(new FileReader(path));
 
-            Type serviceListType = new TypeToken<List<ServiceEntity>>() {
+            Type customerListType = new TypeToken<List<Customer>>() {
             }.getType();
             String content = reader.readLine();
             reader.close();
 
-            List<ServiceEntity> service_list = gson.fromJson(content, serviceListType);
+            List<Customer> customer_list = gson.fromJson(content, customerListType);
 
-            return service_list;
+            return customer_list;
 
         } catch (IOException e) {
             System.out.println(e);

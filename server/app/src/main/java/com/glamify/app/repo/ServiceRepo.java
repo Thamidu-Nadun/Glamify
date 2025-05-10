@@ -7,7 +7,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.glamify.app.entity.Admin;
 import com.glamify.app.entity.ServiceEntity;
 import com.glamify.app.utils.handlers.admin.ServiceRW;
 

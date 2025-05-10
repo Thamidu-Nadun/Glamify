@@ -8,9 +8,7 @@ import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.glamify.app.dto.admin.AdminDTO;
 import com.glamify.app.dto.service.ServiceDTO;
-import com.glamify.app.entity.Admin;
 import com.glamify.app.entity.ServiceEntity;
 import com.glamify.app.repo.ServiceRepo;
 
