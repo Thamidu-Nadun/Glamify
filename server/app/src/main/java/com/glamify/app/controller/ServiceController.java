@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.glamify.app.dto.GeneralResDTO;
-import com.glamify.app.dto.admin.AdminDTO;
-import com.glamify.app.dto.admin.AdminResDTO;
 import com.glamify.app.dto.service.ServiceDTO;
 import com.glamify.app.service.SerService;
 import com.glamify.app.utils.ResponseCode;

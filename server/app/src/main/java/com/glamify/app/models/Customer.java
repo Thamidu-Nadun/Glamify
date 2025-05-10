@@ -10,8 +10,8 @@ public class Customer {
     private String name;
     private String email;
     private String contactNumber;
-    private List<Appointment> appointments;
-    private List<Feedback> feedbacks;
+    private List<AppointmentDTO> appointments;
+    private List<FeedbackDTO> feedbacks;
     private static final int MIN_CANCELLATION_HOURS = 24;
 
     public Customer(String id, String name, String email, String contactNumber) {
@@ -24,26 +24,56 @@ public class Customer {
     }
 
     // Getters and Setters
-    public String getId() { return id; }
-    public void setId(String id) { this.id = id; }
+    public String getId() {
+        return id;
+    }
 
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
+    public void setId(String id) {
+        this.id = id;
+    }
 
-    public String getEmail() { return email; }
-    public void setEmail(String email) { this.email = email; }
+    public String getName() {
+        return name;
+    }
 
-    public String getContactNumber() { return contactNumber; }
-    public void setContactNumber(String contactNumber) { this.contactNumber = contactNumber; }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-    public List<Appointment> getAppointments() { return appointments; }
-    public void setAppointments(List<Appointment> appointments) { this.appointments = appointments; }
+    public String getEmail() {
+        return email;
+    }
 
-    public List<Feedback> getFeedbacks() { return feedbacks; }
-    public void setFeedbacks(List<Feedback> feedbacks) { this.feedbacks = feedbacks; }
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getContactNumber() {
+        return contactNumber;
+    }
+
+    public void setContactNumber(String contactNumber) {
+        this.contactNumber = contactNumber;
+    }
+
+    public List<AppointmentDTO> getAppointments() {
+        return appointments;
+    }
+
+    public void setAppointments(List<AppointmentDTO> appointments) {
+        this.appointments = appointments;
+    }
+
+    public List<FeedbackDTO> getFeedbacks() {
+        return feedbacks;
+    }
+
+    public void setFeedbacks(List<FeedbackDTO> feedbacks) {
+        this.feedbacks = feedbacks;
+    }
 
     // Business Methods
-    public void bookAppointment(Appointment appointment) {
+    public void bookAppointment(AppointmentDTO appointment) {
         if (isValidAppointmentTime(appointment.getAppointmentTime())) {
             appointments.add(appointment);
         } else {
@@ -52,19 +82,19 @@ public class Customer {
     }
 
     public boolean cancelAppointment(String appointmentId) {
-        Appointment appointment = findAppointment(appointmentId);
+        AppointmentDTO appointment = findAppointment(appointmentId);
         if (appointment != null && canCancelAppointment(appointment)) {
-            appointment.setStatus(Appointment.AppointmentStatus.CANCELLED);
+            appointment.setStatus(AppointmentDTO.AppointmentStatus.CANCELLED);
             return appointments.removeIf(a -> a.getId().equals(appointmentId));
         }
         return false;
     }
 
-    public boolean rescheduleAppointment(String appointmentId, Appointment newAppointment) {
-        Appointment oldAppointment = findAppointment(appointmentId);
+    public boolean rescheduleAppointment(String appointmentId, AppointmentDTO newAppointment) {
+        AppointmentDTO oldAppointment = findAppointment(appointmentId);
         if (oldAppointment != null && canRescheduleAppointment(oldAppointment)) {
             if (isValidAppointmentTime(newAppointment.getAppointmentTime())) {
-                oldAppointment.setStatus(Appointment.AppointmentStatus.RESCHEDULED);
+                oldAppointment.setStatus(AppointmentDTO.AppointmentStatus.RESCHEDULED);
                 oldAppointment.setAppointmentTime(newAppointment.getAppointmentTime());
                 return true;
             }
@@ -72,7 +102,7 @@ public class Customer {
         return false;
     }
 
-    public void addFeedback(Feedback feedback) {
+    public void addFeedback(FeedbackDTO feedback) {
         if (canProvideFeedback(feedback.getAppointment())) {
             feedbacks.add(feedback);
         } else {
@@ -98,37 +128,35 @@ public class Customer {
         return appointmentTime.isAfter(LocalDateTime.now());
     }
 
-    private boolean canCancelAppointment(Appointment appointment) {
-        return appointment.getStatus() == Appointment.AppointmentStatus.SCHEDULED &&
-               appointment.getAppointmentTime().isAfter(LocalDateTime.now().plusHours(MIN_CANCELLATION_HOURS));
+    private boolean canCancelAppointment(AppointmentDTO appointment) {
+        return appointment.getStatus() == AppointmentDTO.AppointmentStatus.SCHEDULED &&
+                appointment.getAppointmentTime().isAfter(LocalDateTime.now().plusHours(MIN_CANCELLATION_HOURS));
     }
 
-    private boolean canRescheduleAppointment(Appointment appointment) {
-        return appointment.getStatus() == Appointment.AppointmentStatus.SCHEDULED &&
-               appointment.getAppointmentTime().isAfter(LocalDateTime.now().plusHours(MIN_CANCELLATION_HOURS));
+    private boolean canRescheduleAppointment(AppointmentDTO appointment) {
+        return appointment.getStatus() == AppointmentDTO.AppointmentStatus.SCHEDULED &&
+                appointment.getAppointmentTime().isAfter(LocalDateTime.now().plusHours(MIN_CANCELLATION_HOURS));
     }
 
-    private boolean canProvideFeedback(Appointment appointment) {
-        return appointment.getStatus() == Appointment.AppointmentStatus.COMPLETED &&
-               appointment.getAppointmentTime().isBefore(LocalDateTime.now());
+    private boolean canProvideFeedback(AppointmentDTO appointment) {
+        return appointment.getStatus() == AppointmentDTO.AppointmentStatus.COMPLETED &&
+                appointment.getAppointmentTime().isBefore(LocalDateTime.now());
     }
 
     private boolean isServiceBooked(Service service) {
         return appointments.stream()
-                .anyMatch(appointment -> 
-                    appointment.getService().getId().equals(service.getId()) &&
-                    appointment.getStatus() == Appointment.AppointmentStatus.SCHEDULED);
+                .anyMatch(appointment -> appointment.getService().getId().equals(service.getId()) &&
+                        appointment.getStatus() == AppointmentDTO.AppointmentStatus.SCHEDULED);
     }
 
     private boolean isTimeSlotAvailable(LocalDateTime timeSlot, Service service) {
         return timeSlot.isAfter(LocalDateTime.now()) &&
-               !appointments.stream()
-                   .anyMatch(appointment ->
-                       appointment.getAppointmentTime().equals(timeSlot) &&
-                       appointment.getStatus() == Appointment.AppointmentStatus.SCHEDULED);
+                !appointments.stream()
+                        .anyMatch(appointment -> appointment.getAppointmentTime().equals(timeSlot) &&
+                                appointment.getStatus() == AppointmentDTO.AppointmentStatus.SCHEDULED);
     }
 
-    private Appointment findAppointment(String appointmentId) {
+    private AppointmentDTO findAppointment(String appointmentId) {
         return appointments.stream()
                 .filter(appointment -> appointment.getId().equals(appointmentId))
                 .findFirst()
@@ -144,4 +172,4 @@ public class Customer {
                 ", contactNumber='" + contactNumber + '\'' +
                 '}';
     }
-} 
+}

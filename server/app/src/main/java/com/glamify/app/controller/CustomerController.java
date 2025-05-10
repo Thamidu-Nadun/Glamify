@@ -68,7 +68,7 @@ public class CustomerController {
     @PostMapping("/{id}/appointments")
     public ResponseEntity<Void> bookAppointment(
             @PathVariable String id,
-            @RequestBody Appointment appointment) {
+            @RequestBody AppointmentDTO appointment) {
         try {
             customerService.bookAppointment(id, appointment);
             return ResponseEntity.ok().build();
@@ -93,7 +93,7 @@ public class CustomerController {
     public ResponseEntity<Void> rescheduleAppointment(
             @PathVariable String id,
             @PathVariable String appointmentId,
-            @RequestBody Appointment newAppointment) {
+            @RequestBody AppointmentDTO newAppointment) {
         try {
             customerService.rescheduleAppointment(id, appointmentId, newAppointment);
             return ResponseEntity.ok().build();
@@ -105,7 +105,7 @@ public class CustomerController {
     @PostMapping("/{id}/feedback")
     public ResponseEntity<Void> addFeedback(
             @PathVariable String id,
-            @RequestBody Feedback feedback) {
+            @RequestBody FeedbackDTO feedback) {
         try {
             customerService.addFeedback(id, feedback);
             return ResponseEntity.ok().build();
@@ -139,4 +139,4 @@ public class CustomerController {
             return ResponseEntity.notFound().build();
         }
     }
-} 
+}
