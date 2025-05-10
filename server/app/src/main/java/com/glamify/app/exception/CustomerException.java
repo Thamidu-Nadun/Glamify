@@ -1,4 +1,4 @@
-package app.exception;
+package com.glamify.app.exception;
 
 public class CustomerException extends RuntimeException {
     public CustomerException(String message) {

@@ -1,4 +1,4 @@
-package app.dto;
+package com.glamify.app.dto;
 
 import java.util.List;
 

@@ -1,11 +1,11 @@
-package app.controller;
+package com.glamify.app.controller;
 
-import app.dto.CustomerDTO;
-import app.models.Appointment;
-import app.models.Service;
-import app.models.Feedback;
-import app.service.CustomerService;
-import app.exception.CustomerException;
+import com.glamify.app.dto.CustomerDTO;
+import com.glamify.app.models.Appointment;
+import com.glamify.app.models.Service;
+import com.glamify.app.models.Feedback;
+import com.glamify.app.service.CustomerService;
+import com.glamify.app.exception.CustomerException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

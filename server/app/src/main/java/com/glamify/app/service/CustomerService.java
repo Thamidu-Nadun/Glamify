@@ -1,12 +1,12 @@
-package app.service;
+package com.glamify.app.service;
 
-import app.dto.CustomerDTO;
-import app.models.Customer;
-import app.models.Appointment;
-import app.models.Service;
-import app.models.Feedback;
-import app.repository.CustomerRepository;
-import app.exception.CustomerException;
+import com.glamify.app.dto.CustomerDTO;
+import com.glamify.app.models.Customer;
+import com.glamify.app.models.Appointment;
+import com.glamify.app.models.Service;
+import com.glamify.app.models.Feedback;
+import com.glamify.app.repository.CustomerRepository;
+import com.glamify.app.exception.CustomerException;
 
 import java.time.LocalDateTime;
 import java.util.List;

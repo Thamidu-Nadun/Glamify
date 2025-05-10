@@ -1,6 +1,6 @@
-package app.repository;
+package com.glamify.app.repository;
 
-import app.models.Customer;
+import com.glamify.app.models.Customer;
 import java.util.List;
 import java.util.Optional;
 

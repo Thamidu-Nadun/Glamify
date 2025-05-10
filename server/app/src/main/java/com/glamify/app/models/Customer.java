@@ -1,4 +1,4 @@
-package app.models;
+package com.glamify.app.models;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -12,7 +12,7 @@ public class Customer {
     private String contactNumber;
     private List<Appointment> appointments;
     private List<Feedback> feedbacks;
-    private static final int MIN_CANCELLATION_HOURS = 24; // Minimum hours before appointment for cancellation
+    private static final int MIN_CANCELLATION_HOURS = 24;
 
     public Customer(String id, String name, String email, String contactNumber) {
         this.id = id;
