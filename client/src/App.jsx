@@ -53,6 +53,14 @@ function App() {
       <Route path="/adminTest" element={<AdminTest />} />
       <Route path="/pop" element={<DeletePopUp />} />
       <Route path="/404" element={<NotFound />} />
+      {/* Admin */}
+      <Route path="/admin/admins" element={<AdminPage />} />
+      <Route path="/admin/admins/edit" element={<EditAdminPage />} />
+      {/* Sorted */}
+      <Route
+        path="/admin/appointments/sort"
+        element={<AppointmentPageSorted />}
+      />
     </Routes>
   );
 }
