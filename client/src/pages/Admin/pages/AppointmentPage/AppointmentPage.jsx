@@ -30,7 +30,12 @@ function AppointmentPage() {
           <div className="ml-2">
             <WelcomeGreet page="Appointments" user="Jane" />
             <AppointmentTable />
-            <Link to="sort/" className='mt-10 bg-purple-500 text-white px-3 py-2 rounded-2xl'>Sort Data</Link>
+            <Link
+              to="sort/"
+              className="mt-10 rounded-2xl bg-purple-500 px-3 py-2 text-white"
+            >
+              Sort Data
+            </Link>
           </div>
         </main>
       </div>

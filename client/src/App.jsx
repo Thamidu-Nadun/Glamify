@@ -28,23 +28,11 @@ function App() {
       <Route path="/admin" element={<Admin />} />
       <Route path="/admin/dashboard" element={<Admin />} />
       
-      {/* Admins */}
-      <Route path="/admin/admins" element={<AdminPage />} />
-      <Route
-        path="/admin/admins/edit"
-        element={<EditAdminPage />}
-      />
-      
-
       {/* Appointments */}
       <Route path="/admin/appointments" element={<AppointmentPage />} />
       <Route
         path="/admin/appointments/edit"
         element={<EditAppointmentPage />}
-      />
-      <Route
-        path="/admin/appointments/sort"
-        element={<AppointmentPageSorted />}
       />
       
       {/* Service */}

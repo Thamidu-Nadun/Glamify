@@ -85,15 +85,15 @@ function AppointmentTableSorted() {
       payment: 'Paid',
     },
   ];
-  
 
   const [appointments, setAppointments] = useState(initialAppointments);
 
   const handleSortByDate = () => {
-    const sorted = [...appointments].sort((a, b) => new Date(b.date) - new Date(a.date));
+    const sorted = [...appointments].sort(
+      (a, b) => new Date(b.date) - new Date(a.date),
+    );
     setAppointments(sorted);
   };
-  
 
   return (
     <div className="overflow-x-scroll bg-gray-300 p-4">
@@ -122,7 +122,9 @@ function AppointmentTableSorted() {
               className="text-bold border border-transparent font-mono transition-all duration-300 odd:bg-purple-100 even:bg-violet-100 hover:border hover:border-purple-500 hover:bg-fuchsia-100"
             >
               <td className="w-10 py-2 text-center">{appointment.id}</td>
-              <td className="w-40 p-2 text-center text-wrap">{appointment.client}</td>
+              <td className="w-40 p-2 text-center text-wrap">
+                {appointment.client}
+              </td>
               <td className="p-2 text-center">{appointment.date}</td>
               <td className="p-2 text-center">{appointment.time}</td>
               <td className="p-2 text-center">{appointment.status}</td>
