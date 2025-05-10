@@ -14,6 +14,12 @@ public class Customer {
     private List<Feedback> feedbacks;
     private static final int MIN_CANCELLATION_HOURS = 24;
 
+    // Default constructor for JSON deserialization
+    public Customer() {
+        this.appointments = new ArrayList<>();
+        this.feedbacks = new ArrayList<>();
+    }
+
     public Customer(String id, String name, String email, String contactNumber) {
         this.id = id;
         this.name = name;

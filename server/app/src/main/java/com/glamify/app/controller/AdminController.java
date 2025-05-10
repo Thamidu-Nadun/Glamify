@@ -20,6 +20,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.glamify.app.models.Admin;
+import com.glamify.app.exception.AdminException;
 
 @RestController
 @RequestMapping("/api/admin")
@@ -27,6 +31,58 @@ import org.springframework.web.bind.annotation.PutMapping;
 public class AdminController {
     @Autowired
     private AdminService adminService;
+
+    @PostMapping("/register")
+    public ResponseEntity<Admin> registerAdmin(@RequestBody Admin admin) {
+        try {
+            Admin registeredAdmin = adminService.registerAdmin(admin);
+            return ResponseEntity.ok(registeredAdmin);
+        } catch (AdminException e) {
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Admin> getAdminById(@PathVariable String id) {
+        try {
+            Admin admin = adminService.getAdminById(id);
+            return ResponseEntity.ok(admin);
+        } catch (AdminException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Admin> updateAdmin(@PathVariable String id, @RequestBody Admin admin) {
+        try {
+            Admin updatedAdmin = adminService.updateAdmin(id, admin);
+            return ResponseEntity.ok(updatedAdmin);
+        } catch (AdminException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteAdmin(@PathVariable String id) {
+        try {
+            adminService.deleteAdmin(id);
+            return ResponseEntity.ok().build();
+        } catch (AdminException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Admin>> getAllAdmins() {
+        List<Admin> admins = adminService.getAllAdmins();
+        return ResponseEntity.ok(admins);
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<List<Admin>> searchAdminsByName(@RequestParam String name) {
+        List<Admin> admins = adminService.searchAdminsByName(name);
+        return ResponseEntity.ok(admins);
+    }
 
     @GetMapping("/getAdmin")
     public ResponseEntity<AdminResDTO> getAdmin() {

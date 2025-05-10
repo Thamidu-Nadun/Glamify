@@ -1,102 +1,71 @@
 package com.glamify.app.service;
 
-import java.lang.reflect.Type;
-import java.util.List;
-
-import org.modelmapper.ModelMapper;
-import org.modelmapper.TypeToken;
+import com.glamify.app.models.Admin;
+import com.glamify.app.repository.AdminRepository;
+import com.glamify.app.exception.AdminException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import com.glamify.app.dto.admin.AdminDTO;
-import com.glamify.app.entity.Admin;
-import com.glamify.app.repo.AdminRepo;
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 public class AdminService {
-    @Autowired
-    private ModelMapper modelMapper;
+    private final AdminRepository adminRepository;
+    private final BCryptPasswordEncoder passwordEncoder;
 
     @Autowired
-    private AdminRepo adminRepo;
-
-    // Get Admins
-    public List<AdminDTO> getAllAdmins() {
-        try {
-            List<Admin> adminList = adminRepo.getAllAdmins();
-            Type adminType = new TypeToken<List<AdminDTO>>() {
-            }.getType();
-            return modelMapper.map(adminList, adminType);
-        } catch (Exception e) {
-            return null;
-        }
+    public AdminService(AdminRepository adminRepository) {
+        this.adminRepository = adminRepository;
+        this.passwordEncoder = new BCryptPasswordEncoder();
     }
 
-    // Get Admin by ID
-    public AdminDTO getAdminByID(int id) {
-        try {
-            Admin admin = adminRepo.getAdminByID(id);
-            return modelMapper.map(admin, AdminDTO.class);
-        } catch (Exception e) {
-            return null;
+    public Admin registerAdmin(Admin admin) {
+        if (adminRepository.existsByEmail(admin.getEmail())) {
+            throw new AdminException("Email already registered");
         }
+        admin.setId(UUID.randomUUID().toString());
+        admin.setPassword(passwordEncoder.encode(admin.getPassword()));
+        return adminRepository.save(admin);
     }
 
-    // Get Admin by Email
-    public AdminDTO getAdminByEmail(String email) {
-        try {
-            Admin admin = adminRepo.getAdminByEmail(email);
-            return modelMapper.map(admin, AdminDTO.class);
-        } catch (Exception e) {
-            return null;
-        }
+    public Admin getAdminById(String id) {
+        return adminRepository.findById(id)
+            .orElseThrow(() -> new AdminException("Admin not found"));
     }
 
-    // Save Admin
-    public AdminDTO saveAdmin(AdminDTO adminDTO) {
-        try {
-            Admin admin = modelMapper.map(adminDTO, Admin.class);
-            if (adminRepo.saveAdmin(admin) == "01") {
-                return modelMapper.map(admin, AdminDTO.class);
-            } else {
-                return null;
-            }
-        } catch (Exception e) {
-            return null;
+    public Admin updateAdmin(String id, Admin admin) {
+        Admin existingAdmin = adminRepository.findById(id)
+            .orElseThrow(() -> new AdminException("Admin not found"));
+
+        existingAdmin.setName(admin.getName());
+        if (admin.getPassword() != null && !admin.getPassword().isEmpty()) {
+            existingAdmin.setPassword(passwordEncoder.encode(admin.getPassword()));
         }
+        existingAdmin.setRole(admin.getRole());
+
+        return adminRepository.save(existingAdmin);
     }
 
-    // Update Admin [PUT]
-    public AdminDTO updateAdminById(int admin_id, AdminDTO adminDTO) {
-        try {
-            Admin new_admin = modelMapper.map(adminDTO, Admin.class);
-
-            Admin updated_admin = adminRepo.updateAdminByID(admin_id, new_admin);
-            if (updated_admin != null) {
-                return modelMapper.map(updated_admin, AdminDTO.class);
-            } else {
-                return null;
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
+    public void deleteAdmin(String id) {
+        if (!adminRepository.findById(id).isPresent()) {
+            throw new AdminException("Admin not found");
         }
+        adminRepository.deleteById(id);
     }
 
-    // Delete Admin
-    public AdminDTO deleteAdmin(int id) {
-        try {
-            Admin deleted_admin = adminRepo.deleteAdmin(id);
-
-            if (deleted_admin != null) {
-                return modelMapper.map(deleted_admin, AdminDTO.class);
-            } else {
-                return null;
-            }
-        } catch (Exception e) {
-            return null;
-        }
+    public List<Admin> getAllAdmins() {
+        return adminRepository.findAll();
     }
 
-}
+    public List<Admin> searchAdminsByName(String name) {
+        return adminRepository.findByNameContaining(name);
+    }
+
+    public boolean validatePassword(String rawPassword, String encodedPassword) {
+        return passwordEncoder.matches(rawPassword, encodedPassword);
+    }
+} 
