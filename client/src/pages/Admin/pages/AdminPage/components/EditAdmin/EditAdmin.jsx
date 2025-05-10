@@ -1,5 +1,12 @@
 import {
-  User, Phone, Mail, Shield, Star, Trash2, Plus, Clock,
+  User,
+  Phone,
+  Mail,
+  Shield,
+  Star,
+  Trash2,
+  Plus,
+  Clock,
 } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
@@ -218,7 +225,7 @@ function Field({ label, icon, children }) {
       <label className="text-sm font-medium text-gray-600">{label}</label>
       <div className="flex flex-col space-y-2">
         {icon ? (
-          <div className="flex items-center rounded-md border border-gray-200 bg-white px-3 py-2 space-x-2">
+          <div className="flex items-center space-x-2 rounded-md border border-gray-200 bg-white px-3 py-2">
             {icon}
             {children}
           </div>
