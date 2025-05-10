@@ -28,6 +28,13 @@ function App() {
       <Route path="/admin" element={<Admin />} />
       <Route path="/admin/dashboard" element={<Admin />} />
       
+      {/* Admins */}
+      <Route path="/admin/admins" element={<AdminPage />} />
+      <Route
+        path="/admin/admins/edit"
+        element={<EditAdminPage />}
+      />
+      
       {/* Appointments */}
       <Route path="/admin/appointments" element={<AppointmentPage />} />
       <Route
