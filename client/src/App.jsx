@@ -15,6 +15,9 @@ import EditClientPage from './pages/Admin/pages/ClientPage/EditClientPage';
 import EmployeePage from './pages/Admin/pages/EmployeePage/EmployeePage';
 import EditEmployeePage from './pages/Admin/pages/EmployeePage/EditEmployeePage';
 import FeedbackPage from './pages/Admin/pages/FeedbackPage/FeedbackPage';
+import AdminPage from './pages/Admin/pages/AdminPage/AdminPage';
+import EditAdminPage from './pages/Admin/pages/AdminPage/EditAdminPage';
+import AppointmentPageSorted from './pages/Admin/pages/AppointmentPage/AppointmentPageSorted';
 
 function App() {
   return (
@@ -24,12 +27,23 @@ function App() {
       {/* Admin */}
       <Route path="/admin" element={<Admin />} />
       <Route path="/admin/dashboard" element={<Admin />} />
+
+      {/* Admins */}
+      <Route path="/admin/admins" element={<AdminPage />} />
+      <Route
+        path="/admin/admins/edit"
+        element={<EditAdminPage />}
+      />
       
       {/* Appointments */}
       <Route path="/admin/appointments" element={<AppointmentPage />} />
       <Route
         path="/admin/appointments/edit"
         element={<EditAppointmentPage />}
+      />
+      <Route
+        path="/admin/appointments/sort"
+        element={<AppointmentPageSorted />}
       />
       
       {/* Service */}

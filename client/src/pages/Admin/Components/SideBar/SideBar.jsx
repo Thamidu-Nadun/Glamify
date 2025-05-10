@@ -5,7 +5,7 @@ import {
   Home,
   Menu,
   Package,
-  Settings,
+  User,
   VenetianMask,
   Users,
 } from 'lucide-react';
@@ -87,10 +87,10 @@ function SideBar({ isSidebarOpen, setIsSidebarOpen, toggleSidebar }) {
       route: '/admin/feedbacks',
     },
     {
-      id: 'settings',
-      label: 'Settings',
-      icon: Settings,
-      route: '/admin/settings',
+      id: 'admins',
+      label: 'Admins',
+      icon: User,
+      route: '/admin/admins',
     },
   ];
 

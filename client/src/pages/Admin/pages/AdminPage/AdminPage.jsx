@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import SideBar from '../../Components/SideBar/SideBar';
-import BreadCrumb from '../../../../Components/BreadCrumb/BreadCrumb';
-import AppointmentTable from './components/AppointmentTable/AppointmentTable';
 import Header from '../../Components/Header/Header';
+import BreadCrumb from '../../../../Components/BreadCrumb/BreadCrumb';
 import WelcomeGreet from '../../Components/WelcomeGreet/WelcomeGreet';
-import { Link } from 'react-router-dom';
+import AdminTable from './components/AdminTable/AdminTable';
 
-function AppointmentPage() {
+function AdminPage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
@@ -22,20 +21,19 @@ function AppointmentPage() {
         <main className="p-6">
           <BreadCrumb
             url_1="/admin"
-            url_2="/admin/appointments"
+            url_2="/admin/admins"
             Path_one="Admin"
-            Path_two="Appointments"
+            Path_two="Admins"
           />
 
           <div className="ml-2">
-            <WelcomeGreet page="Appointments" user="Jane" />
-            <AppointmentTable />
-            <Link to="sort/" className='mt-10 bg-purple-500 text-white px-3 py-2 rounded-2xl'>Sort Data</Link>
+            <WelcomeGreet page="Admins" user="Jane" />
+            <AdminTable />
           </div>
         </main>
       </div>
     </div>
-  );
+  )
 }
 
-export default AppointmentPage;
+export default AdminPage
