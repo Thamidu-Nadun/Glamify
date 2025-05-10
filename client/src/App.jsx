@@ -27,7 +27,7 @@ function App() {
       {/* Admin */}
       <Route path="/admin" element={<Admin />} />
       <Route path="/admin/dashboard" element={<Admin />} />
-      
+
       {/* Appointments */}
       <Route path="/admin/appointments" element={<AppointmentPage />} />
       <Route
