@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import ClientTable from './components/ClientTable/ClientTable';
 import SideBar from '../../Components/SideBar/SideBar';
 import Header from '../../Components/Header/Header';
@@ -33,7 +33,7 @@ function ClientPage() {
         </main>
       </div>
     </div>
-  )
+  );
 }
 
-export default ClientPage
+export default ClientPage;

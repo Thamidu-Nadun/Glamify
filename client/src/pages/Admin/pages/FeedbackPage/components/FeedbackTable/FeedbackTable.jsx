@@ -1,12 +1,24 @@
 import React from 'react';
 import EditButton from '../EditButton/EditButton';
 import DeleteButton from '../DeleteButton/DeleteButton';
-import {Star} from 'lucide-react';
+import { Star } from 'lucide-react';
 
-function FeedbackTable () {
+function FeedbackTable() {
   const feedbacks = [
-    {id: 1, client: 2, rate: 4, date: '2023-10-01', comment: 'Great service!'},
-    {id: 2, client: 3, rate: 5, date: '2023-10-02', comment: 'Very satisfied!'},
+    {
+      id: 1,
+      client: 2,
+      rate: 4,
+      date: '2023-10-01',
+      comment: 'Great service!',
+    },
+    {
+      id: 2,
+      client: 3,
+      rate: 5,
+      date: '2023-10-02',
+      comment: 'Very satisfied!',
+    },
     {
       id: 3,
       client: 4,
@@ -42,7 +54,7 @@ function FeedbackTable () {
       date: '2023-10-07',
       comment: 'Excellent service!',
     },
-    {id: 8, client: 9, rate: 3, date: '2023-10-08', comment: 'It was okay.'},
+    { id: 8, client: 9, rate: 3, date: '2023-10-08', comment: 'It was okay.' },
     {
       id: 9,
       client: 10,
@@ -72,7 +84,7 @@ function FeedbackTable () {
           </tr>
         </thead>
         <tbody className="divide-y-2 divide-pink-300">
-          {feedbacks.map (feedback => {
+          {feedbacks.map((feedback) => {
             return (
               <tr className="text-bold border border-transparent font-mono transition-all duration-300 odd:bg-purple-100 even:bg-violet-100 hover:border hover:border-purple-500 hover:bg-fuchsia-100">
                 <td className="w-10 py-2 text-center">{feedback.id}</td>
@@ -80,8 +92,8 @@ function FeedbackTable () {
                   {feedback.client}
                 </td>
                 <td className="p-2 text-center">
-                  <div className="flex justify-center items-center gap-1">
-                    {[...Array (5)].map ((_, index) => (
+                  <div className="flex items-center justify-center gap-1">
+                    {[...Array(5)].map((_, index) => (
                       <Star
                         key={index}
                         size={20}

@@ -2,7 +2,7 @@ import React from 'react';
 import EditButton from '../EditButton/EditButton';
 import DeleteButton from '../DeleteButton/DeleteButton';
 
-function EmployeeTable () {
+function EmployeeTable() {
   const employees = [
     {
       id: 1,
@@ -133,7 +133,7 @@ function EmployeeTable () {
           </tr>
         </thead>
         <tbody className="divide-y-2 divide-pink-300">
-          {employees.map (employee => (
+          {employees.map((employee) => (
             <tr
               key={employee.id}
               className="border border-transparent font-mono transition-all duration-300 odd:bg-purple-100 even:bg-violet-100 hover:border-purple-500 hover:bg-fuchsia-100"
@@ -147,7 +147,7 @@ function EmployeeTable () {
                   name="client_phone"
                   className="w-full rounded border border-gray-300 px-2 py-1 text-sm"
                 >
-                  {employee.phone.map ((number, index) => (
+                  {employee.phone.map((number, index) => (
                     <option key={index} value={number}>
                       {number}
                     </option>
@@ -161,7 +161,7 @@ function EmployeeTable () {
                   name="client_phone"
                   className="w-full rounded border border-gray-300 px-2 py-1 text-sm"
                 >
-                  {employee.services.map ((service, index) => (
+                  {employee.services.map((service, index) => (
                     <option key={index} value={service}>
                       {service}
                     </option>

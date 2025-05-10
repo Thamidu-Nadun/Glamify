@@ -71,7 +71,9 @@ function EditClient() {
 
   return (
     <div className="mx-auto max-w-xl p-6">
-      <h2 className="mb-6 text-2xl font-semibold text-indigo-700">Edit Client</h2>
+      <h2 className="mb-6 text-2xl font-semibold text-indigo-700">
+        Edit Client
+      </h2>
 
       <form className="space-y-4">
         {/* ID (readonly) */}

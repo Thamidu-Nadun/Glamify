@@ -19,16 +19,86 @@ function formatDuration(minutes) {
 
 function ServiceTable() {
   const Services = [
-    { id: 1, name: 'Service 1', description: 'Description 1', duration: 30, price: 50, currency: 'LKR' },
-    { id: 2, name: 'Service 2', description: 'Description 2', duration: 45, price: 75, currency: 'LKR' },
-    { id: 3, name: 'Service 3', description: 'Description 3', duration: 60, price: 100, currency: 'LKR' },
-    { id: 4, name: 'Service 4', description: 'Description 4', duration: 90, price: 150, currency: 'LKR' },
-    { id: 5, name: 'Service 5', description: 'Description 5', duration: 120, price: 200, currency: 'LKR' },
-    { id: 6, name: 'Service 6', description: 'Description 6', duration: 150, price: 250, currency: 'LKR' },
-    { id: 7, name: 'Service 7', description: 'Description 7', duration: 180, price: 300, currency: 'LKR' },
-    { id: 8, name: 'Service 8', description: 'Description 8', duration: 210, price: 350, currency: 'LKR' },
-    { id: 9, name: 'Service 9', description: 'Description 9', duration: 240, price: 400, currency: 'LKR' },
-    { id: 10, name: 'Service 10', description: 'Description 10', duration: 270, price: 450, currency: 'LKR' },
+    {
+      id: 1,
+      name: 'Service 1',
+      description: 'Description 1',
+      duration: 30,
+      price: 50,
+      currency: 'LKR',
+    },
+    {
+      id: 2,
+      name: 'Service 2',
+      description: 'Description 2',
+      duration: 45,
+      price: 75,
+      currency: 'LKR',
+    },
+    {
+      id: 3,
+      name: 'Service 3',
+      description: 'Description 3',
+      duration: 60,
+      price: 100,
+      currency: 'LKR',
+    },
+    {
+      id: 4,
+      name: 'Service 4',
+      description: 'Description 4',
+      duration: 90,
+      price: 150,
+      currency: 'LKR',
+    },
+    {
+      id: 5,
+      name: 'Service 5',
+      description: 'Description 5',
+      duration: 120,
+      price: 200,
+      currency: 'LKR',
+    },
+    {
+      id: 6,
+      name: 'Service 6',
+      description: 'Description 6',
+      duration: 150,
+      price: 250,
+      currency: 'LKR',
+    },
+    {
+      id: 7,
+      name: 'Service 7',
+      description: 'Description 7',
+      duration: 180,
+      price: 300,
+      currency: 'LKR',
+    },
+    {
+      id: 8,
+      name: 'Service 8',
+      description: 'Description 8',
+      duration: 210,
+      price: 350,
+      currency: 'LKR',
+    },
+    {
+      id: 9,
+      name: 'Service 9',
+      description: 'Description 9',
+      duration: 240,
+      price: 400,
+      currency: 'LKR',
+    },
+    {
+      id: 10,
+      name: 'Service 10',
+      description: 'Description 10',
+      duration: 270,
+      price: 450,
+      currency: 'LKR',
+    },
   ];
 
   return (
@@ -53,7 +123,9 @@ function ServiceTable() {
               <td className="w-10 py-2 text-center">{service.id}</td>
               <td className="w-40 p-2 text-center">{service.name}</td>
               <td className="p-2 text-center">{service.description}</td>
-              <td className="p-2 text-center">{formatDuration(service.duration)}</td>
+              <td className="p-2 text-center">
+                {formatDuration(service.duration)}
+              </td>
               <td className="p-2 text-center">
                 {service.currency === 'USD' ? '$' : 'Rs.'}
                 {service.price}

@@ -27,14 +27,16 @@ function EditService() {
   };
 
   const handleReset = () => {
-    setService(serviceData || {
-      id: '',
-      name: '',
-      description: '',
-      duration: '',
-      price: '',
-      currency: 'LKR',
-    });
+    setService(
+      serviceData || {
+        id: '',
+        name: '',
+        description: '',
+        duration: '',
+        price: '',
+        currency: 'LKR',
+      },
+    );
   };
 
   const saveData = () => {
@@ -43,7 +45,9 @@ function EditService() {
 
   return (
     <div className="mx-auto max-w-xl p-6">
-      <h2 className="mb-6 text-2xl font-semibold text-indigo-700">Edit Service</h2>
+      <h2 className="mb-6 text-2xl font-semibold text-indigo-700">
+        Edit Service
+      </h2>
 
       <form className="space-y-4">
         {/* ID (readonly) */}
