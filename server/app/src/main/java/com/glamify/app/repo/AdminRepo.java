@@ -89,11 +89,17 @@ public class AdminRepo {
     public void init_data_from_db() {
         try {
             List<Admin> init_admins = adminRW.ReadAdmin();
-            if (adminList.addAll(init_admins)) {
-                System.out.println("Successfully Loaded Data");
-            } else {
-                System.out.println("Couldn't Load Data");
+            int maxID = -1;
+
+            for (Admin admin : init_admins) {
+                adminList.add(admin);
+                if (admin.getId() > maxID) {
+                    maxID = admin.getId();
+                }
             }
+            atomInt.set(++maxID);
+            System.out.println("Successfully Loaded Admin Data");
+
         } catch (Exception e) {
             System.out.println(e.toString());
         }
