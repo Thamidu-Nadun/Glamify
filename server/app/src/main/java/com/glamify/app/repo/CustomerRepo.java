@@ -25,9 +25,15 @@ public class CustomerRepo {
     }
 
     public Customer addCustomer(Customer customer) {
-        customers.add(customer);
-        customerRW.WriteCustomer(customers);
-        return customer;
+        try {
+            customer.setId(atomInt.getAndIncrement());
+            customers.add(customer);
+            customerRW.WriteCustomer(customers);
+            return customer;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public Customer getCustomerById(int id) {

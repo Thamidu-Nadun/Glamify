@@ -1,6 +1,6 @@
 package com.glamify.app.entity;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,7 +13,7 @@ public class Appointment {
     private int id;
     private int cut_id;
     private int service_id;
-    private LocalDateTime date;
+    private Date date;
     private boolean status;
     private boolean payment_status;
     private int duration;

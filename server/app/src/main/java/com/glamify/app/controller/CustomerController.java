@@ -63,6 +63,7 @@ public class CustomerController {
         GeneralResDTO generalResDTO = new GeneralResDTO();
         try {
             CustomerDTO customer_res = customerService.addCustomer(customer);
+            System.out.println("Controller: " + customer_res);
             generalResDTO.setCode(ResponseCode.SUCCESS.getCode());
             generalResDTO.setMessage(ResponseCode.SUCCESS.getMessage());
             generalResDTO.setContent(customer_res);

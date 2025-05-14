@@ -25,11 +25,13 @@ public class CustomerService {
     }
 
     // add Customer
-    public CustomerDTO addCustomer(CustomerDTO customer) {
+    public CustomerDTO addCustomer(CustomerDTO customerDTO) {
         try {
-            customerRepo.addCustomer(modelMapper.map(customer, Customer.class));
-            return customer;
+            Customer customer_res = customerRepo.addCustomer(modelMapper.map(customerDTO,
+                    Customer.class));
+            return modelMapper.map(customer_res, CustomerDTO.class);
         } catch (Exception e) {
+            e.printStackTrace();
             return null;
         }
     }

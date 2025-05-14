@@ -28,7 +28,7 @@ public class CustomerRW {
             writer.write(customer_json);
             writer.close();
         } catch (IOException e) {
-            System.out.println(e);
+            System.out.println(e.toString());
         }
     }
 
