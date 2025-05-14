@@ -79,11 +79,13 @@ public class CustomerController {
 
     @PutMapping("/updateCustomer/{id}")
     public ResponseEntity<GeneralResDTO> updateCustomer(@PathVariable int id, @RequestBody CustomerDTO customer) {
+        // Update customer by ID
         return null;
     }
 
     @DeleteMapping("/deleteCustomer/{id}")
     public ResponseEntity<GeneralResDTO> deleteCustomer(@PathVariable int id) {
+        // Delete customer by ID
         return null;
     }
 
