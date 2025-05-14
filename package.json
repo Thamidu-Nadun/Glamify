@@ -1,5 +1,23 @@
 {
+  "name": "app",
+  "version": "1.0.0",
+  "description": "**Online Salon (Glamify)** is a web application that brings the salon experience to your fingertips. Whether you're looking for a haircut, a manicure, or a makeover, Glamify has you covered. Easily book appointments, browse services, and connect with professional stylists and beauticians from the comfort of your own home.",
+  "main": "index.js",
+  "scripts": {
+    "client": "cd client && npm start",
+    "format": "prettier --write '**/*.{js,jsx,ts,tsx,json,css,html,java,jsp}'"
+  },
+  "keywords": [
+    "salon",
+    "Glamify"
+  ],
+  "author": "NadSoft",
+  "license": "ISC",
   "dependencies": {
     "react-icons": "^5.5.0"
+  },
+  "devDependencies": {
+    "prettier": "^3.5.3",
+    "prettier-plugin-tailwindcss": "^0.6.11"
   }
 }
