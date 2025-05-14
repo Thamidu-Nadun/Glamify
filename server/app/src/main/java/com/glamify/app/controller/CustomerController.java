@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.glamify.app.dto.CustomerDTO;
 import com.glamify.app.dto.GeneralResDTO;
 import com.glamify.app.entity.Customer;
-import com.glamify.app.repo.CustomerRepo;
 import com.glamify.app.service.CustomerService;
 import com.glamify.app.utils.ResponseCode;
 
