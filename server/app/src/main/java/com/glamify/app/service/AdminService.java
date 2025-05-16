@@ -10,7 +10,9 @@ import org.springframework.stereotype.Service;
 
 import com.glamify.app.dto.admin.AdminDTO;
 import com.glamify.app.entity.Admin;
+import com.glamify.app.entity.Appointment;
 import com.glamify.app.repo.AdminRepo;
+import com.glamify.app.utils.SortAppointments;
 
 @Service
 public class AdminService {
@@ -19,6 +21,9 @@ public class AdminService {
 
     @Autowired
     private AdminRepo adminRepo;
+
+    @Autowired
+    private SortAppointments sortAppointments;
 
     // Get Admins
     public List<AdminDTO> getAllAdmins() {
@@ -97,6 +102,12 @@ public class AdminService {
         } catch (Exception e) {
             return null;
         }
+    }
+
+    // Get Sorted Appointment
+    public List<Appointment> getSortedAppointments(List<Appointment> appointments) {
+        // TODO: Implement Sort
+        return sortAppointments.quick_sort(appointments);
     }
 
 }
