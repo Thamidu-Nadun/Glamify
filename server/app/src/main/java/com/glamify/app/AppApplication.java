@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Bean;
 
 import com.glamify.app.repo.AdminRepo;
 import com.glamify.app.repo.ServiceRepo;
+import com.glamify.app.utils.SortAppointments;
 import com.glamify.app.utils.handlers.admin.AdminRW;
 import com.glamify.app.utils.handlers.admin.CustomerRW;
 import com.glamify.app.utils.handlers.admin.ServiceRW;
@@ -45,4 +46,8 @@ public class AppApplication {
 		return new CustomerRW();
 	}
 
+	@Bean
+	public SortAppointments sortAppointments() {
+		return new SortAppointments();
+	}
 }
