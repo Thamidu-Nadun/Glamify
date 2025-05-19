@@ -40,6 +40,32 @@ function EditService() {
   };
 
   const saveData = () => {
+    const apiUrl = 'http://127.0.0.1:8080/api/services/updateService/'+service.id;
+      const saveService = async () => {
+        try {
+          const response = await fetch(apiUrl, {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(service),
+          });
+
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+
+          const data = await response.json();
+          if (data.code === 200) {
+            console.log('Service updated successfully:', data.content);
+          } else {
+            console.error('API returned an error:', data.message);
+          }
+        } catch (error) {
+          console.error('Error updating service:', error);
+        }
+    };
+    saveService();
     console.log('Data saved:', service);
   };
 
