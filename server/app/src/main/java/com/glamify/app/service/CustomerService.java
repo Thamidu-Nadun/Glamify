@@ -1,5 +1,6 @@
 package com.glamify.app.service;
 
+<<<<<<< HEAD
 import com.glamify.app.dto.CustomerDTO;
 import com.glamify.app.models.Customer;
 import com.glamify.app.models.Appointment;
@@ -12,11 +13,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import java.time.LocalDateTime;
+=======
+>>>>>>> 6f0588f11fdf7f66336a8998b8788740ca9aa98e
 import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.stream.Collectors;
 
+<<<<<<< HEAD
 @Service
 public class CustomerService {
     private final CustomerRepository customerRepository;
@@ -343,3 +344,40 @@ public class CustomerService {
         return contactNumber != null && contactNumber.matches("^\\+?[1-9]\\d{1,14}$");
     }
 } 
+=======
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.glamify.app.dto.CustomerDTO;
+import com.glamify.app.entity.Customer;
+import com.glamify.app.repo.CustomerRepo;
+
+@Service
+public class CustomerService {
+
+    @Autowired
+    CustomerRepo customerRepo;
+
+    @Autowired
+    ModelMapper modelMapper;
+
+    // get Customers
+    public List<Customer> getAllCustomers() {
+        return customerRepo.getAllCustomers();
+    }
+
+    // add Customer
+    public CustomerDTO addCustomer(CustomerDTO customerDTO) {
+        try {
+            Customer customer_res = customerRepo.addCustomer(modelMapper.map(customerDTO,
+                    Customer.class));
+            return modelMapper.map(customer_res, CustomerDTO.class);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+}
+>>>>>>> 6f0588f11fdf7f66336a8998b8788740ca9aa98e

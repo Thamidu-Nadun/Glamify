@@ -1,142 +1,93 @@
 package com.glamify.app.controller;
 
-import com.glamify.app.dto.CustomerDTO;
-import com.glamify.app.models.Appointment;
-import com.glamify.app.models.Service;
-import com.glamify.app.models.Feedback;
-import com.glamify.app.service.CustomerService;
-import com.glamify.app.exception.CustomerException;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.time.LocalDateTime;
+import com.glamify.app.dto.CustomerDTO;
+import com.glamify.app.dto.GeneralResDTO;
+import com.glamify.app.entity.Customer;
+import com.glamify.app.service.CustomerService;
+import com.glamify.app.utils.ResponseCode;
+
 import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @RestController
 @RequestMapping("/api/customers")
 public class CustomerController {
-    private final CustomerService customerService;
 
     @Autowired
-    public CustomerController(CustomerService customerService) {
-        this.customerService = customerService;
-    }
+    CustomerService customerService;
 
-    @PostMapping
-    public ResponseEntity<CustomerDTO> registerCustomer(@RequestBody CustomerDTO customerDTO) {
+    @GetMapping("/getCustomer")
+    public ResponseEntity<GeneralResDTO> getCustomer() {
+        GeneralResDTO generalResDTO = new GeneralResDTO();
         try {
-            CustomerDTO registeredCustomer = customerService.registerCustomer(customerDTO);
-            return ResponseEntity.ok(registeredCustomer);
-        } catch (CustomerException e) {
-            return ResponseEntity.badRequest().build();
+            List<Customer> customer_res = customerService.getAllCustomers();
+            generalResDTO.setCode(ResponseCode.SUCCESS.getCode());
+            generalResDTO.setMessage(ResponseCode.SUCCESS.getMessage());
+            generalResDTO.setContent(customer_res);
+
+            return new ResponseEntity<>(generalResDTO, HttpStatus.ACCEPTED);
+        } catch (Exception e) {
+            generalResDTO.setCode(ResponseCode.INTERNAL_SERVER_ERROR.getCode());
+            generalResDTO.setMessage(ResponseCode.INTERNAL_SERVER_ERROR.getMessage());
+            generalResDTO.setContent(e);
+
+            return new ResponseEntity<>(generalResDTO, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<CustomerDTO> getCustomer(@PathVariable String id) {
+    @GetMapping("/getCustomerById/{id}")
+    public ResponseEntity<GeneralResDTO> getCustomerById(@RequestParam int id) {
+        return null;
+    }
+
+    @GetMapping("/getCustomerByEmail/{email}")
+    public ResponseEntity<GeneralResDTO> getCustomerByEmail(@RequestParam String email) {
+        return null;
+    }
+
+    @PostMapping("/saveCustomer")
+    public ResponseEntity<GeneralResDTO> saveCustomer(@RequestBody CustomerDTO customer) {
+        GeneralResDTO generalResDTO = new GeneralResDTO();
         try {
-            CustomerDTO customer = customerService.getCustomerById(id);
-            return ResponseEntity.ok(customer);
-        } catch (CustomerException e) {
-            return ResponseEntity.notFound().build();
+            CustomerDTO customer_res = customerService.addCustomer(customer);
+            System.out.println("Controller: " + customer_res);
+            generalResDTO.setCode(ResponseCode.SUCCESS.getCode());
+            generalResDTO.setMessage(ResponseCode.SUCCESS.getMessage());
+            generalResDTO.setContent(customer_res);
+
+            return new ResponseEntity<>(generalResDTO, HttpStatus.ACCEPTED);
+        } catch (Exception e) {
+            generalResDTO.setCode(ResponseCode.INTERNAL_SERVER_ERROR.getCode());
+            generalResDTO.setMessage(ResponseCode.INTERNAL_SERVER_ERROR.getMessage());
+            generalResDTO.setContent(e);
+
+            return new ResponseEntity<>(generalResDTO, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<CustomerDTO> updateCustomer(
-            @PathVariable String id,
-            @RequestBody CustomerDTO customerDTO) {
-        try {
-            CustomerDTO updatedCustomer = customerService.updateCustomer(id, customerDTO);
-            return ResponseEntity.ok(updatedCustomer);
-        } catch (CustomerException e) {
-            return ResponseEntity.notFound().build();
-        }
+    @PutMapping("/updateCustomer/{id}")
+    public ResponseEntity<GeneralResDTO> updateCustomer(@PathVariable int id, @RequestBody CustomerDTO customer) {
+        // Update customer by ID
+        return null;
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteCustomer(@PathVariable String id) {
-        try {
-            customerService.deleteCustomer(id);
-            return ResponseEntity.ok().build();
-        } catch (CustomerException e) {
-            return ResponseEntity.notFound().build();
-        }
+    @DeleteMapping("/deleteCustomer/{id}")
+    public ResponseEntity<GeneralResDTO> deleteCustomer(@PathVariable int id) {
+        // Delete customer by ID
+        return null;
     }
 
-    @PostMapping("/{id}/appointments")
-    public ResponseEntity<Void> bookAppointment(
-            @PathVariable String id,
-            @RequestBody Appointment appointment) {
-        try {
-            customerService.bookAppointment(id, appointment);
-            return ResponseEntity.ok().build();
-        } catch (CustomerException e) {
-            return ResponseEntity.badRequest().build();
-        }
-    }
-
-    @DeleteMapping("/{id}/appointments/{appointmentId}")
-    public ResponseEntity<Void> cancelAppointment(
-            @PathVariable String id,
-            @PathVariable String appointmentId) {
-        try {
-            customerService.cancelAppointment(id, appointmentId);
-            return ResponseEntity.ok().build();
-        } catch (CustomerException e) {
-            return ResponseEntity.badRequest().build();
-        }
-    }
-
-    @PutMapping("/{id}/appointments/{appointmentId}")
-    public ResponseEntity<Void> rescheduleAppointment(
-            @PathVariable String id,
-            @PathVariable String appointmentId,
-            @RequestBody Appointment newAppointment) {
-        try {
-            customerService.rescheduleAppointment(id, appointmentId, newAppointment);
-            return ResponseEntity.ok().build();
-        } catch (CustomerException e) {
-            return ResponseEntity.badRequest().build();
-        }
-    }
-
-    @PostMapping("/{id}/feedback")
-    public ResponseEntity<Void> addFeedback(
-            @PathVariable String id,
-            @RequestBody Feedback feedback) {
-        try {
-            customerService.addFeedback(id, feedback);
-            return ResponseEntity.ok().build();
-        } catch (CustomerException e) {
-            return ResponseEntity.badRequest().build();
-        }
-    }
-
-    @GetMapping("/{id}/services/available")
-    public ResponseEntity<List<Service>> viewAvailableServices(
-            @PathVariable String id,
-            @RequestBody List<Service> allServices) {
-        try {
-            List<Service> availableServices = customerService.viewAvailableServices(id, allServices);
-            return ResponseEntity.ok(availableServices);
-        } catch (CustomerException e) {
-            return ResponseEntity.notFound().build();
-        }
-    }
-
-    @GetMapping("/{id}/slots/available")
-    public ResponseEntity<List<LocalDateTime>> viewAvailableTimeSlots(
-            @PathVariable String id,
-            @RequestParam String serviceId,
-            @RequestBody List<LocalDateTime> allTimeSlots) {
-        try {
-            Service service = new Service(serviceId, "", "", 0.0, 0);
-            List<LocalDateTime> availableSlots = customerService.viewAvailableTimeSlots(id, service, allTimeSlots);
-            return ResponseEntity.ok(availableSlots);
-        } catch (CustomerException e) {
-            return ResponseEntity.notFound().build();
-        }
-    }
-} 
+}

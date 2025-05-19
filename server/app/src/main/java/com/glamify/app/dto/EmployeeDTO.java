@@ -1,7 +1,5 @@
 package com.glamify.app.dto;
 
-import java.util.List;
-
 import com.glamify.app.entity.User;
 
 import lombok.AllArgsConstructor;
@@ -13,7 +11,6 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CustomerDTO extends User {
-    private int phone;
-    private List<AppointmentDTO> appointments;
+public class EmployeeDTO extends User {
+    private int expertise;
 }

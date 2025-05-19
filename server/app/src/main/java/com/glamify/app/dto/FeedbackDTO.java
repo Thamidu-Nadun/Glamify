@@ -1,5 +1,6 @@
 package com.glamify.app.dto;
 
+<<<<<<< HEAD
 import java.time.LocalDateTime;
 
 public class FeedbackDTO {
@@ -41,3 +42,17 @@ public class FeedbackDTO {
     public LocalDateTime getFeedbackTime() { return feedbackTime; }
     public void setFeedbackTime(LocalDateTime feedbackTime) { this.feedbackTime = feedbackTime; }
 } 
+=======
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class FeedbackDTO {
+    private int id;
+    private int rate;
+    private String comment;
+}
+>>>>>>> 6f0588f11fdf7f66336a8998b8788740ca9aa98e
