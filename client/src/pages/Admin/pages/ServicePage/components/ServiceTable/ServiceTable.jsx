@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import EditButton from '../EditButton/EditButton';
 import DeleteButton from '../DeleteButton/DeleteButton';
 
@@ -16,7 +16,6 @@ function formatDuration(minutes) {
       : `${hours} hr ${remainingMins} min`;
   }
 }
-
 function ServiceTable() {
   const Services = [
     {
