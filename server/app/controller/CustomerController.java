@@ -69,4 +69,43 @@ public class CustomerController {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
+
+    // Queue operations
+    @PostMapping("/queue/{customerId}")
+    public ResponseEntity<?> addToQueue(@PathVariable String customerId) {
+        try {
+            customerService.addCustomerToQueue(customerId);
+            return ResponseEntity.ok().build();
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+    @GetMapping("/queue/next")
+    public ResponseEntity<?> processNextCustomer() {
+        Customer customer = customerService.processNextCustomer();
+        if (customer == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(customer);
+    }
+
+    @GetMapping("/queue/peek")
+    public ResponseEntity<?> peekNextCustomer() {
+        Customer customer = customerService.peekNextCustomer();
+        if (customer == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(customer);
+    }
+
+    @GetMapping("/queue")
+    public ResponseEntity<List<Customer>> getQueue() {
+        return ResponseEntity.ok(customerService.getQueueAsList());
+    }
+
+    @GetMapping("/queue/size")
+    public ResponseEntity<Integer> getQueueSize() {
+        return ResponseEntity.ok(customerService.getQueueSize());
+    }
 } 

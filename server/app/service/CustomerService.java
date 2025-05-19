@@ -72,4 +72,31 @@ public class CustomerService {
         }
         customerRepository.delete(id);
     }
+
+    // Queue operations
+    public void addCustomerToQueue(String customerId) {
+        Customer customer = customerRepository.findById(customerId)
+            .orElseThrow(() -> new IllegalArgumentException("Customer not found"));
+        customerRepository.addToQueue(customer);
+    }
+
+    public Customer processNextCustomer() {
+        return customerRepository.removeFromQueue();
+    }
+
+    public Customer peekNextCustomer() {
+        return customerRepository.peekQueue();
+    }
+
+    public boolean isQueueEmpty() {
+        return customerRepository.isQueueEmpty();
+    }
+
+    public int getQueueSize() {
+        return customerRepository.getQueueSize();
+    }
+
+    public List<Customer> getQueueAsList() {
+        return customerRepository.getQueueAsList();
+    }
 } 
