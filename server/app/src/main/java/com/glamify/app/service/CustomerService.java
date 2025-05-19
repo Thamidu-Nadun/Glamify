@@ -9,6 +9,7 @@ import com.glamify.app.repository.CustomerRepository;
 import com.glamify.app.exception.CustomerException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -20,6 +21,7 @@ import java.util.stream.Collectors;
 public class CustomerService {
     private final CustomerRepository customerRepository;
     private static final int MIN_CANCELLATION_HOURS = 24;
+    private static final int MAX_APPOINTMENTS_PER_DAY = 3;
 
     @Autowired
     public CustomerService(CustomerRepository customerRepository) {
@@ -28,8 +30,20 @@ public class CustomerService {
 
     // Customer Registration
     public CustomerDTO registerCustomer(CustomerDTO customerDTO) {
-        if (customerRepository.existsByEmail(customerDTO.getEmail())) {
+        validateCustomerDTO(customerDTO);
+        
+        if (customerRepository.findByEmail(customerDTO.getEmail()).isPresent()) {
             throw new CustomerException("Email already registered");
+        }
+
+        // Validate email format
+        if (!isValidEmail(customerDTO.getEmail())) {
+            throw new CustomerException("Invalid email format");
+        }
+
+        // Validate contact number format
+        if (!isValidContactNumber(customerDTO.getContactNumber())) {
+            throw new CustomerException("Invalid contact number format");
         }
 
         Customer customer = new Customer(
@@ -39,98 +53,215 @@ public class CustomerService {
             customerDTO.getContactNumber()
         );
 
-        Customer savedCustomer = customerRepository.save(customer);
-        return convertToDTO(savedCustomer);
+        try {
+            Customer savedCustomer = customerRepository.save(customer);
+            return convertToDTO(savedCustomer);
+        } catch (Exception e) {
+            throw new CustomerException("Failed to register customer", e);
+        }
     }
 
     // View Customer
     public CustomerDTO getCustomerById(String id) {
-        return customerRepository.findById(id)
-            .map(this::convertToDTO)
-            .orElseThrow(() -> new CustomerException("Customer not found"));
+        if (!StringUtils.hasText(id)) {
+            throw new CustomerException("Customer ID cannot be empty");
+        }
+        
+        try {
+            return customerRepository.findById(id)
+                .map(this::convertToDTO)
+                .orElseThrow(() -> new CustomerException("Customer not found"));
+        } catch (CustomerException e) {
+            throw e;
+        } catch (Exception e) {
+            throw new CustomerException("Failed to retrieve customer", e);
+        }
     }
 
     // Update Customer
     public CustomerDTO updateCustomer(String id, CustomerDTO customerDTO) {
-        Customer customer = customerRepository.findById(id)
-            .orElseThrow(() -> new CustomerException("Customer not found"));
+        if (!StringUtils.hasText(id)) {
+            throw new CustomerException("Customer ID cannot be empty");
+        }
+        validateCustomerDTO(customerDTO);
 
-        // Don't allow email update as it's used as a unique identifier
-        customer.setName(customerDTO.getName());
-        customer.setContactNumber(customerDTO.getContactNumber());
+        try {
+            Customer customer = customerRepository.findById(id)
+                .orElseThrow(() -> new CustomerException("Customer not found"));
 
-        Customer updatedCustomer = customerRepository.save(customer);
-        return convertToDTO(updatedCustomer);
+            // Don't allow email update as it's used as a unique identifier
+            customer.setName(customerDTO.getName());
+            customer.setContactNumber(customerDTO.getContactNumber());
+
+            // Validate contact number format
+            if (!isValidContactNumber(customerDTO.getContactNumber())) {
+                throw new CustomerException("Invalid contact number format");
+            }
+
+            Customer updatedCustomer = customerRepository.save(customer);
+            return convertToDTO(updatedCustomer);
+        } catch (CustomerException e) {
+            throw e;
+        } catch (Exception e) {
+            throw new CustomerException("Failed to update customer", e);
+        }
     }
 
     // Delete Customer
     public void deleteCustomer(String id) {
-        if (!customerRepository.findById(id).isPresent()) {
-            throw new CustomerException("Customer not found");
+        if (!StringUtils.hasText(id)) {
+            throw new CustomerException("Customer ID cannot be empty");
         }
-        customerRepository.deleteById(id);
+        
+        try {
+            if (!customerRepository.findById(id).isPresent()) {
+                throw new CustomerException("Customer not found");
+            }
+            customerRepository.deleteById(id);
+        } catch (CustomerException e) {
+            throw e;
+        } catch (Exception e) {
+            throw new CustomerException("Failed to delete customer", e);
+        }
     }
 
     // Book Appointment
     public void bookAppointment(String customerId, Appointment appointment) {
-        Customer customer = customerRepository.findById(customerId)
-            .orElseThrow(() -> new CustomerException("Customer not found"));
-
-        if (!isValidAppointmentTime(appointment.getAppointmentTime())) {
-            throw new CustomerException("Invalid appointment time");
+        if (!StringUtils.hasText(customerId)) {
+            throw new CustomerException("Customer ID cannot be empty");
         }
+        validateAppointment(appointment);
 
-        customer.bookAppointment(appointment);
-        customerRepository.save(customer);
+        try {
+            Customer customer = customerRepository.findById(customerId)
+                .orElseThrow(() -> new CustomerException("Customer not found"));
+
+            if (!isValidAppointmentTime(appointment.getAppointmentTime())) {
+                throw new CustomerException("Invalid appointment time");
+            }
+
+            // Check for daily appointment limit
+            if (hasReachedDailyAppointmentLimit(customer, appointment.getAppointmentTime())) {
+                throw new CustomerException("Maximum daily appointments limit reached");
+            }
+
+            customer.bookAppointment(appointment);
+            customerRepository.save(customer);
+        } catch (CustomerException e) {
+            throw e;
+        } catch (Exception e) {
+            throw new CustomerException("Failed to book appointment", e);
+        }
     }
 
     // Cancel Appointment
     public void cancelAppointment(String customerId, String appointmentId) {
-        Customer customer = customerRepository.findById(customerId)
-            .orElseThrow(() -> new CustomerException("Customer not found"));
-
-        if (!customer.cancelAppointment(appointmentId)) {
-            throw new CustomerException("Cannot cancel appointment");
+        if (!StringUtils.hasText(customerId) || !StringUtils.hasText(appointmentId)) {
+            throw new CustomerException("Customer ID and Appointment ID cannot be empty");
         }
 
-        customerRepository.save(customer);
+        try {
+            Customer customer = customerRepository.findById(customerId)
+                .orElseThrow(() -> new CustomerException("Customer not found"));
+
+            if (!customer.cancelAppointment(appointmentId)) {
+                throw new CustomerException("Cannot cancel appointment");
+            }
+
+            customerRepository.save(customer);
+        } catch (CustomerException e) {
+            throw e;
+        } catch (Exception e) {
+            throw new CustomerException("Failed to cancel appointment", e);
+        }
     }
 
     // Reschedule Appointment
     public void rescheduleAppointment(String customerId, String appointmentId, Appointment newAppointment) {
-        Customer customer = customerRepository.findById(customerId)
-            .orElseThrow(() -> new CustomerException("Customer not found"));
-
-        if (!customer.rescheduleAppointment(appointmentId, newAppointment)) {
-            throw new CustomerException("Cannot reschedule appointment");
+        if (!StringUtils.hasText(customerId) || !StringUtils.hasText(appointmentId)) {
+            throw new CustomerException("Customer ID and Appointment ID cannot be empty");
         }
+        validateAppointment(newAppointment);
 
-        customerRepository.save(customer);
+        try {
+            Customer customer = customerRepository.findById(customerId)
+                .orElseThrow(() -> new CustomerException("Customer not found"));
+
+            if (!customer.rescheduleAppointment(appointmentId, newAppointment)) {
+                throw new CustomerException("Cannot reschedule appointment");
+            }
+
+            customerRepository.save(customer);
+        } catch (CustomerException e) {
+            throw e;
+        } catch (Exception e) {
+            throw new CustomerException("Failed to reschedule appointment", e);
+        }
     }
 
     // Add Feedback
     public void addFeedback(String customerId, Feedback feedback) {
-        Customer customer = customerRepository.findById(customerId)
-            .orElseThrow(() -> new CustomerException("Customer not found"));
+        if (!StringUtils.hasText(customerId)) {
+            throw new CustomerException("Customer ID cannot be empty");
+        }
+        validateFeedback(feedback);
 
-        customer.addFeedback(feedback);
-        customerRepository.save(customer);
+        try {
+            Customer customer = customerRepository.findById(customerId)
+                .orElseThrow(() -> new CustomerException("Customer not found"));
+
+            customer.addFeedback(feedback);
+            customerRepository.save(customer);
+        } catch (CustomerException e) {
+            throw e;
+        } catch (Exception e) {
+            throw new CustomerException("Failed to add feedback", e);
+        }
     }
 
     // View Available Services
     public List<Service> viewAvailableServices(String customerId, List<Service> allServices) {
-        Customer customer = customerRepository.findById(customerId)
-            .orElseThrow(() -> new CustomerException("Customer not found"));
+        if (!StringUtils.hasText(customerId)) {
+            throw new CustomerException("Customer ID cannot be empty");
+        }
+        if (allServices == null) {
+            throw new CustomerException("Service list cannot be null");
+        }
 
-        return customer.viewAvailableServices(allServices);
+        try {
+            Customer customer = customerRepository.findById(customerId)
+                .orElseThrow(() -> new CustomerException("Customer not found"));
+
+            return customer.viewAvailableServices(allServices);
+        } catch (CustomerException e) {
+            throw e;
+        } catch (Exception e) {
+            throw new CustomerException("Failed to view available services", e);
+        }
     }
 
     // View Available Time Slots
     public List<LocalDateTime> viewAvailableTimeSlots(String customerId, Service service, List<LocalDateTime> allTimeSlots) {
-        Customer customer = customerRepository.findById(customerId)
-            .orElseThrow(() -> new CustomerException("Customer not found"));
+        if (!StringUtils.hasText(customerId)) {
+            throw new CustomerException("Customer ID cannot be empty");
+        }
+        if (service == null) {
+            throw new CustomerException("Service cannot be null");
+        }
+        if (allTimeSlots == null) {
+            throw new CustomerException("Time slots list cannot be null");
+        }
 
-        return customer.viewAvailableTimeSlots(service, allTimeSlots);
+        try {
+            Customer customer = customerRepository.findById(customerId)
+                .orElseThrow(() -> new CustomerException("Customer not found"));
+
+            return customer.viewAvailableTimeSlots(service, allTimeSlots);
+        } catch (CustomerException e) {
+            throw e;
+        } catch (Exception e) {
+            throw new CustomerException("Failed to view available time slots", e);
+        }
     }
 
     // Helper Methods
@@ -154,6 +285,61 @@ public class CustomerService {
     }
 
     private boolean isValidAppointmentTime(LocalDateTime appointmentTime) {
-        return appointmentTime.isAfter(LocalDateTime.now());
+        return appointmentTime != null && appointmentTime.isAfter(LocalDateTime.now());
+    }
+
+    private boolean hasReachedDailyAppointmentLimit(Customer customer, LocalDateTime appointmentTime) {
+        return customer.getAppointments().stream()
+                .filter(appointment -> 
+                    appointment.getAppointmentTime().toLocalDate().equals(appointmentTime.toLocalDate()) &&
+                    appointment.getStatus() == Appointment.AppointmentStatus.SCHEDULED)
+                .count() >= MAX_APPOINTMENTS_PER_DAY;
+    }
+
+    private void validateCustomerDTO(CustomerDTO dto) {
+        if (dto == null) {
+            throw new CustomerException("Customer data cannot be null");
+        }
+        if (!StringUtils.hasText(dto.getName())) {
+            throw new CustomerException("Name is required");
+        }
+        if (!StringUtils.hasText(dto.getEmail())) {
+            throw new CustomerException("Email is required");
+        }
+        if (!StringUtils.hasText(dto.getContactNumber())) {
+            throw new CustomerException("Contact number is required");
+        }
+    }
+
+    private void validateAppointment(Appointment appointment) {
+        if (appointment == null) {
+            throw new CustomerException("Appointment cannot be null");
+        }
+        if (appointment.getService() == null) {
+            throw new CustomerException("Service is required");
+        }
+        if (appointment.getAppointmentTime() == null) {
+            throw new CustomerException("Appointment time is required");
+        }
+    }
+
+    private void validateFeedback(Feedback feedback) {
+        if (feedback == null) {
+            throw new CustomerException("Feedback cannot be null");
+        }
+        if (feedback.getAppointment() == null) {
+            throw new CustomerException("Appointment is required");
+        }
+        if (feedback.getRating() < 1 || feedback.getRating() > 5) {
+            throw new CustomerException("Rating must be between 1 and 5");
+        }
+    }
+
+    private boolean isValidEmail(String email) {
+        return email != null && email.matches("^[A-Za-z0-9+_.-]+@(.+)$");
+    }
+
+    private boolean isValidContactNumber(String contactNumber) {
+        return contactNumber != null && contactNumber.matches("^\\+?[1-9]\\d{1,14}$");
     }
 } 
