@@ -9,6 +9,7 @@ import ClientPage from './pages/Admin/pages/ClientPage/ClientPage';
 import AdminTest from './pages/AdminTest/AdminTest';
 import EditAppointmentPage from './pages/Admin/pages/AppointmentPage/EditAppointmentPage';
 import ServicePage from './pages/Admin/pages/ServicePage/ServicePage';
+import AddService from './pages/Admin/pages/ServicePage/AddServicePage';
 import EditServicePage from './pages/Admin/pages/ServicePage/EditServicePage';
 import DeletePopUp from './Components/DeletePopUp/DeletePopUp';
 import EditClientPage from './pages/Admin/pages/ClientPage/EditClientPage';
@@ -18,12 +19,14 @@ import FeedbackPage from './pages/Admin/pages/FeedbackPage/FeedbackPage';
 import AdminPage from './pages/Admin/pages/AdminPage/AdminPage';
 import EditAdminPage from './pages/Admin/pages/AdminPage/EditAdminPage';
 import AppointmentPageSorted from './pages/Admin/pages/AppointmentPage/AppointmentPageSorted';
+import SignUp from './pages/SignUp/SignUp';
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<UserLogin />} />
+      <Route path="/signup" element={<SignUp />} />
       {/* Admin */}
       <Route path="/admin" element={<Admin />} />
       <Route path="/admin/dashboard" element={<Admin />} />
@@ -38,6 +41,7 @@ function App() {
       {/* Service */}
       <Route path="/admin/services" element={<ServicePage />} />
       <Route path="/admin/services/edit" element={<EditServicePage />} />
+      <Route path="/admin/services/createService" element={<AddService />} />
 
       {/* Client */}
       <Route path="/admin/clients" element={<ClientPage />} />
@@ -60,6 +64,10 @@ function App() {
       <Route
         path="/admin/appointments/sort"
         element={<AppointmentPageSorted />}
+      />
+      <Route
+        path='/*'
+        element={<NotFound />}
       />
     </Routes>
   );

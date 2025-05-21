@@ -22,6 +22,7 @@ function Navbar() {
           <ul className="flex">
             <LinkItem name="Home" path="/" />
             <LinkItem name="About" path="/about" />
+            <LinkItem name="Dashboard" path="/admin" />
             <LinkItem name="Services" path="/service" />
             <LinkItem name="Contact" path="/contact" />
           </ul>
@@ -29,7 +30,7 @@ function Navbar() {
 
         <div className="auth-buttons hidden md:flex">
           <LoginButton path="/login" />
-          <SignUpButton path="sign-in" />
+          <SignUpButton path="/signup" />
         </div>
 
         {/* Mobile Menu Button */}
