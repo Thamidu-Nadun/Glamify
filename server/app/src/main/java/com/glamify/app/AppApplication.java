@@ -7,10 +7,12 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 
 import com.glamify.app.repo.AdminRepo;
+import com.glamify.app.repo.AppointmentRepo;
 import com.glamify.app.repo.CustomerRepo;
 import com.glamify.app.repo.ServiceRepo;
 import com.glamify.app.utils.SortAppointments;
 import com.glamify.app.utils.handlers.admin.AdminRW;
+import com.glamify.app.utils.handlers.admin.AppointmentRW;
 import com.glamify.app.utils.handlers.admin.CustomerRW;
 import com.glamify.app.utils.handlers.admin.ServiceRW;
 
@@ -28,6 +30,9 @@ public class AppApplication {
 
 		CustomerRepo customerRepo = context.getBean(CustomerRepo.class);
 		customerRepo.init_data_from_db();
+
+		AppointmentRepo appointmentRepo = context.getBean(AppointmentRepo.class);
+		appointmentRepo.init_data_from_db();
 	}
 
 	@Bean
@@ -48,6 +53,11 @@ public class AppApplication {
 	@Bean
 	public CustomerRW customerRW() {
 		return new CustomerRW();
+	}
+
+	@Bean
+	public AppointmentRW appointmentRW() {
+		return new AppointmentRW();
 	}
 
 	@Bean
