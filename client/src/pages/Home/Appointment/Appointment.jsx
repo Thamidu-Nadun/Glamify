@@ -30,8 +30,8 @@ const styles = {
 
 function Appointment() {
   return (
-    <div className="flex h-[80vh] w-screen">
-      <div className="h-full w-full p-5">
+    <div className="flex h-[80vh] w-screen my-5">
+      <div className="h-full w-full p-5 hidden lg:block">
         <div className="box mx-4 my-4 h-full w-auto rounded-4xl bg-[url('../../../assets/women-3.svg')] bg-cover bg-center" />
       </div>
       <div className="h-full w-full p-5">
