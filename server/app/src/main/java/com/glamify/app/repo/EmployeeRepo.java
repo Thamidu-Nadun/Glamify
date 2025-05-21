@@ -63,11 +63,15 @@ public class EmployeeRepo {
 
     public Employee deleteEmployee(int id) {
         for (int i = 0; i < employees.size(); i++) {
-            Employee emp = employees.get(i);
+            try {
+                Employee emp = employees.get(i);
 
-            if (emp.getId() == id) {
-                employees.remove(i);
-                return emp;
+                if (emp.getId() == id) {
+                    employees.remove(i);
+                    return emp;
+                }
+            } catch (Exception e) {
+                System.out.println("Error: " + e.getMessage());
             }
         }
         return null;

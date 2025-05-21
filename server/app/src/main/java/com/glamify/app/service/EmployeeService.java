@@ -56,6 +56,9 @@ public class EmployeeService {
 
     public EmployeeDTO deleteEmployee(int id) {
         Employee emp_res = employeeRepo.deleteEmployee(id);
+        if (emp_res == null) {
+            return null;
+        }
         return modelMapper.map(emp_res, EmployeeDTO.class);
     }
 }
