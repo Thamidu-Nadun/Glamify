@@ -36,4 +36,31 @@ public class CustomerService {
         }
     }
 
+    // update Customer
+    public CustomerDTO updateCustomer(int id, CustomerDTO customerDTO) {
+        try {
+            // Map DTO to a Customer entity
+            Customer newCustomerData = modelMapper.map(customerDTO, Customer.class);
+            Customer updatedCustomer = customerRepo.updateCustomer(id, newCustomerData);
+
+            if (updatedCustomer == null) {
+                return null; // Customer not found
+            }
+
+            return modelMapper.map(updatedCustomer, CustomerDTO.class);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    // delete Customer
+    public boolean deleteCustomer(int id) {
+        try {
+            return customerRepo.deleteCustomer(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }
