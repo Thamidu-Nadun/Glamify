@@ -10,16 +10,20 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.glamify.app.dto.GeneralResDTO;
 import com.glamify.app.dto.admin.AdminDTO;
 import com.glamify.app.dto.admin.AdminResDTO;
+import com.glamify.app.entity.Appointment;
 import com.glamify.app.service.AdminService;
 import com.glamify.app.utils.ResponseCode;
+import com.glamify.app.utils.TestAppointmentList;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 @RequestMapping("/api/admin")
@@ -86,6 +90,26 @@ public class AdminController {
             adminResDTO.setContent(e);
         }
         return new ResponseEntity<AdminResDTO>(adminResDTO, HttpStatus.ACCEPTED);
+    }
+
+    @GetMapping("/getSortedAppointments")
+    public ResponseEntity<GeneralResDTO> getMethodName() {
+        GeneralResDTO res = new GeneralResDTO();
+        try {
+            TestAppointmentList testAppointmentList = new TestAppointmentList();
+            List<Appointment> appointments = testAppointmentList.getAppointments();
+
+            List<Appointment> sortedAppointments = adminService.getSortedAppointments(appointments);
+            res.setCode(ResponseCode.ACCEPTED.getCode());
+            res.setMessage(ResponseCode.ACCEPTED.getMessage());
+            res.setContent(sortedAppointments);
+            return new ResponseEntity<>(res, HttpStatus.OK);
+        } catch (Exception e) {
+            res.setCode(ResponseCode.INTERNAL_SERVER_ERROR.getCode());
+            res.setMessage(ResponseCode.INTERNAL_SERVER_ERROR.getMessage());
+            res.setContent(e);
+            return new ResponseEntity<>(res, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @PostMapping("/saveAdmin")

@@ -106,8 +106,12 @@ public class AdminService {
 
     // Get Sorted Appointment
     public List<Appointment> getSortedAppointments(List<Appointment> appointments) {
-        // TODO: Implement Sort
-        return sortAppointments.quick_sort(appointments);
+        try {
+            List<Appointment> sortedAppointments = sortAppointments.sort(appointments);
+            return sortedAppointments;
+        } catch (Exception e) {
+            return null;
+        }
     }
 
 }
