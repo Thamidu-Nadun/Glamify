@@ -9,7 +9,7 @@ import ClientPage from './pages/Admin/pages/ClientPage/ClientPage';
 import AdminTest from './pages/AdminTest/AdminTest';
 import EditAppointmentPage from './pages/Admin/pages/AppointmentPage/EditAppointmentPage';
 import ServicePage from './pages/Admin/pages/ServicePage/ServicePage';
-import AddService from './pages/Admin/pages/ServicePage/AddServicePage';
+// import AddService from './pages/Admin/pages/ServicePage/AddServicePage';
 import EditServicePage from './pages/Admin/pages/ServicePage/EditServicePage';
 import DeletePopUp from './Components/DeletePopUp/DeletePopUp';
 import EditClientPage from './pages/Admin/pages/ClientPage/EditClientPage';
@@ -41,7 +41,7 @@ function App() {
       {/* Service */}
       <Route path="/admin/services" element={<ServicePage />} />
       <Route path="/admin/services/edit" element={<EditServicePage />} />
-      <Route path="/admin/services/createService" element={<AddService />} />
+      {/* <Route path="/admin/services/createService" element={<AddService />} /> */}
 
       {/* Client */}
       <Route path="/admin/clients" element={<ClientPage />} />
