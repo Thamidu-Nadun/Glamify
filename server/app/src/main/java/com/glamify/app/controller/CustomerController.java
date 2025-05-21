@@ -80,14 +80,48 @@ public class CustomerController {
 
     @PutMapping("/updateCustomer/{id}")
     public ResponseEntity<GeneralResDTO> updateCustomer(@PathVariable int id, @RequestBody CustomerDTO customer) {
-        // Update customer by ID
-        return null;
+        GeneralResDTO generalResDTO = new GeneralResDTO();
+        try {
+            CustomerDTO updatedCustomer = customerService.updateCustomer(id, customer);
+            generalResDTO.setCode(ResponseCode.SUCCESS.getCode());
+            generalResDTO.setMessage("Customer updated successfully.");
+            generalResDTO.setContent(updatedCustomer);
+
+            return new ResponseEntity<>(generalResDTO, HttpStatus.OK);
+        } catch (Exception e) {
+            generalResDTO.setCode(ResponseCode.INTERNAL_SERVER_ERROR.getCode());
+            generalResDTO.setMessage(ResponseCode.INTERNAL_SERVER_ERROR.getMessage());
+            generalResDTO.setContent(e.getMessage());
+
+            return new ResponseEntity<>(generalResDTO, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @DeleteMapping("/deleteCustomer/{id}")
     public ResponseEntity<GeneralResDTO> deleteCustomer(@PathVariable int id) {
-        // Delete customer by ID
-        return null;
+        GeneralResDTO generalResDTO = new GeneralResDTO();
+        try {
+            boolean deleted = customerService.deleteCustomer(id);
+            if (deleted) {
+                generalResDTO.setCode(ResponseCode.SUCCESS.getCode());
+                generalResDTO.setMessage("Customer deleted successfully.");
+                generalResDTO.setContent(null);
+
+                return new ResponseEntity<>(generalResDTO, HttpStatus.OK);
+            } else {
+                generalResDTO.setCode(ResponseCode.NOT_FOUND.getCode());
+                generalResDTO.setMessage("Customer not found.");
+                generalResDTO.setContent(null);
+
+                return new ResponseEntity<>(generalResDTO, HttpStatus.NOT_FOUND);
+            }
+        } catch (Exception e) {
+            generalResDTO.setCode(ResponseCode.INTERNAL_SERVER_ERROR.getCode());
+            generalResDTO.setMessage(ResponseCode.INTERNAL_SERVER_ERROR.getMessage());
+            generalResDTO.setContent(e.getMessage());
+
+            return new ResponseEntity<>(generalResDTO, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
 }
