@@ -7,6 +7,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 
 import com.glamify.app.repo.AdminRepo;
+import com.glamify.app.repo.CustomerRepo;
 import com.glamify.app.repo.ServiceRepo;
 import com.glamify.app.utils.SortAppointments;
 import com.glamify.app.utils.handlers.admin.AdminRW;
@@ -24,6 +25,9 @@ public class AppApplication {
 
 		ServiceRepo serviceRepo = context.getBean(ServiceRepo.class);
 		serviceRepo.init_data_from_db();
+
+		CustomerRepo customerRepo = context.getBean(CustomerRepo.class);
+		customerRepo.init_data_from_db();
 	}
 
 	@Bean

@@ -2,6 +2,7 @@ package com.glamify.app.utils.handlers.admin;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -18,6 +19,11 @@ public class CustomerRW {
     public void WriteCustomer(List<Customer> customers) {
         Gson gson = new Gson();
         try {
+            File file = new File(path);
+            // Create file if it doesn't exist
+            if (!file.exists()) {
+                file.createNewFile();
+            }
             BufferedWriter writer = new BufferedWriter(new FileWriter(path));
 
             Type CustomerLisType = new TypeToken<List<Customer>>() {
@@ -35,6 +41,11 @@ public class CustomerRW {
     public List<Customer> ReadCustomer() {
         Gson gson = new Gson();
         try {
+            File file = new File(path);
+            // Create file if it doesn't exist
+            if (!file.exists()) {
+                file.createNewFile();
+            }
             BufferedReader reader = new BufferedReader(new FileReader(path));
 
             Type customerListType = new TypeToken<List<Customer>>() {

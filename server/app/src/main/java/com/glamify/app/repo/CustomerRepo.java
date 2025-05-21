@@ -125,7 +125,7 @@ public class CustomerRepo {
                 }
             }
             atomInt.set(++maxID);
-            System.out.println("Successfully Loaded Admin Data");
+            System.out.println("Successfully Loaded Customer Data");
 
         } catch (Exception e) {
             System.out.println(e.toString());

@@ -2,6 +2,7 @@ package com.glamify.app.utils.handlers.admin;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -18,6 +19,11 @@ public class ServiceRW {
     public void WriteAdmin(List<ServiceEntity> services) {
         Gson gson = new Gson();
         try {
+            File file = new File(path);
+            // Create file if it doesn't exist
+            if (!file.exists()) {
+                file.createNewFile();
+            }
             BufferedWriter writer = new BufferedWriter(new FileWriter(path));
 
             Type serviceLisType = new TypeToken<List<ServiceEntity>>() {
@@ -35,6 +41,11 @@ public class ServiceRW {
     public List<ServiceEntity> ReadService() {
         Gson gson = new Gson();
         try {
+            File file = new File(path);
+            // Create file if it doesn't exist
+            if (!file.exists()) {
+                file.createNewFile();
+            }
             BufferedReader reader = new BufferedReader(new FileReader(path));
 
             Type serviceListType = new TypeToken<List<ServiceEntity>>() {
