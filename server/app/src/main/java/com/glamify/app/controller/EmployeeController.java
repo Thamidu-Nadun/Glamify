@@ -46,7 +46,10 @@ public class EmployeeController {
             return new ResponseEntity<>(generalResDTO, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
+     //
+    public int getEmployeeid(){
+        return Employeeid;
+    }
     @PostMapping("/saveEmployee")
     public ResponseEntity<GeneralResDTO> postMethodName(@RequestBody EmployeeDTO employeeDTO) {
         GeneralResDTO generalResDTO = new GeneralResDTO();
