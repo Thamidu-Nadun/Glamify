@@ -1,1 +1,9 @@
-[{"expertise":5,"id":0,"name":"Mr.Alex Smith","email":"js@d.com","password":"1223"}]
+[
+  {
+    "expertise": 5,
+    "id": 0,
+    "name": "Mr.Alex Smith",
+    "email": "js@d.com",
+    "password": "1223"
+  }
+]
