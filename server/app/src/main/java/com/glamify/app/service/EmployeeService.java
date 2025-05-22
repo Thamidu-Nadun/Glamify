@@ -29,16 +29,25 @@ public class EmployeeService {
 
     public EmployeeDTO getEmployeeById(int id) {
         Employee emp = employeeRepo.getEmployeeById(id);
+        if (emp == null) {
+            return null;
+        }
         return modelMapper.map(emp, EmployeeDTO.class);
     }
 
     public EmployeeDTO getEmployeeByName(String name) {
         Employee emp = employeeRepo.getEmployeeByName(name);
+        if (emp == null) {
+            return null;
+        }
         return modelMapper.map(emp, EmployeeDTO.class);
     }
 
     public EmployeeDTO getEmployeeByEmail(String email) {
         Employee emp = employeeRepo.getEmployeeByEmail(email);
+        if (emp == null) {
+            return null;
+        }
         return modelMapper.map(emp, EmployeeDTO.class);
     }
 

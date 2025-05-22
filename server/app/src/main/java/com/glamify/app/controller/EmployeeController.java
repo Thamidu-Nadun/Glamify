@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @CrossOrigin
 @RestController
@@ -47,17 +48,63 @@ public class EmployeeController {
         }
     }
 
-    public int getEmployeeId(){
-        return Employeeid;
+    @GetMapping("/getEmployeeById")
+    public ResponseEntity<GeneralResDTO> getEmployeeId(@RequestParam int id) {
+        GeneralResDTO generalResDTO = new GeneralResDTO();
+        try {
+            EmployeeDTO emp_res = employeeService.getEmployeeById(id);
+            generalResDTO.setCode(ResponseCode.SUCCESS.getCode());
+            generalResDTO.setMessage(ResponseCode.SUCCESS.getMessage());
+            generalResDTO.setContent(emp_res);
+
+            return new ResponseEntity<>(generalResDTO, HttpStatus.ACCEPTED);
+        } catch (Exception e) {
+            generalResDTO.setCode(ResponseCode.INTERNAL_SERVER_ERROR.getCode());
+            generalResDTO.setMessage(ResponseCode.INTERNAL_SERVER_ERROR.getMessage());
+            generalResDTO.setContent(e);
+
+            return new ResponseEntity<>(generalResDTO, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
-    public String getEmployeeEmail(){
-        return  email;
+    @GetMapping("/getEmployeeByEmail")
+    public ResponseEntity<GeneralResDTO> getEmployeeEmail(@RequestParam String email) {
+        GeneralResDTO generalResDTO = new GeneralResDTO();
+        try {
+            EmployeeDTO emp_res = employeeService.getEmployeeByEmail(email);
+            generalResDTO.setCode(ResponseCode.SUCCESS.getCode());
+            generalResDTO.setMessage(ResponseCode.SUCCESS.getMessage());
+            generalResDTO.setContent(emp_res);
+
+            return new ResponseEntity<>(generalResDTO, HttpStatus.ACCEPTED);
+        } catch (Exception e) {
+            generalResDTO.setCode(ResponseCode.INTERNAL_SERVER_ERROR.getCode());
+            generalResDTO.setMessage(ResponseCode.INTERNAL_SERVER_ERROR.getMessage());
+            generalResDTO.setContent(e);
+
+            return new ResponseEntity<>(generalResDTO, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
-    public String getEmployeeName(){
-        return EmployeeName;
+    @GetMapping("/getEmployeeByName")
+    public ResponseEntity<GeneralResDTO> getEmployeeName(@RequestParam String name) {
+        GeneralResDTO generalResDTO = new GeneralResDTO();
+        try {
+            EmployeeDTO emp_res = employeeService.getEmployeeByName(name);
+            generalResDTO.setCode(ResponseCode.SUCCESS.getCode());
+            generalResDTO.setMessage(ResponseCode.SUCCESS.getMessage());
+            generalResDTO.setContent(emp_res);
+
+            return new ResponseEntity<>(generalResDTO, HttpStatus.ACCEPTED);
+        } catch (Exception e) {
+            generalResDTO.setCode(ResponseCode.INTERNAL_SERVER_ERROR.getCode());
+            generalResDTO.setMessage(ResponseCode.INTERNAL_SERVER_ERROR.getMessage());
+            generalResDTO.setContent(e);
+
+            return new ResponseEntity<>(generalResDTO, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
+
     @PostMapping("/saveEmployee")
     public ResponseEntity<GeneralResDTO> postMethodName(@RequestBody EmployeeDTO employeeDTO) {
         GeneralResDTO generalResDTO = new GeneralResDTO();
