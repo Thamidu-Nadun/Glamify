@@ -1,0 +1,6 @@
+@import 'tailwindcss';
+
+body {
+  background: #dac9fa;
+  overflow-x: hidden;
+}
