@@ -1,1 +1,30 @@
-[{"role":"Admin","id":0,"name":"I Am The Nad","email":"a@live.com","password":"123"},{"role":"Admin","id":1,"name":"Alex","email":"a@live.com","password":"jenny123"},{"role":"Admin","id":2,"name":"Nadun","email":"a@live.com","password":"jenny123"},{"role":"Admin","id":4,"name":"Repper Seena","email":"ra@live.com","password":""}]
+[
+  {
+    "role": "Admin",
+    "id": 0,
+    "name": "I Am The Nad",
+    "email": "a@live.com",
+    "password": "123"
+  },
+  {
+    "role": "Admin",
+    "id": 1,
+    "name": "Alex",
+    "email": "a@live.com",
+    "password": "jenny123"
+  },
+  {
+    "role": "Admin",
+    "id": 2,
+    "name": "Nadun",
+    "email": "a@live.com",
+    "password": "jenny123"
+  },
+  {
+    "role": "Admin",
+    "id": 4,
+    "name": "Repper Seena",
+    "email": "ra@live.com",
+    "password": ""
+  }
+]
