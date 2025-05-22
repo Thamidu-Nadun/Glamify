@@ -59,6 +59,17 @@ public class CustomerRepo {
         return null;
     }
 
+    // Verify Customer
+    public Customer getCustomerByEmail(String email) {
+        for (Customer customer : customers) {
+            if (customer.getEmail().equalsIgnoreCase(email)) {
+                return customer;
+            }
+        }
+        return null;
+    }
+
+    // Delete Customer
     public boolean deleteCustomer(int id) {
         for (int i = 0; i < customers.size(); i++) {
             if (customers.get(i).getId() == id) {

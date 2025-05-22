@@ -16,4 +16,6 @@ import lombok.Setter;
 public class CustomerDTO extends User {
     private int phone;
     private List<AppointmentDTO> appointments;
+    private String password;
+
 }
