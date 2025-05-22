@@ -46,9 +46,13 @@ public class EmployeeController {
             return new ResponseEntity<>(generalResDTO, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-     //
-    public int getEmployeeid(){
+
+    public int getEmployeeId(){
         return Employeeid;
+    }
+
+    public String getEmployeeEmail(){
+        return  email;
     }
     @PostMapping("/saveEmployee")
     public ResponseEntity<GeneralResDTO> postMethodName(@RequestBody EmployeeDTO employeeDTO) {
