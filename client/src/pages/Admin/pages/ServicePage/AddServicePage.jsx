@@ -20,7 +20,7 @@ function AddServicePage() {
         <main className="p-6">
           <BreadCrumb
             url_1="/admin"
-            url_2="/admin/createService"
+            url_2="/admin/services/createService"
             Path_one="Admin"
             Path_two="Create Service"
           />

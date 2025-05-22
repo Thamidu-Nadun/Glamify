@@ -32,7 +32,7 @@ function ServiceTable() {
       const data = await response.json();
       if (data.code === 200) {
         setServices(data.content);
-        console.log('Fetched services:', data.content); // Log here after data is received
+        console.log('Fetched services:', data.content);
       } else {
         console.error('API returned an error:', data.message);
       }

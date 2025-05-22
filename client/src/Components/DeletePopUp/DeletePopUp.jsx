@@ -19,6 +19,7 @@ function DeletePopUp({ showModal, setShowModal, deleteItem, deleteID, onDeleteSu
 
       const result = await response.json();
       console.log(`Service with ID ${id} deleted successfully:`, result);
+      alert(`Service with ID ${id} deleted successfully`);
 
       if (onDeleteSuccess) {
         onDeleteSuccess(id);
