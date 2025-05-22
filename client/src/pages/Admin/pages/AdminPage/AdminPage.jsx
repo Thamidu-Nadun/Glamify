@@ -4,6 +4,7 @@ import Header from '../../Components/Header/Header';
 import BreadCrumb from '../../../../Components/BreadCrumb/BreadCrumb';
 import WelcomeGreet from '../../Components/WelcomeGreet/WelcomeGreet';
 import AdminTable from './components/AdminTable/AdminTable';
+import { Link } from 'react-router-dom';
 
 function AdminPage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -28,6 +29,8 @@ function AdminPage() {
 
           <div className="ml-2">
             <WelcomeGreet page="Admins" user="Jane" />
+            <Link to="createAdmin" className='mb-2 text-blue-400 cursor-pointer p-2 rounded-xl border-1 border-blue-400 w-fit hover:bg-blue-400 hover:text-blue-100 transition-all font-bold'>Create A Admin</Link>
+            <div className="divider w-full bg-blue-200 h-1 my-5"></div>
             <AdminTable />
           </div>
         </main>

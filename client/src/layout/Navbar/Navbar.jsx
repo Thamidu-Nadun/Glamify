@@ -25,6 +25,7 @@ function Navbar() {
             <LinkItem name="Dashboard" path="/admin" />
             <LinkItem name="Services" path="/service" />
             <LinkItem name="Contact" path="/contact" />
+            <LinkItem name="Feedback" path="/feedback" />
           </ul>
         </div>
 

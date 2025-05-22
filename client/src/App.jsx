@@ -20,6 +20,8 @@ import AdminPage from './pages/Admin/pages/AdminPage/AdminPage';
 import EditAdminPage from './pages/Admin/pages/AdminPage/EditAdminPage';
 import AppointmentPageSorted from './pages/Admin/pages/AppointmentPage/AppointmentPageSorted';
 import SignUp from './pages/SignUp/SignUp';
+import AdminSignUp from './pages/AdminSignUp/SignUp';
+import AddFeedback from './pages/Admin/pages/FeedbackPage/AddFeedback';
 
 function App() {
   return (
@@ -54,12 +56,15 @@ function App() {
       {/* Feedback */}
       <Route path="/admin/feedbacks" element={<FeedbackPage />} />
       <Route path="/admin/feedbacks/edit" element={<EditEmployeePage />} />
+      <Route path='/feedback' element={<AddFeedback />} />
       <Route path="/adminTest" element={<AdminTest />} />
       <Route path="/pop" element={<DeletePopUp />} />
       <Route path="/404" element={<NotFound />} />
       {/* Admin */}
       <Route path="/admin/admins" element={<AdminPage />} />
       <Route path="/admin/admins/edit" element={<EditAdminPage />} />
+      <Route path="/admin/admins/createAdmin" element={<AdminSignUp />} />
+
       {/* Sorted */}
       <Route
         path="/admin/appointments/sort"

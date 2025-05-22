@@ -94,14 +94,35 @@ function EditEmployee() {
     }
   };
 
-  const saveData = () => {
+  const saveData = async () => {
     const cleaned = {
       ...employee,
       phone: employee.phone.filter((p) => p.trim() !== ''),
       services: employee.services.filter((s) => s.trim() !== ''),
     };
-    console.log('Data saved:', cleaned);
+  
+    try {
+      const response = await fetch(`http://127.0.0.1:8080/api/employee/updateEmployee/${employee.id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(cleaned),
+      });
+  
+      if (!response.ok) {
+        throw new Error('Failed to update employee');
+      }
+  
+      const result = await response.json();
+      console.log('Employee updated successfully:', result);
+      alert('Employee updated successfully!');
+    } catch (error) {
+      console.error('Error updating employee:', error);
+      alert('Failed to update employee');
+    }
   };
+  
 
   return (
     <div className="mx-auto max-w-xl p-6">

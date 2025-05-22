@@ -15,22 +15,21 @@ function From() {
       const loginData = await loginRes.json();
   
       if (loginData.code === 200 && loginData.content === true) {
-        // Save login status
         Cookies.set('isLoggedIn', 'true', { expires: 1 });
   
-        // Fetch customer data by email
         const userRes = await fetch(
           `http://127.0.0.1:8080/api/customers/getCustomerByEmail?email=${encodeURIComponent(email)}`
         );
         const userData = await userRes.json();
   
         if (userData.code === 200 && userData.content) {
-          // Save user data (remove password if needed)
           const { password, ...safeUserData } = userData.content;
           Cookies.set('userData', JSON.stringify(safeUserData), { expires: 1 });
   
           alert('Login successful!');
-          // window.location.href = '/dashboard'; // optional redirect
+          setTimeout(() => {
+            window.location.href = '/';
+          }, 2000);
         } else {
           alert('Failed to fetch user data.');
         }

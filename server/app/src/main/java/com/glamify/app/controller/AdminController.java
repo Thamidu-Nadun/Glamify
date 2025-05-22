@@ -15,8 +15,8 @@ import com.glamify.app.dto.admin.AdminDTO;
 import com.glamify.app.dto.admin.AdminResDTO;
 import com.glamify.app.entity.Appointment;
 import com.glamify.app.service.AdminService;
+import com.glamify.app.service.AppointmentService;
 import com.glamify.app.utils.ResponseCode;
-import com.glamify.app.utils.TestAppointmentList;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,10 +26,13 @@ import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
 @RequestMapping("/api/admin")
-@CrossOrigin
+@CrossOrigin(origins = "*")
 public class AdminController {
     @Autowired
     private AdminService adminService;
+
+    @Autowired
+    private AppointmentService appointmentService;
 
     @GetMapping("/getAdmin")
     public ResponseEntity<AdminResDTO> getAdmin() {
@@ -95,8 +98,7 @@ public class AdminController {
     public ResponseEntity<GeneralResDTO> getMethodName() {
         GeneralResDTO res = new GeneralResDTO();
         try {
-            TestAppointmentList testAppointmentList = new TestAppointmentList();
-            List<Appointment> appointments = testAppointmentList.getAppointments();
+            List<Appointment> appointments = appointmentService.getAllAppointments();
 
             List<Appointment> sortedAppointments = adminService.getSortedAppointments(appointments);
             res.setCode(ResponseCode.ACCEPTED.getCode());
