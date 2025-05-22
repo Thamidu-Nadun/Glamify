@@ -5,10 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="61c4b74c-52d0-4c9b-968b-89a87d68cab5" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/glamify/app/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/glamify/app/controller/AdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/glamify/app/dto/AdminDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/glamify/app/entity/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/glamify/app/entity/Admin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/glamify/app/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/glamify/app/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +23,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="client" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="MacroExpansionManager">

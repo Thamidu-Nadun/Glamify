@@ -78,6 +78,30 @@ public class CustomerController {
         }
     }
 
+    @PostMapping("/login")
+    public ResponseEntity<GeneralResDTO> loginCustomer(@RequestParam String email, @RequestParam String password) {
+        GeneralResDTO generalResDTO = new GeneralResDTO();
+        try {
+            boolean isValid = customerService.validateLogin(email, password);
+            if (isValid) {
+                generalResDTO.setCode(ResponseCode.SUCCESS.getCode());
+                generalResDTO.setMessage("Login successful.");
+                generalResDTO.setContent(true);
+                return new ResponseEntity<>(generalResDTO, HttpStatus.OK);
+            } else {
+                generalResDTO.setCode(ResponseCode.UNAUTHORIZED.getCode());
+                generalResDTO.setMessage("Invalid email or password.");
+                generalResDTO.setContent(false);
+                return new ResponseEntity<>(generalResDTO, HttpStatus.UNAUTHORIZED);
+            }
+        } catch (Exception e) {
+            generalResDTO.setCode(ResponseCode.INTERNAL_SERVER_ERROR.getCode());
+            generalResDTO.setMessage(ResponseCode.INTERNAL_SERVER_ERROR.getMessage());
+            generalResDTO.setContent(e.getMessage());
+            return new ResponseEntity<>(generalResDTO, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
     @PutMapping("/updateCustomer/{id}")
     public ResponseEntity<GeneralResDTO> updateCustomer(@PathVariable int id, @RequestBody CustomerDTO customer) {
         GeneralResDTO generalResDTO = new GeneralResDTO();
