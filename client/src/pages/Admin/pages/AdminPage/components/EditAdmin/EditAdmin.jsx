@@ -1,13 +1,4 @@
-import {
-  User,
-  Phone,
-  Mail,
-  Shield,
-  Star,
-  Trash2,
-  Plus,
-  Clock,
-} from 'lucide-react';
+import { User, Mail, Shield, Star, Clock } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
@@ -19,7 +10,8 @@ function EditAdmin() {
     id: '',
     name: '',
     email: '',
-    phone: [''],
+    phone: '',
+    password: '',
     role: '',
     accessLevel: '',
     lastLogin: '',
@@ -33,7 +25,8 @@ function EditAdmin() {
       setAdmin({
         ...defaultAdmin,
         ...adminData,
-        phone: adminData.phone?.length ? adminData.phone : [''],
+        phone: adminData.phone || '',
+        password: '', // keep password empty for security, or you can handle differently
       });
     }
   }, [adminData]);
@@ -43,49 +36,51 @@ function EditAdmin() {
     setAdmin((prev) => ({ ...prev, [name]: value }));
   };
 
-  const updatePhone = (index, value) => {
-    const updated = [...admin.phone];
-    updated[index] = value;
-    setAdmin((prev) => ({ ...prev, phone: updated }));
-  };
-
-  const addPhone = () => {
-    setAdmin((prev) => ({ ...prev, phone: [...prev.phone, ''] }));
-  };
-
-  const removePhone = (index) => {
-    setAdmin((prev) => ({
-      ...prev,
-      phone: prev.phone.filter((_, i) => i !== index),
-    }));
-  };
-
   const handleReset = () => {
     if (adminData) {
       setAdmin({
         ...defaultAdmin,
         ...adminData,
-        phone: adminData.phone?.length ? adminData.phone : [''],
+        phone: adminData.phone || '',
+        password: '',
       });
     } else {
       setAdmin(defaultAdmin);
     }
   };
 
-  const handleSave = () => {
+  const handleSave = async () => {
     const cleaned = {
       ...admin,
-      phone: admin.phone.filter((p) => p.trim() !== ''),
+      phone: admin.phone.trim(),
+      accessLevel: admin.accessLevel || '',
+      status: admin.status,
     };
-    console.log('Admin saved:', cleaned);
-    // TODO: Submit cleaned data to API
+    const url = `http://127.0.0.1:8080/api/admin/updateAdmin/${admin.id}`;
+
+    try {
+      const res = await fetch(url, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(cleaned),
+      });
+      if (!res.ok) {
+        throw new Error('Failed to update admin');
+      }
+      const data = await res.json();
+      console.log('Admin updated:', data);
+      alert('Admin updated successfully');
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (
     <div className="mx-auto max-w-xl px-4 py-6">
       <h2 className="mb-6 text-2xl font-bold text-indigo-700">Edit Admin</h2>
-
-      <form className="space-y-5">
+      <form className="space-y-5" onSubmit={e => e.preventDefault()}>
         <Field label="Admin ID">
           <input
             type="text"
@@ -117,38 +112,26 @@ function EditAdmin() {
           />
         </Field>
 
-        <Field label="Phone Numbers">
-          {admin.phone.map((item, index) => (
-            <div
-              key={index}
-              className="flex items-center space-x-2 rounded-md border border-gray-200 bg-white px-3 py-2"
-            >
-              <Phone className="text-gray-500" />
-              <input
-                type="text"
-                value={item}
-                placeholder="Phone"
-                className="w-full bg-transparent outline-none"
-                onChange={(e) => updatePhone(index, e.target.value)}
-              />
-              {admin.phone.length > 1 && (
-                <button
-                  type="button"
-                  onClick={() => removePhone(index)}
-                  className="text-red-500 hover:text-red-700"
-                >
-                  <Trash2 size={16} />
-                </button>
-              )}
-            </div>
-          ))}
-          <button
-            type="button"
-            onClick={addPhone}
-            className="mt-2 inline-flex items-center text-sm text-indigo-600 hover:underline"
-          >
-            <Plus size={16} className="mr-1" /> Add Phone
-          </button>
+        <Field label="Phone" icon={<User />}>
+          <input
+            type="text"
+            name="phone"
+            placeholder="Enter phone number"
+            className="w-full bg-transparent outline-none"
+            value={admin.phone}
+            onChange={handleChange}
+          />
+        </Field>
+
+        <Field label="Password">
+          <input
+            type="password"
+            name="password"
+            placeholder="Enter new password"
+            className="w-full bg-transparent outline-none"
+            value={admin.password}
+            onChange={handleChange}
+          />
         </Field>
 
         <Field label="Role" icon={<Shield />}>
