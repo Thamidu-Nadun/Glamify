@@ -1,34 +1,94 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import TagButton from '../../../Components/TagButton/TagButton';
 import Button from '../../../Components/Button/Button';
 
-const services = [
-  { id: 1, name: 'Hair Cut' },
-  { id: 2, name: 'Hair Color' },
-  { id: 3, name: 'Facial' },
-  { id: 4, name: 'Manicure' },
-  { id: 5, name: 'Pedicure' },
-  { id: 6, name: 'Massage' },
-  { id: 7, name: 'Waxing' },
-  { id: 8, name: 'Makeup' },
-  { id: 9, name: 'Eyebrow Threading' },
-];
-
-const employees = [
-  { id: 1, name: 'John Doe' },
-  { id: 2, name: 'Jane Smith' },
-  { id: 3, name: 'Mike Johnson' },
-  { id: 4, name: 'Emily Davis' },
-];
-
 const styles = {
-  input:
-    'rounded-xl border border-black px-3 py-1.5 mt-1.5 text-sm outline-none w-full',
+  input: 'rounded-xl border border-black px-3 py-1.5 mt-1.5 text-sm outline-none w-full',
   select: 'w-full h-10 border border-black pl-5 rounded-xl my-3',
   option: 'bg-amber-300/15 outline-none',
 };
 
 function Appointment() {
+  const cutId = 2;
+
+  const [services, setServices] = useState([]);
+  const [employees, setEmployees] = useState([]);
+
+  const [date, setDate] = useState('');
+  const [time, setTime] = useState('');
+  const [serviceId, setServiceId] = useState('');
+  const [employeeId, setEmployeeId] = useState('');
+  const [duration, setDuration] = useState(0);
+
+  useEffect(() => {
+    fetch('http://127.0.0.1:8080/api/employee/getEmployees')
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.code === 200 && Array.isArray(data.content)) {
+          setEmployees(data.content);
+        }
+      });
+
+    fetch('http://127.0.0.1:8080/api/services/getServices')
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.code === 200 && Array.isArray(data.content)) {
+          setServices(data.content);
+        }
+      });
+  }, []);
+
+  useEffect(() => {
+    const selectedService = services.find((s) => s.id === parseInt(serviceId));
+    if (selectedService) {
+      setDuration(selectedService.duration);
+    } else {
+      setDuration(0);
+    }
+  }, [serviceId, services]);
+
+  const handleSubmit = async () => {
+    if (!date || !time || !serviceId || !employeeId) {
+      alert('Please fill in all fields');
+      return;
+    }
+
+    const requestData = {
+      id: 0,
+      cus_id: cutId,
+      service_id: parseInt(serviceId),
+      date: date,
+      status: true,
+      payment_status: false,
+      duration: duration,
+    };
+
+    try {
+      const response = await fetch('http://127.0.0.1:8080/api/appointment/saveAppointment', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(requestData),
+      });
+
+      const result = await response.json();
+      if (result.code === 200) {
+        alert('Appointment saved successfully!');
+        setDate('');
+        setTime('');
+        setServiceId('');
+        setEmployeeId('');
+        setDuration(0);
+      } else {
+        alert('Failed to save appointment.');
+      }
+    } catch (error) {
+      console.error('Error saving appointment:', error);
+      alert('An error occurred while saving appointment.');
+    }
+  };
+
   return (
     <div className="flex h-[80vh] w-screen my-5">
       <div className="h-full w-full p-5 hidden lg:block">
@@ -51,40 +111,64 @@ function Appointment() {
           </div>
           <div className="form mt-4 flex w-75 flex-col items-center">
             <div className="flex w-full justify-center gap-5">
-              <input id="date" type="date" className={styles.input} />
-              <input id="time" type="time" className={styles.input} />
+              <input
+                id="date"
+                type="date"
+                className={styles.input}
+                value={date}
+                onChange={(e) => setDate(e.target.value)}
+              />
+              <input
+                id="time"
+                type="time"
+                className={styles.input}
+                value={time}
+                onChange={(e) => setTime(e.target.value)}
+              />
             </div>
-            <select name="service" id="service" className={styles.select}>
-              {services.map((service) => {
-                return (
-                  <option
-                    key={service.id}
-                    value={service.name}
-                    className={styles.option}
-                  >
-                    {service.name}
-                  </option>
-                );
-              })}
+            <select
+              name="service"
+              id="service"
+              className={styles.select}
+              value={serviceId}
+              onChange={(e) => setServiceId(e.target.value)}
+            >
+              <option value="">Select Service</option>
+              {services.map((service) => (
+                <option
+                  key={service.id}
+                  value={service.id}
+                  className={styles.option}
+                >
+                  {service.name}
+                </option>
+              ))}
             </select>
-            <select name="employee" id="employee" className={styles.select}>
-              {employees.map((employee) => {
-                return (
-                  <option
-                    key={employee.id}
-                    value={employee.name}
-                    className={styles.option}
-                  >
-                    {employee.name}
-                  </option>
-                );
-              })}
+            <select
+              name="employee"
+              id="employee"
+              className={styles.select}
+              value={employeeId}
+              onChange={(e) => setEmployeeId(e.target.value)}
+            >
+              <option value="">Select Employee</option>
+              {employees.map((employee) => (
+                <option
+                  key={employee.id}
+                  value={employee.id}
+                  className={styles.option}
+                >
+                  {employee.name}
+                </option>
+              ))}
             </select>
-            <Button
-              title="Confirm Appointment"
-              isFullWidth="true"
-              bgColor="bg-[#eea239]"
-            />
+            <div onClick={handleSubmit} className="w-full">
+              <Button
+                title="Confirm Appointment"
+                isFullWidth="true"
+                bgColor="bg-[#eea239]"
+              />
+            </div>
           </div>
         </div>
       </div>
