@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "client": "cd client && npm start",
-    "format": "prettier --write '**/*.{js,jsx,ts,tsx,json,css,html,java,jsp}'"
+    "format": "prettier --write '**/*.{js,jsx,ts,tsx,json,css,html}'"
   },
   "keywords": [
     "salon",

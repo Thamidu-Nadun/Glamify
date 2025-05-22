@@ -60,6 +60,7 @@ function Appointment() {
       cus_id: cutId,
       service_id: parseInt(serviceId),
       date: date,
+      time: time+':00',
       status: true,
       payment_status: false,
       duration: duration,
