@@ -1,4 +1,4 @@
-import { User, Phone, Mail, Plus, Trash2 } from 'lucide-react';
+import { User, Phone, Mail } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
@@ -10,7 +10,7 @@ function EditClient() {
     id: '',
     name: '',
     email: '',
-    phone: [''],
+    phone: '',
   });
 
   useEffect(() => {
@@ -19,7 +19,7 @@ function EditClient() {
         id: clientData.id || '',
         name: clientData.name || '',
         email: clientData.email || '',
-        phone: clientData.phone?.length ? clientData.phone : [''],
+        phone: clientData.phone || '',
       });
     }
   }, [clientData]);
@@ -29,51 +29,49 @@ function EditClient() {
     setClient((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handlePhoneChange = (index, value) => {
-    const updatedPhones = [...client.phone];
-    updatedPhones[index] = value;
-    setClient((prev) => ({ ...prev, phone: updatedPhones }));
-  };
-
-  const addPhoneField = () => {
-    setClient((prev) => ({ ...prev, phone: [...prev.phone, ''] }));
-  };
-
-  const removePhoneField = (index) => {
-    setClient((prev) => ({
-      ...prev,
-      phone: prev.phone.filter((_, i) => i !== index),
-    }));
-  };
-
   const handleReset = () => {
     if (clientData) {
       setClient({
         id: clientData.id || '',
         name: clientData.name || '',
         email: clientData.email || '',
-        phone: clientData.phone?.length ? clientData.phone : [''],
+        phone: clientData.phone || '',
       });
     } else {
       setClient({
         id: '',
         name: '',
         email: '',
-        phone: [''],
+        phone: '',
       });
     }
   };
 
-  const saveData = () => {
-    console.log('Data saved:', client);
-    // Your save logic here
+  const saveData = async () => {
+    try {
+      const response = await fetch(`http://127.0.0.1:8080/api/customers/updateCustomer/${client.id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(client),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to update client');
+      }
+
+      const result = await response.json();
+      console.log('Client updated:', result);
+      alert('Client updated successfully!');
+    } catch (error) {
+      console.error('Error saving client:', error);
+    }
   };
 
   return (
     <div className="mx-auto max-w-xl p-6">
-      <h2 className="mb-6 text-2xl font-semibold text-indigo-700">
-        Edit Client
-      </h2>
+      <h2 className="mb-6 text-2xl font-semibold text-indigo-700">Edit Client</h2>
 
       <form className="space-y-4">
         {/* ID (readonly) */}
@@ -119,41 +117,20 @@ function EditClient() {
           </div>
         </div>
 
-        {/* Phones */}
+        {/* Phone */}
         <div className="space-y-1">
-          <label className="text-sm text-gray-600">Phone Numbers</label>
-          {client.phone.map((phone, index) => (
-            <div
-              key={index}
-              className="flex items-center space-x-2 rounded-md border border-gray-200 bg-white px-3 py-2"
-            >
-              <Phone className="text-gray-500" />
-              <input
-                type="text"
-                className="w-full bg-transparent outline-none"
-                placeholder="Enter phone number"
-                value={phone}
-                onChange={(e) => handlePhoneChange(index, e.target.value)}
-              />
-              {client.phone.length > 1 && (
-                <button
-                  type="button"
-                  onClick={() => removePhoneField(index)}
-                  className="text-red-500 hover:text-red-700"
-                  title="Remove"
-                >
-                  <Trash2 size={16} />
-                </button>
-              )}
-            </div>
-          ))}
-          <button
-            type="button"
-            onClick={addPhoneField}
-            className="mt-2 inline-flex items-center text-sm text-indigo-600 hover:underline"
-          >
-            <Plus size={16} className="mr-1" /> Add Phone Number
-          </button>
+          <label className="text-sm text-gray-600">Phone</label>
+          <div className="flex items-center rounded-md border border-gray-200 bg-white px-3 py-2">
+            <Phone className="mr-2 text-gray-500" />
+            <input
+              type="text"
+              name="phone"
+              className="w-full bg-transparent outline-none"
+              placeholder="Enter phone number"
+              value={client.phone}
+              onChange={handleChange}
+            />
+          </div>
         </div>
 
         {/* Buttons */}

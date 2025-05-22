@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Trash } from 'lucide-react';
-import DeletePopUp from '../../../../../../Components/DeletePopUp/DeletePopUp';
+import DeletePopUp from '../../../../../../Components/DeletePopUp/DeletePopUpCustomer';
 
 function DeleteButton({ client }) {
   const [showModal, setShowModal] = useState(false);

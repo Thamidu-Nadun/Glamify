@@ -1,5 +1,6 @@
 package com.glamify.app.dto;
 
+import java.sql.Time;
 import java.util.Date;
 
 import lombok.AllArgsConstructor;
@@ -14,6 +15,7 @@ public class AppointmentDTO {
     private int cut_id;
     private int service_id;
     private Date date;
+    private Time time;
     private boolean status;
     private boolean payment_status;
     private int duration;
