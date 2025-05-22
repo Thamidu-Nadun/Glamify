@@ -19,7 +19,6 @@ public class CustomerService {
     @Autowired
     ModelMapper modelMapper;
 
-
     public boolean validateLogin(String email, String password) {
         Customer customer = customerRepo.getCustomerByEmail(email);
         if (customer != null && customer.getPassword().equals(password)) {
@@ -31,6 +30,11 @@ public class CustomerService {
     // get Customers
     public List<Customer> getAllCustomers() {
         return customerRepo.getAllCustomers();
+    }
+
+    // get Customer by Email
+    public Customer getCustomerByEmail(String email) {
+        return customerRepo.getCustomerByEmail(email);
     }
 
     // add Customer

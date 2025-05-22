@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import TagButton from '../../../Components/TagButton/TagButton';
 import Button from '../../../Components/Button/Button';
+import Cookies from 'js-cookie';
 
 const styles = {
   input: 'rounded-xl border border-black px-3 py-1.5 mt-1.5 text-sm outline-none w-full',
@@ -9,7 +10,8 @@ const styles = {
 };
 
 function Appointment() {
-  const cutId = 2;
+  const userData = JSON.parse(Cookies.get('userData') || '{}');
+  const cutId = userData.id || 0;
 
   const [services, setServices] = useState([]);
   const [employees, setEmployees] = useState([]);

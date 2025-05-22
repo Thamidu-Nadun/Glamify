@@ -14,6 +14,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/customers")
 public class CustomerController {
@@ -53,9 +55,31 @@ public class CustomerController {
         return null;
     }
 
-    @GetMapping("/getCustomerByEmail/{email}")
+    @GetMapping("/getCustomerByEmail")
     public ResponseEntity<GeneralResDTO> getCustomerByEmail(@RequestParam String email) {
-        return null;
+        GeneralResDTO generalResDTO = new GeneralResDTO();
+        try {
+            Customer customer_res = customerService.getCustomerByEmail(email);
+            if (customer_res != null) {
+                generalResDTO.setCode(ResponseCode.SUCCESS.getCode());
+                generalResDTO.setMessage(ResponseCode.SUCCESS.getMessage());
+                generalResDTO.setContent(customer_res);
+
+                return new ResponseEntity<>(generalResDTO, HttpStatus.ACCEPTED);
+            } else {
+                generalResDTO.setCode(ResponseCode.NOT_FOUND.getCode());
+                generalResDTO.setMessage("Customer not found.");
+                generalResDTO.setContent(null);
+
+                return new ResponseEntity<>(generalResDTO, HttpStatus.NOT_FOUND);
+            }
+        } catch (Exception e) {
+            generalResDTO.setCode(ResponseCode.INTERNAL_SERVER_ERROR.getCode());
+            generalResDTO.setMessage(ResponseCode.INTERNAL_SERVER_ERROR.getMessage());
+            generalResDTO.setContent(e);
+
+            return new ResponseEntity<>(generalResDTO, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @PostMapping("/saveCustomer")
@@ -78,7 +102,7 @@ public class CustomerController {
         }
     }
 
-    @PostMapping("/login")
+    @GetMapping("/login")
     public ResponseEntity<GeneralResDTO> loginCustomer(@RequestParam String email, @RequestParam String password) {
         GeneralResDTO generalResDTO = new GeneralResDTO();
         try {
