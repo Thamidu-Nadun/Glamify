@@ -54,6 +54,10 @@ public class EmployeeController {
     public String getEmployeeEmail(){
         return  email;
     }
+
+    public String getEmployeeName(){
+        return EmployeeName;
+    }
     @PostMapping("/saveEmployee")
     public ResponseEntity<GeneralResDTO> postMethodName(@RequestBody EmployeeDTO employeeDTO) {
         GeneralResDTO generalResDTO = new GeneralResDTO();
