@@ -1,190 +1,134 @@
 {
-	"info": {
-		"_postman_id": "d9fc2148-59a8-4b8f-99c1-c5066c5cce64",
-		"name": "Customer",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "33288631"
-	},
-	"item": [
-		{
-			"name": "get Customer",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://127.0.0.1:8080/api/customers/getCustomer",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"customers",
-						"getCustomer"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "save Customer",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n  \"id\": 51,\n  \"name\": \"Client 2025\", \n  \"email\": \"1c@info.com\",\n  \"password\": \"123\",\n  \"phone\": 12201\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://127.0.0.1:8080/api/customers/saveCustomer",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"customers",
-						"saveCustomer"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Update Customer",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n      \"id\": 1,\n      \"name\": \"Client John\",\n      \"email\": \"Client@info.com\",\n      \"password\": \"123\",\n      \"phone\": 12201,\n      \"appointments\": null\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://127.0.0.1:8080/api/customers/updateCustomer/1",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"customers",
-						"updateCustomer",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Delete Customer",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "http://127.0.0.1:8080/api/customers/deleteCustomer/2",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"customers",
-						"deleteCustomer",
-						"2"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Login",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://127.0.0.1:8080/api/customers/login?email=c@info.com&password=123",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"customers",
-						"login"
-					],
-					"query": [
-						{
-							"key": "email",
-							"value": "c@info.com"
-						},
-						{
-							"key": "password",
-							"value": "123"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get Customer by Email",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://127.0.0.1:8080/api/customers/getCustomerByEmail?email=c@info.com",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"customers",
-						"getCustomerByEmail"
-					],
-					"query": [
-						{
-							"key": "email",
-							"value": "c@info.com"
-						}
-					]
-				}
-			},
-			"response": []
-		}
-	]
+  "info": {
+    "_postman_id": "d9fc2148-59a8-4b8f-99c1-c5066c5cce64",
+    "name": "Customer",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "33288631"
+  },
+  "item": [
+    {
+      "name": "get Customer",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8080/api/customers/getCustomer",
+          "protocol": "http",
+          "host": ["127", "0", "0", "1"],
+          "port": "8080",
+          "path": ["api", "customers", "getCustomer"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "save Customer",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"id\": 51,\n  \"name\": \"Client 2025\", \n  \"email\": \"1c@info.com\",\n  \"password\": \"123\",\n  \"phone\": 12201\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8080/api/customers/saveCustomer",
+          "protocol": "http",
+          "host": ["127", "0", "0", "1"],
+          "port": "8080",
+          "path": ["api", "customers", "saveCustomer"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update Customer",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n      \"id\": 1,\n      \"name\": \"Client John\",\n      \"email\": \"Client@info.com\",\n      \"password\": \"123\",\n      \"phone\": 12201,\n      \"appointments\": null\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8080/api/customers/updateCustomer/1",
+          "protocol": "http",
+          "host": ["127", "0", "0", "1"],
+          "port": "8080",
+          "path": ["api", "customers", "updateCustomer", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete Customer",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8080/api/customers/deleteCustomer/2",
+          "protocol": "http",
+          "host": ["127", "0", "0", "1"],
+          "port": "8080",
+          "path": ["api", "customers", "deleteCustomer", "2"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Login",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8080/api/customers/login?email=c@info.com&password=123",
+          "protocol": "http",
+          "host": ["127", "0", "0", "1"],
+          "port": "8080",
+          "path": ["api", "customers", "login"],
+          "query": [
+            {
+              "key": "email",
+              "value": "c@info.com"
+            },
+            {
+              "key": "password",
+              "value": "123"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Customer by Email",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8080/api/customers/getCustomerByEmail?email=c@info.com",
+          "protocol": "http",
+          "host": ["127", "0", "0", "1"],
+          "port": "8080",
+          "path": ["api", "customers", "getCustomerByEmail"],
+          "query": [
+            {
+              "key": "email",
+              "value": "c@info.com"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
 }

@@ -1,159 +1,112 @@
 {
-	"info": {
-		"_postman_id": "22218600-eb64-4719-a1cf-e6d1d11461cf",
-		"name": "Admin",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "33288631"
-	},
-	"item": [
-		{
-			"name": "Get All Admins",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://127.0.0.1:8080/api/admin/getAdmin",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"admin",
-						"getAdmin"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Update Admin By ID",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n      \"id\": 1120,\n      \"name\": \"Alex\",\n      \"email\": \"alex@gmail.com\",\n      \"password\": \"superdupersecurepassword\",\n      \"role\": \"Moderator\"\n    }",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://127.0.0.1:8080/api/admin/updateAdmin/1",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"admin",
-						"updateAdmin",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Update Admin By ID",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n      \"id\": 1120,\n      \"name\": \"Alex\",\n      \"email\": \"alex@gmail.com\",\n      \"password\": \"superdupersecurepassword\",\n      \"role\": \"Moderator\"\n    }",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://127.0.0.1:8080/api/admin/updateAdmin/1",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"admin",
-						"updateAdmin",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Save Admin",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n      \"id\": 230,\n      \"name\": \"John\",\n      \"email\": \"jh@live.com\",\n      \"password\": \"JHS\",\n      \"role\": \"Admin\"\n    }",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://127.0.0.1:8080/api/admin/saveAdmin",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"admin",
-						"saveAdmin"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Ger Sorted Appointments",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://127.0.0.1:8080/api/admin/getSortedAppointments",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"admin",
-						"getSortedAppointments"
-					]
-				}
-			},
-			"response": []
-		}
-	]
+  "info": {
+    "_postman_id": "22218600-eb64-4719-a1cf-e6d1d11461cf",
+    "name": "Admin",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "33288631"
+  },
+  "item": [
+    {
+      "name": "Get All Admins",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8080/api/admin/getAdmin",
+          "protocol": "http",
+          "host": ["127", "0", "0", "1"],
+          "port": "8080",
+          "path": ["api", "admin", "getAdmin"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update Admin By ID",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n      \"id\": 1120,\n      \"name\": \"Alex\",\n      \"email\": \"alex@gmail.com\",\n      \"password\": \"superdupersecurepassword\",\n      \"role\": \"Moderator\"\n    }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8080/api/admin/updateAdmin/1",
+          "protocol": "http",
+          "host": ["127", "0", "0", "1"],
+          "port": "8080",
+          "path": ["api", "admin", "updateAdmin", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update Admin By ID",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n      \"id\": 1120,\n      \"name\": \"Alex\",\n      \"email\": \"alex@gmail.com\",\n      \"password\": \"superdupersecurepassword\",\n      \"role\": \"Moderator\"\n    }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8080/api/admin/updateAdmin/1",
+          "protocol": "http",
+          "host": ["127", "0", "0", "1"],
+          "port": "8080",
+          "path": ["api", "admin", "updateAdmin", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Save Admin",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n      \"id\": 230,\n      \"name\": \"John\",\n      \"email\": \"jh@live.com\",\n      \"password\": \"JHS\",\n      \"role\": \"Admin\"\n    }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8080/api/admin/saveAdmin",
+          "protocol": "http",
+          "host": ["127", "0", "0", "1"],
+          "port": "8080",
+          "path": ["api", "admin", "saveAdmin"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Ger Sorted Appointments",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8080/api/admin/getSortedAppointments",
+          "protocol": "http",
+          "host": ["127", "0", "0", "1"],
+          "port": "8080",
+          "path": ["api", "admin", "getSortedAppointments"]
+        }
+      },
+      "response": []
+    }
+  ]
 }
