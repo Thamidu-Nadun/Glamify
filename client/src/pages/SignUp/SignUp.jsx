@@ -7,14 +7,14 @@ function SignUp() {
     name: '',
     email: '',
     password: '',
-    phone: ''
+    phone: '',
   });
 
   const handleChange = (e) => {
     const { id, value } = e.target;
     setFormData((prev) => ({
       ...prev,
-      [id]: value
+      [id]: value,
     }));
   };
 
@@ -25,17 +25,20 @@ function SignUp() {
       name: formData.name,
       email: formData.email,
       password: formData.password,
-      phone: parseInt(formData.phone) || 0
+      phone: parseInt(formData.phone) || 0,
     };
 
     try {
-      const res = await fetch('http://127.0.0.1:8080/api/customers/saveCustomer', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
+      const res = await fetch(
+        'http://127.0.0.1:8080/api/customers/saveCustomer',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(payload),
         },
-        body: JSON.stringify(payload)
-      });
+      );
 
       if (res.ok) {
         alert('Account created successfully!');
@@ -55,15 +58,15 @@ function SignUp() {
   return (
     <div>
       <Navbar />
-      <main className="w-full flex justify-center py-10">
-        <div className="bg-white text-gray-500 max-w-96 mx-4 md:p-6 p-4 text-left text-sm rounded-xl shadow-[0px_0px_10px_0px] shadow-black/10">
-          <h2 className="text-2xl font-semibold mb-6 text-center text-gray-800">
+      <main className="flex w-full justify-center py-10">
+        <div className="mx-4 max-w-96 rounded-xl bg-white p-4 text-left text-sm text-gray-500 shadow-[0px_0px_10px_0px] shadow-black/10 md:p-6">
+          <h2 className="mb-6 text-center text-2xl font-semibold text-gray-800">
             Create a new account
           </h2>
           <form onSubmit={handleSubmit}>
             <input
               id="name"
-              className="w-full bg-transparent border my-3 border-gray-500/30 outline-none rounded-full py-2.5 px-4"
+              className="my-3 w-full rounded-full border border-gray-500/30 bg-transparent px-4 py-2.5 outline-none"
               type="text"
               placeholder="Enter your Name"
               value={formData.name}
@@ -72,7 +75,7 @@ function SignUp() {
             />
             <input
               id="email"
-              className="w-full bg-transparent border my-3 border-gray-500/30 outline-none rounded-full py-2.5 px-4"
+              className="my-3 w-full rounded-full border border-gray-500/30 bg-transparent px-4 py-2.5 outline-none"
               type="email"
               placeholder="Enter your email"
               value={formData.email}
@@ -81,7 +84,7 @@ function SignUp() {
             />
             <input
               id="password"
-              className="w-full bg-transparent border mt-1 border-gray-500/30 outline-none rounded-full py-2.5 px-4"
+              className="mt-1 w-full rounded-full border border-gray-500/30 bg-transparent px-4 py-2.5 outline-none"
               type="password"
               placeholder="Enter your password"
               value={formData.password}
@@ -90,7 +93,7 @@ function SignUp() {
             />
             <input
               id="phone"
-              className="w-full bg-transparent border my-3 border-gray-500/30 outline-none rounded-full py-2.5 px-4"
+              className="my-3 w-full rounded-full border border-gray-500/30 bg-transparent px-4 py-2.5 outline-none"
               type="text"
               pattern="\d{10}"
               maxLength="10"
@@ -101,12 +104,12 @@ function SignUp() {
             />
             <button
               type="submit"
-              className="w-full mb-3 bg-indigo-500 py-2.5 rounded-full text-white"
+              className="mb-3 w-full rounded-full bg-indigo-500 py-2.5 text-white"
             >
               Sign up
             </button>
           </form>
-          <p className="text-center mt-4">
+          <p className="mt-4 text-center">
             Already have an account?{' '}
             <a href="/login" className="text-blue-500 underline">
               Login
@@ -114,7 +117,7 @@ function SignUp() {
           </p>
           <button
             type="button"
-            className="w-full flex items-center gap-2 justify-center mt-5 bg-black py-2.5 rounded-full text-white"
+            className="mt-5 flex w-full items-center justify-center gap-2 rounded-full bg-black py-2.5 text-white"
           >
             <img
               className="h-4 w-4"
@@ -125,7 +128,7 @@ function SignUp() {
           </button>
           <button
             type="button"
-            className="w-full flex items-center gap-2 justify-center my-3 bg-white border border-gray-500/30 py-2.5 rounded-full text-gray-800"
+            className="my-3 flex w-full items-center justify-center gap-2 rounded-full border border-gray-500/30 bg-white py-2.5 text-gray-800"
           >
             <img
               className="h-4 w-4"

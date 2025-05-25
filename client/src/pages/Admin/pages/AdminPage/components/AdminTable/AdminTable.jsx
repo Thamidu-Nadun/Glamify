@@ -6,10 +6,10 @@ function AdminTable() {
   const [admin, setAdmin] = React.useState([]);
 
   const handleDelete = (id) => {
-    setAdmin(prev => prev.filter(service => service.id !== id));
+    setAdmin((prev) => prev.filter((service) => service.id !== id));
   };
 
-  const apiUrl = "http://127.0.0.1:8080/api/admin/getAdmin";
+  const apiUrl = 'http://127.0.0.1:8080/api/admin/getAdmin';
 
   const fetchAdmins = async () => {
     try {
@@ -58,20 +58,29 @@ function AdminTable() {
               <td className="w-10 py-2 text-center">{admin.id}</td>
               <td className="w-40 p-2 text-center">{admin.name}</td>
               <td className="p-2 text-center">{admin.email}</td>
-              <td className="px-4 py-2 text-sm text-gray-800 text-center">
-                {admin.phone ? admin.phone : "+94-0000-001"}
+              <td className="px-4 py-2 text-center text-sm text-gray-800">
+                {admin.phone ? admin.phone : '+94-0000-001'}
               </td>
-              <td className="p-2 text-center">{admin.role ? admin.role : "Viewer"}</td>
-              <td className="p-2 text-center">{admin.accessLevel ? admin.accessLevel : "1"}</td>
+              <td className="p-2 text-center">
+                {admin.role ? admin.role : 'Viewer'}
+              </td>
+              <td className="p-2 text-center">
+                {admin.accessLevel ? admin.accessLevel : '1'}
+              </td>
               <td className="p-2 text-center">
                 {admin.lastLogin
                   ? admin.lastLogin
-                  : new Date().toLocaleDateString().split("/").join("-")}
+                  : new Date().toLocaleDateString().split('/').join('-')}
               </td>
-              <td className="p-2 text-center">{admin.status ? admin.status : "Active"}</td>
+              <td className="p-2 text-center">
+                {admin.status ? admin.status : 'Active'}
+              </td>
               <td className="flex flex-col items-center gap-y-2 p-2 font-bold">
                 <EditButton admin={admin} />
-                <DeleteButton admin={admin} onDelete={() => handleDelete(admin.id)} />
+                <DeleteButton
+                  admin={admin}
+                  onDelete={() => handleDelete(admin.id)}
+                />
               </td>
             </tr>
           ))}

@@ -49,13 +49,16 @@ function EditClient() {
 
   const saveData = async () => {
     try {
-      const response = await fetch(`http://127.0.0.1:8080/api/customers/updateCustomer/${client.id}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
+      const response = await fetch(
+        `http://127.0.0.1:8080/api/customers/updateCustomer/${client.id}`,
+        {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(client),
         },
-        body: JSON.stringify(client),
-      });
+      );
 
       if (!response.ok) {
         throw new Error('Failed to update client');
@@ -71,7 +74,9 @@ function EditClient() {
 
   return (
     <div className="mx-auto max-w-xl p-6">
-      <h2 className="mb-6 text-2xl font-semibold text-indigo-700">Edit Client</h2>
+      <h2 className="mb-6 text-2xl font-semibold text-indigo-700">
+        Edit Client
+      </h2>
 
       <form className="space-y-4">
         {/* ID (readonly) */}

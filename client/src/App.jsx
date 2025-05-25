@@ -56,7 +56,7 @@ function App() {
       {/* Feedback */}
       <Route path="/admin/feedbacks" element={<FeedbackPage />} />
       <Route path="/admin/feedbacks/edit" element={<EditEmployeePage />} />
-      <Route path='/feedback' element={<AddFeedback />} />
+      <Route path="/feedback" element={<AddFeedback />} />
       <Route path="/adminTest" element={<AdminTest />} />
       <Route path="/pop" element={<DeletePopUp />} />
       <Route path="/404" element={<NotFound />} />
@@ -70,10 +70,7 @@ function App() {
         path="/admin/appointments/sort"
         element={<AppointmentPageSorted />}
       />
-      <Route
-        path='/*'
-        element={<NotFound />}
-      />
+      <Route path="/*" element={<NotFound />} />
     </Routes>
   );
 }

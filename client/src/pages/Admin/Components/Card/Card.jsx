@@ -3,7 +3,7 @@ import React from 'react';
 
 function Card({ Icon, title, value, bgColor, text_color }) {
   return (
-    <div className={`rounded-lg border-1 border-pink-300 bg-white p-6 shadow`}>
+    <div className={`border-1 rounded-lg border-pink-300 bg-white p-6 shadow`}>
       <div className="flex items-center">
         <div
           className={`rounded-full ${bgColor ? bgColor : 'bg-pink-100'} p-3 ${text_color ? text_color : 'text-pink-500'}`}

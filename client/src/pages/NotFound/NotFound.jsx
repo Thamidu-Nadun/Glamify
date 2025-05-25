@@ -11,7 +11,7 @@ function NotFound() {
           className={`relative flex size-96 justify-center rounded-2xl bg-current p-0.5 shadow-sm`}
         >
           <img src={bgImage} className="z-0 h-full w-full rounded-2xl" />
-          <span className="absolute z-1 pt-4 text-2xl font-bold text-gray-900">
+          <span className="z-1 absolute pt-4 text-2xl font-bold text-gray-900">
             404 Not Found
           </span>
         </div>

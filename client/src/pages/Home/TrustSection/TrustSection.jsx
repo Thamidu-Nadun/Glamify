@@ -24,7 +24,7 @@ export default TrustSection;
 
 const Item = ({ name = 'Item', Icon = FaMeta }) => {
   return (
-    <div className="my-2 flex items-center rounded-2xl border-1 border-amber-400 px-2 py-3 transition-all duration-500 hover:border-black hover:bg-amber-400">
+    <div className="border-1 my-2 flex items-center rounded-2xl border-amber-400 px-2 py-3 transition-all duration-500 hover:border-black hover:bg-amber-400">
       <Icon className="mx-2 h-5 w-5" />
       <h2 className="mx-2 text-lg font-semibold text-black">{name}</h2>
     </div>

@@ -54,7 +54,7 @@ function Navbar() {
 
       {/* Mobile Menu Drawer */}
       <div
-        className={`fixed top-0 right-0 z-50 h-full w-64 transform bg-white transition-transform duration-300 ease-in-out md:hidden ${
+        className={`fixed right-0 top-0 z-50 h-full w-64 transform bg-white transition-transform duration-300 ease-in-out md:hidden ${
           isMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
@@ -117,7 +117,7 @@ const SignUpButton = ({ fullWidth = false, path = '/' }) => {
 
 const LinkItem = ({ name = 'Link', path = '/' }) => {
   return (
-    <li className="bg-opacity-0 m-1 rounded-2xl border-2 border-transparent bg-gray-200/30 bg-clip-padding px-4 py-2 shadow-sm backdrop-blur-sm backdrop-filter transition-colors hover:border-2 hover:border-gray-200 hover:bg-gray-200/50">
+    <li className="m-1 rounded-2xl border-2 border-transparent bg-gray-200/30 bg-opacity-0 bg-clip-padding px-4 py-2 shadow-sm backdrop-blur-sm backdrop-filter transition-colors hover:border-2 hover:border-gray-200 hover:bg-gray-200/50">
       <Link to={path}>{name}</Link>
     </li>
   );
@@ -125,7 +125,7 @@ const LinkItem = ({ name = 'Link', path = '/' }) => {
 
 const MobileLink = ({ name = 'Link', path = '/' }) => {
   return (
-    <li className="bg-opacity-0 rounded-2xl bg-gray-200/30 bg-clip-padding px-4 py-3 backdrop-blur-sm backdrop-filter transition-colors hover:bg-gray-200/50">
+    <li className="rounded-2xl bg-gray-200/30 bg-opacity-0 bg-clip-padding px-4 py-3 backdrop-blur-sm backdrop-filter transition-colors hover:bg-gray-200/50">
       <Link to={path}>{name}</Link>
     </li>
   );

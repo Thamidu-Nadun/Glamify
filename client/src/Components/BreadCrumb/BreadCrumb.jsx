@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 function BreadCrumb({ url_1, url_2, Path_one, Path_two }) {
   return (
-    <div class="mt-2 mb-10 flex flex-wrap items-center justify-start space-x-2 text-sm font-medium text-pink-500">
+    <div class="mb-10 mt-2 flex flex-wrap items-center justify-start space-x-2 text-sm font-medium text-pink-500">
       <button type="button" aria-label="Home">
         <svg
           width="32"

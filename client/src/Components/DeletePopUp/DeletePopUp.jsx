@@ -2,7 +2,13 @@ import { Trash } from 'lucide-react';
 import React, { useState } from 'react';
 import './DeletePopUp.css';
 
-function DeletePopUp({ showModal, setShowModal, deleteItem, deleteID, onDeleteSuccess }) {
+function DeletePopUp({
+  showModal,
+  setShowModal,
+  deleteItem,
+  deleteID,
+  onDeleteSuccess,
+}) {
   const handleClose = () => setShowModal(false);
 
   const deleteService = async (id) => {
@@ -34,11 +40,11 @@ function DeletePopUp({ showModal, setShowModal, deleteItem, deleteID, onDeleteSu
   return (
     showModal && (
       <div
-        className="bg-opacity-30 fixed top-5 right-0 bottom-0 left-0 z-50 flex items-start justify-center bg-transparent"
+        className="fixed bottom-0 left-0 right-0 top-5 z-50 flex items-start justify-center bg-transparent bg-opacity-30"
         onClick={handleClose}
       >
         <div
-          className="pop-up flex w-[370px] flex-col items-center rounded-xl border-3 border-gray-300 border-b-red-500 bg-white px-5 py-6 shadow-md md:w-[460px]"
+          className="pop-up border-3 flex w-[370px] flex-col items-center rounded-xl border-gray-300 border-b-red-500 bg-white px-5 py-6 shadow-md md:w-[460px]"
           onClick={(e) => e.stopPropagation()}
         >
           <div className="flex items-center justify-center rounded-full bg-red-100 p-4">
@@ -72,6 +78,5 @@ function DeletePopUp({ showModal, setShowModal, deleteItem, deleteID, onDeleteSu
     )
   );
 }
-
 
 export default DeletePopUp;

@@ -8,7 +8,7 @@ function About() {
   return (
     <div className="flex h-fit w-screen items-center justify-center bg-white p-[2rem]">
       <div className="flex h-full w-full flex-col items-center gap-5 rounded-2xl bg-[#f8dbfe] py-5 lg:flex-row lg:justify-start">
-        <div className="box-action flex w-[50%] flex-col items-center justify-center gap-2 pr-[2rem] pl-[2rem] lg:items-start">
+        <div className="box-action flex w-[50%] flex-col items-center justify-center gap-2 pl-[2rem] pr-[2rem] lg:items-start">
           <div className="text-center lg:text-start">
             <span className="w-fit rounded-xl border border-black bg-transparent px-2 py-1 text-center text-sm">
               BENEFIT OF NATURAL INGREDIENTS

@@ -29,8 +29,13 @@ function ServicePage() {
 
           <div className="ml-2">
             <WelcomeGreet page="Services" user="Jane" />
-            <Link to="createService" className='mb-2 text-blue-400 cursor-pointer p-2 rounded-xl border-1 border-blue-400 w-fit hover:bg-blue-400 hover:text-blue-100 transition-all font-bold'>Create A Service</Link>
-            <div className="divider w-full bg-blue-200 h-1 my-5"></div>
+            <Link
+              to="createService"
+              className="border-1 mb-2 w-fit cursor-pointer rounded-xl border-blue-400 p-2 font-bold text-blue-400 transition-all hover:bg-blue-400 hover:text-blue-100"
+            >
+              Create A Service
+            </Link>
+            <div className="divider my-5 h-1 w-full bg-blue-200"></div>
             <ServiceTable />
           </div>
         </main>
