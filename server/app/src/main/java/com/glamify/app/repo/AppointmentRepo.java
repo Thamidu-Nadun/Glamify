@@ -20,8 +20,7 @@ public class AppointmentRepo {
     @Autowired
     private AppointmentRW appointmentRW;
 
-    private int max_appointments = 50;
-    private AppointmentQueue appointments = new AppointmentQueue(max_appointments);
+    private AppointmentQueue appointments = new AppointmentQueue();
 
     public List<Appointment> getAllAppointments() {
         return appointments.getAppointments();
@@ -29,11 +28,7 @@ public class AppointmentRepo {
 
     public Appointment addAppointment(Appointment appointment) {
         try {
-            if (appointments.enqueue(appointment)) {
-                return appointment;
-            } else {
-                return null;
-            }
+            return appointments.enqueue(appointment);
         } catch (Exception e) {
             return null;
         }
@@ -51,13 +46,22 @@ public class AppointmentRepo {
         return null;
     }
 
-    public boolean deleteAppointment(int id) {
-        return false;
+    public boolean deleteAppointment() {
+        try {
+            appointments.dequeue();
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     public void init_data_from_db() {
         try {
             List<Appointment> init_appointments = appointmentRW.ReadAppointment();
+            if (init_appointments == null || init_appointments.isEmpty()) {
+                System.out.println("No Customer Data Found");
+                return;
+            }
 
             for (Appointment customer : init_appointments) {
                 appointments.enqueue(customer);

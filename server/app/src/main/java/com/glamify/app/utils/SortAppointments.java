@@ -1,6 +1,7 @@
 package com.glamify.app.utils;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.glamify.app.entity.Appointment;
@@ -25,8 +26,9 @@ public class SortAppointments {
         // appointment.getStatus()
         // + " " + appointment.getPaymentStatus());
         // }
-        quickSort(appointments, 0, appointments.size() - 1);
-        return appointments;
+        List<Appointment> sortAppointments = new ArrayList<>(appointments);
+        quickSort(sortAppointments, 0, sortAppointments.size() - 1);
+        return sortAppointments;
     }
 
     public void quickSort(List<Appointment> appointments, int start, int end) {

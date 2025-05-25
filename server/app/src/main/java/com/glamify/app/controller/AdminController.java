@@ -101,8 +101,8 @@ public class AdminController {
             List<Appointment> appointments = appointmentService.getAllAppointments();
 
             List<Appointment> sortedAppointments = adminService.getSortedAppointments(appointments);
-            res.setCode(ResponseCode.ACCEPTED.getCode());
-            res.setMessage(ResponseCode.ACCEPTED.getMessage());
+            res.setCode(ResponseCode.SUCCESS.getCode());
+            res.setMessage(ResponseCode.SUCCESS.getMessage());
             res.setContent(sortedAppointments);
             return new ResponseEntity<>(res, HttpStatus.OK);
         } catch (Exception e) {

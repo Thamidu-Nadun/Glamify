@@ -15,29 +15,23 @@ public class AppointmentQueue {
 
     private AtomicInteger idCounter = new AtomicInteger(0);
     private List<Appointment> appointments;
-    private int maxSize;
-    private int front;
-    private int rear;
     private int numberOfItems;
 
-    public AppointmentQueue(int size) {
-        this.maxSize = size;
-        this.appointments = new ArrayList<>(size);
-        this.front = 0;
-        this.rear = -1;
+    public AppointmentQueue() {
+        this.appointments = new ArrayList<>();
         this.numberOfItems = 0;
     }
 
-    public boolean enqueue(Appointment appointment) {
-        if (this.isFull()) {
-            System.out.println("Queue is full. Cannot add more appointments.");
-            return false;
-        } else {
+    public Appointment enqueue(Appointment appointment) {
+        try {
             appointment.setId(idCounter.getAndIncrement());
-            appointments.add(++rear, appointment);
+            appointments.add(appointment);
             numberOfItems++;
             appointmentRW.WriteAppointment(appointments);
-            return true;
+            return appointment;
+        } catch (Exception e) {
+            System.out.println("Error while adding appointment: " + e.getMessage());
+            return null;
         }
     }
 
@@ -46,8 +40,7 @@ public class AppointmentQueue {
             System.out.println("Queue is empty. Cannot remove any appointments.");
             return;
         } else {
-            appointments.remove(front);
-            front++;
+            appointments.remove(0);
             appointmentRW.WriteAppointment(appointments);
             numberOfItems--;
         }
@@ -58,12 +51,12 @@ public class AppointmentQueue {
             System.out.println("Queue is empty. Cannot peek.");
             return null;
         } else {
-            return appointments.get(front);
+            return appointments.get(appointments.size() - 1);
         }
     }
 
     public boolean isFull() {
-        return numberOfItems == maxSize;
+        return numberOfItems == appointments.size();
     }
 
     public boolean isEmpty() {

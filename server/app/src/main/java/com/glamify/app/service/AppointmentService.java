@@ -18,10 +18,20 @@ public class AppointmentService {
     }
 
     public Appointment addAppointment(Appointment appointment) {
-        return appointmentRepo.addAppointment(appointment);
+        try {
+            Appointment res = appointmentRepo.addAppointment(appointment);
+            System.out.println(res);
+            return res;
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     public Appointment peekAppointment() {
         return appointmentRepo.peekAppointment();
+    }
+
+    public boolean deleteAppointment() {
+        return appointmentRepo.deleteAppointment();
     }
 }

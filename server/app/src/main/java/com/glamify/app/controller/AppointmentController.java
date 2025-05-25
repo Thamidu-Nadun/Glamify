@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -49,9 +50,29 @@ public class AppointmentController {
         GeneralResDTO generalResDTO = new GeneralResDTO();
         try {
             Appointment appointment_res = appointmentService.addAppointment(appointment);
+            System.out.println(appointment_res);
             generalResDTO.setCode(ResponseCode.SUCCESS.getCode());
             generalResDTO.setMessage(ResponseCode.SUCCESS.getMessage());
             generalResDTO.setContent(appointment_res);
+
+            return new ResponseEntity<>(generalResDTO, HttpStatus.ACCEPTED);
+        } catch (Exception e) {
+            generalResDTO.setCode(ResponseCode.INTERNAL_SERVER_ERROR.getCode());
+            generalResDTO.setMessage(ResponseCode.INTERNAL_SERVER_ERROR.getMessage());
+            generalResDTO.setContent(e);
+
+            return new ResponseEntity<>(generalResDTO, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @DeleteMapping("/deleteAppointment")
+    public ResponseEntity<GeneralResDTO> deleteAppointment() {
+        GeneralResDTO generalResDTO = new GeneralResDTO();
+        try {
+            appointmentService.deleteAppointment();
+            generalResDTO.setCode(ResponseCode.SUCCESS.getCode());
+            generalResDTO.setMessage(ResponseCode.SUCCESS.getMessage());
+            generalResDTO.setContent("Appointment deleted successfully");
 
             return new ResponseEntity<>(generalResDTO, HttpStatus.ACCEPTED);
         } catch (Exception e) {
