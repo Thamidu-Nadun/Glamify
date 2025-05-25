@@ -1,0 +1,67 @@
+{
+	"info": {
+		"_postman_id": "95e4e3cc-f9a3-4396-a768-7c98138218a1",
+		"name": "Feedback",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33288631"
+	},
+	"item": [
+		{
+			"name": "Get Feedbacks",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/feedback/getFeedbacks",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"feedback",
+						"getFeedbacks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Save Feedback",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 2,\r\n    \"rating\": 23,\r\n    \"comment\": \"Nice\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/feedback/saveFeedback",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"feedback",
+						"saveFeedback"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
