@@ -59,6 +59,7 @@
 	</dependencies>
 
 	<build>
+		<finalName>Glamify_App</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
