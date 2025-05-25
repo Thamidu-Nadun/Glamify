@@ -1,1 +1,9 @@
-[{"id":0,"name":"Moisure Lotion","description":"this is a test","duration":"20","price":500}]
+[
+    {
+        "id": 0,
+        "name": "Moisure Lotion",
+        "description": "this is a test",
+        "duration": "20",
+        "price": 500
+    }
+]
