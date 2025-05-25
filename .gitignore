@@ -1,5 +1,4 @@
 ./client/node_modules
 **/test.*
-client
 **/node_modules/
 main
