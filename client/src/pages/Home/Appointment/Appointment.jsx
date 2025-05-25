@@ -4,7 +4,8 @@ import Button from '../../../Components/Button/Button';
 import Cookies from 'js-cookie';
 
 const styles = {
-  input: 'rounded-xl border border-black px-3 py-1.5 mt-1.5 text-sm outline-none w-full',
+  input:
+    'rounded-xl border border-black px-3 py-1.5 mt-1.5 text-sm outline-none w-full',
   select: 'w-full h-10 border border-black pl-5 rounded-xl my-3',
   option: 'bg-amber-300/15 outline-none',
 };
@@ -60,20 +61,23 @@ function Appointment() {
       cus_id: cutId,
       service_id: parseInt(serviceId),
       date: date,
-      time: time+':00',
+      time: time + ':00',
       status: true,
       payment_status: false,
       duration: duration,
     };
 
     try {
-      const response = await fetch('http://127.0.0.1:8080/api/appointment/saveAppointment', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
+      const response = await fetch(
+        'http://127.0.0.1:8080/api/appointment/saveAppointment',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(requestData),
         },
-        body: JSON.stringify(requestData),
-      });
+      );
 
       const result = await response.json();
       if (result.code === 200) {
@@ -93,12 +97,12 @@ function Appointment() {
   };
 
   return (
-    <div className="flex h-[80vh] w-screen my-5">
-      <div className="h-full w-full p-5 hidden lg:block">
-        <div className="box mx-4 my-4 h-full w-auto rounded-4xl bg-[url('../../../assets/women-3.svg')] bg-cover bg-center" />
+    <div className="my-5 flex h-[80vh] w-screen">
+      <div className="hidden h-full w-full p-5 lg:block">
+        <div className="box rounded-4xl mx-4 my-4 h-full w-auto bg-[url('../../../assets/women-3.svg')] bg-cover bg-center" />
       </div>
       <div className="h-full w-full p-5">
-        <div className="box mx-4 my-4 flex h-full w-auto flex-col items-center justify-center rounded-4xl bg-[#fde48a]">
+        <div className="box rounded-4xl mx-4 my-4 flex h-full w-auto flex-col items-center justify-center bg-[#fde48a]">
           <div className="flex flex-col pl-[4vw]">
             <TagButton title="Quick Access" />
             <h2 className="ml-2 py-3 text-4xl font-semibold">
@@ -112,7 +116,7 @@ function Appointment() {
               ensures a smooth and efficient booking experience for all users.
             </p>
           </div>
-          <div className="form mt-4 flex w-75 flex-col items-center">
+          <div className="form w-75 mt-4 flex flex-col items-center">
             <div className="flex w-full justify-center gap-5">
               <input
                 id="date"

@@ -7,16 +7,16 @@ function EmployeeTable() {
 
   useEffect(() => {
     fetch('http://127.0.0.1:8080/api/employee/getEmployees')
-      .then(res => res.json())
-      .then(data => {
+      .then((res) => res.json())
+      .then((data) => {
         if (data.code == 200 && data.content) {
           setEmployees(data.content);
-      }
+        }
       })
       .catch((err) => {
         console.error('Failed to fetch clients:', err);
       });
-  }, [])
+  }, []);
 
   return (
     <div className="overflow-x-auto bg-gray-300">

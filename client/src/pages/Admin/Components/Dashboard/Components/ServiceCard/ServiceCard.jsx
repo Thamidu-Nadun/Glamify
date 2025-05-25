@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 function ServiceCard() {
   const [topServices, setTopServices] = useState([]);
 
-  useEffect(() => { 
+  useEffect(() => {
     fetch('http://127.0.0.1:8080/api/services/getServices')
       .then((res) => res.json())
       .then((data) => {
@@ -13,7 +13,7 @@ function ServiceCard() {
           console.error('Failed to fetch services:', data.message);
         }
       })
-      .catch((err) => console.error('Fetch error:', err))
+      .catch((err) => console.error('Fetch error:', err));
   }, []);
   // const topServices = [
   //   { name: 'Hair Styling', value: 35 },
@@ -34,7 +34,9 @@ function ServiceCard() {
               <span className="text-sm font-medium text-gray-700">
                 {service.name}
               </span>
-              <span className="text-sm text-gray-500">{service.price / 100}%</span>
+              <span className="text-sm text-gray-500">
+                {service.price / 100}%
+              </span>
             </div>
             <div className="h-2 w-full rounded-full bg-gray-200">
               <div

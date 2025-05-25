@@ -80,7 +80,7 @@ function EditAdmin() {
   return (
     <div className="mx-auto max-w-xl px-4 py-6">
       <h2 className="mb-6 text-2xl font-bold text-indigo-700">Edit Admin</h2>
-      <form className="space-y-5" onSubmit={e => e.preventDefault()}>
+      <form className="space-y-5" onSubmit={(e) => e.preventDefault()}>
         <Field label="Admin ID">
           <input
             type="text"

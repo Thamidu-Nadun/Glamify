@@ -1,15 +1,15 @@
-import React, { useState } from 'react'
-import CreateService from './components/CreateService/CreateService'
-import BreadCrumb from '../../../../Components/BreadCrumb/BreadCrumb'
-import Header from '../../Components/Header/Header'
-import SideBar from '../../Components/SideBar/SideBar'
+import React, { useState } from 'react';
+import CreateService from './components/CreateService/CreateService';
+import BreadCrumb from '../../../../Components/BreadCrumb/BreadCrumb';
+import Header from '../../Components/Header/Header';
+import SideBar from '../../Components/SideBar/SideBar';
 
 function AddServicePage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
   return (
-<div className="flex h-screen bg-gray-100 selection:bg-pink-200 selection:text-pink-900">
+    <div className="flex h-screen bg-gray-100 selection:bg-pink-200 selection:text-pink-900">
       <SideBar
         isSidebarOpen={isSidebarOpen}
         setIsSidebarOpen={setIsSidebarOpen}
@@ -28,7 +28,7 @@ function AddServicePage() {
         </main>
       </div>
     </div>
-  )
+  );
 }
 
-export default AddServicePage
+export default AddServicePage;

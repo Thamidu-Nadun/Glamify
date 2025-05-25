@@ -7,25 +7,25 @@ function From() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-  
+
     try {
       const loginRes = await fetch(
-        `http://127.0.0.1:8080/api/customers/login?email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`
+        `http://127.0.0.1:8080/api/customers/login?email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`,
       );
       const loginData = await loginRes.json();
-  
+
       if (loginData.code === 200 && loginData.content === true) {
         Cookies.set('isLoggedIn', 'true', { expires: 1 });
-  
+
         const userRes = await fetch(
-          `http://127.0.0.1:8080/api/customers/getCustomerByEmail?email=${encodeURIComponent(email)}`
+          `http://127.0.0.1:8080/api/customers/getCustomerByEmail?email=${encodeURIComponent(email)}`,
         );
         const userData = await userRes.json();
-  
+
         if (userData.code === 200 && userData.content) {
           const { password, ...safeUserData } = userData.content;
           Cookies.set('userData', JSON.stringify(safeUserData), { expires: 1 });
-  
+
           alert('Login successful!');
           setTimeout(() => {
             window.location.href = '/';
@@ -41,11 +41,13 @@ function From() {
       alert('An error occurred. Please try again later.');
     }
   };
-  
 
   return (
     <div className="rounded-2xl border-2 border-pink-500 p-4">
-      <form className="flex w-80 flex-col items-center justify-center md:w-96" onSubmit={handleLogin}>
+      <form
+        className="flex w-80 flex-col items-center justify-center md:w-96"
+        onSubmit={handleLogin}
+      >
         <h2 className="text-4xl font-medium text-gray-900">Sign in</h2>
         <p className="mt-3 text-sm text-gray-500/90">
           Welcome back! Please sign in to continue
@@ -63,14 +65,20 @@ function From() {
 
         <div className="my-5 flex w-full items-center gap-4">
           <div className="h-px w-full bg-gray-300/90" />
-          <p className="w-full text-sm text-nowrap text-gray-500/90">
+          <p className="w-full text-nowrap text-sm text-gray-500/90">
             or sign in with email
           </p>
           <div className="h-px w-full bg-gray-300/90" />
         </div>
 
         <div className="flex h-12 w-full items-center gap-2 overflow-hidden rounded-full border border-gray-300/60 bg-transparent pl-6">
-          <svg width="16" height="11" viewBox="0 0 16 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg
+            width="16"
+            height="11"
+            viewBox="0 0 16 11"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
             <path
               fillRule="evenodd"
               clipRule="evenodd"
@@ -89,7 +97,13 @@ function From() {
         </div>
 
         <div className="mt-6 flex h-12 w-full items-center gap-2 overflow-hidden rounded-full border border-gray-300/60 bg-transparent pl-6">
-          <svg width="13" height="17" viewBox="0 0 13 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg
+            width="13"
+            height="17"
+            viewBox="0 0 13 17"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
             <path
               d="M13 8.5c0-.938-.729-1.7-1.625-1.7h-.812V4.25C10.563 1.907 8.74 0 6.5 0S2.438 1.907 2.438 4.25V6.8h-.813C.729 6.8 0 7.562 0 8.5v6.8c0 .938.729 1.7 1.625 1.7h9.75c.896 0 1.625-.762 1.625-1.7zM4.063 4.25c0-1.406 1.093-2.55 2.437-2.55s2.438 1.144 2.438 2.55V6.8H4.061z"
               fill="#6B7280"

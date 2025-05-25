@@ -146,7 +146,7 @@ export default function Admin() {
       <div
         className={`${
           isSidebarOpen ? 'w-64' : 'w-20'
-        } fixed top-0 left-0 z-20 h-screen bg-gradient-to-b from-purple-800 to-pink-500 text-white transition-all duration-300`}
+        } fixed left-0 top-0 z-20 h-screen bg-gradient-to-b from-purple-800 to-pink-500 text-white transition-all duration-300`}
       >
         <div className="flex items-center justify-between border-b border-purple-700 p-4">
           {isSidebarOpen && (
@@ -235,16 +235,16 @@ export default function Admin() {
                 <input
                   type="text"
                   placeholder="Search..."
-                  className="w-full rounded-lg border border-gray-300 py-2 pr-4 pl-10 focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                  className="w-full rounded-lg border border-gray-300 py-2 pl-10 pr-4 focus:outline-none focus:ring-2 focus:ring-purple-500"
                 />
-                <Search className="absolute top-3 left-3 text-gray-400" />
+                <Search className="absolute left-3 top-3 text-gray-400" />
               </div>
             </div>
 
             <div className="flex items-center space-x-4">
               <button className="relative rounded-full p-2 hover:bg-gray-100">
                 <Bell size={22} />
-                <span className="absolute top-0 right-0 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-xs text-white">
+                <span className="absolute right-0 top-0 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-xs text-white">
                   3
                 </span>
               </button>
@@ -344,16 +344,16 @@ export default function Admin() {
                 <table className="w-full">
                   <thead className="bg-gray-50">
                     <tr>
-                      <th className="px-6 py-3 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
+                      <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
                         Client
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
+                      <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
                         Service
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
+                      <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
                         Time
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
+                      <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
                         Stylist
                       </th>
                     </tr>
@@ -361,22 +361,22 @@ export default function Admin() {
                   <tbody className="divide-y divide-gray-200 bg-white">
                     {appointments.map((appointment) => (
                       <tr key={appointment.id} className="hover:bg-gray-50">
-                        <td className="px-6 py-4 whitespace-nowrap">
+                        <td className="whitespace-nowrap px-6 py-4">
                           <div className="text-sm font-medium text-gray-900">
                             {appointment.client}
                           </div>
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap">
+                        <td className="whitespace-nowrap px-6 py-4">
                           <div className="text-sm text-gray-900">
                             {appointment.service}
                           </div>
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap">
+                        <td className="whitespace-nowrap px-6 py-4">
                           <div className="text-sm text-gray-900">
                             {appointment.time}
                           </div>
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap">
+                        <td className="whitespace-nowrap px-6 py-4">
                           <div className="text-sm text-gray-900">
                             {appointment.stylist}
                           </div>

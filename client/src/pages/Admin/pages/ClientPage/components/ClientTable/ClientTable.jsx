@@ -38,8 +38,12 @@ function ClientTable() {
             >
               <td className="px-4 py-2 text-sm text-gray-800">{client.id}</td>
               <td className="px-4 py-2 text-sm text-gray-800">{client.name}</td>
-              <td className="px-4 py-2 text-sm text-gray-800">{client.email}</td>
-              <td className="px-4 py-2 text-sm text-gray-800">{client.phone}</td>
+              <td className="px-4 py-2 text-sm text-gray-800">
+                {client.email}
+              </td>
+              <td className="px-4 py-2 text-sm text-gray-800">
+                {client.phone}
+              </td>
               <td className="px-4 py-2 text-sm text-gray-800">
                 <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-start">
                   <EditButton client={client} />

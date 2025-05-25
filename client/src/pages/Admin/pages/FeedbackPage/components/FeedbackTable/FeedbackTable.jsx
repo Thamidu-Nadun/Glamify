@@ -7,8 +7,8 @@ function FeedbackTable() {
   const [feedbacks, setFeedbacks] = useState([]);
   useEffect(() => {
     fetch('http://127.0.0.1:8080/api/feedback/getFeedbacks')
-      .then(res => res.json())
-      .then(data => {
+      .then((res) => res.json())
+      .then((data) => {
         if (data.code === 200 && data.content) {
           setFeedbacks(data.content);
         }
@@ -16,8 +16,7 @@ function FeedbackTable() {
       .catch((err) => {
         console.error('Failed to fetch clients:', err);
       });
-
-  })
+  });
   return (
     <div className="overflow-x-scroll bg-gray-300">
       <table className="w-full min-w-max table-auto shadow-lg">

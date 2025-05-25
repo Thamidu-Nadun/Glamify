@@ -20,9 +20,9 @@ function ServiceTable() {
   const [services, setServices] = React.useState([]);
 
   const handleDelete = (id) => {
-    setServices(prev => prev.filter(service => service.id !== id));
-  };  
-  const apiUrl = "http://127.0.0.1:8080/api/services/getServices";
+    setServices((prev) => prev.filter((service) => service.id !== id));
+  };
+  const apiUrl = 'http://127.0.0.1:8080/api/services/getServices';
   const fetchServices = async () => {
     try {
       const response = await fetch(apiUrl);
@@ -158,7 +158,10 @@ function ServiceTable() {
               </td>
               <td className="flex flex-col items-center gap-y-2 p-2 font-bold">
                 <EditButton service={service} />
-                <DeleteButton service={service} onDeleteSuccess={ handleDelete} />
+                <DeleteButton
+                  service={service}
+                  onDeleteSuccess={handleDelete}
+                />
               </td>
             </tr>
           ))}
